@@ -1,17 +1,17 @@
 # Ethanol UI
 
-Modern admin dashboard template dengan Bootstrap 5.3.8, DataTables, dan SweetAlert2. Template HTML statis murni tanpa build tools. Clean, modern, dan fully customizable.
+Modern admin dashboard template dengan Bootstrap 5.3.8, ApexCharts, DataTables, dan SweetAlert2. Template HTML statis murni tanpa build tools. Clean, modern, dan fully customizable.
 
 ## ✨ Fitur
 
 - ✅ **Bootstrap 5.3.8** - Framework CSS modern dan responsif
+- ✅ **ApexCharts 3.44.0** - Chart library modern dan interaktif
 - ✅ **DataTables 2.3.5** - Tabel interaktif dengan search, sort, pagination
 - ✅ **SweetAlert2** - Alert dan konfirmasi yang cantik
 - ✅ **Dark/Light Mode** - Toggle theme dengan localStorage persistence
 - ✅ **Custom Color Themes** - Pilih warna untuk Sidebar & Topbar
 - ✅ **UI/UX Modern** - Glassmorphism, smooth transitions, modern shadows
 - ✅ **Responsive Design** - Mobile-friendly
-- ✅ **CRUD Template** - Template lengkap untuk operasi CRUD
 - ✅ **100% Statis** - Tidak perlu build tools, bisa langsung dibuka di browser
 
 ## 🎯 Tagline
@@ -127,6 +127,10 @@ Karena template HTML statis, ada 2 cara untuk menggunakan includes:
 
 ### SweetAlert2
 - JS: `https://cdn.jsdelivr.net/npm/sweetalert2@11`
+
+### ApexCharts 3.44.0
+- CSS: `https://cdn.jsdelivr.net/npm/apexcharts@3.44.0/dist/apexcharts.css`
+- JS: `https://cdn.jsdelivr.net/npm/apexcharts@3.44.0/dist/apexcharts.min.js`
 
 ### Bootstrap Icons
 - CSS: `https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css`
