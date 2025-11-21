@@ -107,43 +107,94 @@
 
     <!-- Sidebar -->
     <aside class="sidebar" data-sidebar-theme="blue">
-      <div class="p-4">
-        <div class="d-flex align-items-center mb-4">
-          <div
-            class="rounded-circle bg-white d-flex align-items-center justify-content-center me-3"
-            style="
-              width: 40px;
-              height: 40px;
-              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            "
-          >
-            <i class="bi bi-layout-text-window-reverse text-primary"></i>
+      <!-- Sidebar Brand -->
+      <div class="sidebar-brand">
+        <div class="d-flex align-items-center">
+          <div class="sidebar-brand-logo me-3">
+            <i class="bi bi-layout-text-window-reverse"></i>
           </div>
-          <span class="text-white fw-bold">Ethanol UI</span>
+          <div>
+            <div class="sidebar-brand-text">Ethanol UI</div>
+            <small
+              class="text-white-50"
+              style="font-size: 0.7rem; font-weight: 400"
+              >Admin Dashboard</small
+            >
+          </div>
         </div>
+      </div>
 
-        <nav class="nav flex-column">
-          <a class="nav-link active" href="dashboard.html">
-            <i class="bi bi-house-door"></i>
-            <span>Dashboard</span>
-          </a>
-          <a class="nav-link" href="#">
-            <i class="bi bi-people"></i>
-            <span>Users</span>
-          </a>
-          <a class="nav-link" href="#">
-            <i class="bi bi-box-seam"></i>
-            <span>Products</span>
-          </a>
-          <a class="nav-link" href="#">
-            <i class="bi bi-graph-up"></i>
-            <span>Analytics</span>
-          </a>
-          <a class="nav-link" href="#">
-            <i class="bi bi-gear"></i>
-            <span>Settings</span>
-          </a>
-        </nav>
+      <!-- Sidebar Navigation -->
+      <nav class="nav flex-column">
+        <div class="sidebar-section-label">Main Menu</div>
+
+        <a class="nav-link active" href="dashboard.html">
+          <i class="bi bi-house-door"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <a class="nav-link" href="#">
+          <i class="bi bi-people"></i>
+          <span>Users</span>
+          <span class="badge">12</span>
+        </a>
+
+        <a class="nav-link" href="#">
+          <i class="bi bi-box-seam"></i>
+          <span>Products</span>
+        </a>
+
+        <a class="nav-link" href="#">
+          <i class="bi bi-graph-up"></i>
+          <span>Analytics</span>
+        </a>
+
+        <a class="nav-link" href="#">
+          <i class="bi bi-envelope"></i>
+          <span>Messages</span>
+          <span class="badge">3</span>
+        </a>
+
+        <hr class="sidebar-divider" />
+
+        <div class="sidebar-section-label">Settings</div>
+
+        <a class="nav-link" href="#">
+          <i class="bi bi-gear"></i>
+          <span>Settings</span>
+        </a>
+
+        <a class="nav-link" href="#">
+          <i class="bi bi-person-circle"></i>
+          <span>Profile</span>
+        </a>
+
+        <a class="nav-link" href="#">
+          <i class="bi bi-question-circle"></i>
+          <span>Help & Support</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="mt-auto p-3 border-top border-white border-opacity-10">
+        <div class="d-flex align-items-center">
+          <div class="flex-shrink-0">
+            <div
+              class="rounded-circle bg-white bg-opacity-20 d-flex align-items-center justify-content-center"
+              style="width: 36px; height: 36px"
+            >
+              <i class="bi bi-person text-white"></i>
+            </div>
+          </div>
+          <div class="flex-grow-1 ms-2">
+            <div class="text-white fw-semibold" style="font-size: 0.875rem">
+              Admin User
+            </div>
+            <small class="text-white-50" style="font-size: 0.75rem"
+              >admin@example.com</small
+            >
+          </div>
+        </div>
       </div>
     </aside>
 
