@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Split Screen | Ethanol UI</title>
+    
+    <!-- Bootstrap 5.3.8 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .login-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Left Side - Illustration */
+        .login-left {
+            flex: 1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-left::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .login-left-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: white;
+        }
+
+        .login-left-content h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-left-content p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .illustration-box {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .illustration-box i {
+            font-size: 8rem;
+            opacity: 0.8;
+        }
+
+        /* Right Side - Login Form */
+        .login-right {
+            flex: 1;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+        }
+
+        .login-form-container {
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .login-brand {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .login-brand h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-brand p {
+            color: #6b7280;
+            font-size: 0.9375rem;
+        }
+
+        .form-group-modern {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label-modern {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .input-group-modern {
+            position: relative;
+        }
+
+        .input-group-modern .form-control {
+            padding: 0.875rem 1rem 0.875rem 3rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            font-size: 0.9375rem;
+            transition: all 0.3s ease;
+            background: #f9fafb;
+        }
+
+        .input-group-modern .form-control:focus {
+            border-color: #667eea;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            outline: none;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            z-index: 10;
+        }
+
+        .input-group-modern .form-control:focus + .input-icon {
+            color: #667eea;
+        }
+
+        .btn-toggle-password {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+            color: #9ca3af;
+            cursor: pointer;
+            z-index: 10;
+            padding: 0.5rem;
+        }
+
+        .btn-toggle-password:hover {
+            color: #667eea;
+        }
+
+        .btn-login-modern {
+            width: 100%;
+            padding: 0.875rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 0.75rem;
+            color: white;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-login-modern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-login-modern:active {
+            transform: translateY(0);
+        }
+
+        .form-check-modern {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-check-modern input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #667eea;
+        }
+
+        .form-check-modern label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            cursor: pointer;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e5e7eb;
+        }
+
+        .divider span {
+            background: #ffffff;
+            padding: 0 1rem;
+            color: #9ca3af;
+            font-size: 0.875rem;
+            position: relative;
+        }
+
+        .link-modern {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .link-modern:hover {
+            color: #764ba2;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+            }
+
+            .login-left {
+                min-height: 40vh;
+                padding: 2rem;
+            }
+
+            .login-left-content h1 {
+                font-size: 2rem;
+            }
+
+            .illustration-box {
+                width: 200px;
+                height: 200px;
+            }
+
+            .illustration-box i {
+                font-size: 5rem;
+            }
+
+            .login-right {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Left Side - Illustration -->
+        <div class="login-left">
+            <div class="login-left-content">
+                <h1>Welcome Back!</h1>
+                <p>Masuk ke dashboard Anda dan kelola semua aktivitas dengan mudah</p>
+                <div class="illustration-box">
+                    <i class="bi bi-shield-lock"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side - Login Form -->
+        <div class="login-right">
+            <div class="login-form-container">
+                <div class="login-brand">
+                    <h2>Ethanol UI</h2>
+                    <p>Silakan login ke akun Anda</p>
+                </div>
+
+                <form id="loginForm" class="needs-validation" novalidate>
+                    <div class="form-group-modern">
+                        <label for="email" class="form-label-modern">Email Address</label>
+                        <div class="input-group-modern">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="nama@email.com" required>
+                            <i class="bi bi-envelope input-icon"></i>
+                            <div class="invalid-feedback">Masukkan email yang valid.</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group-modern">
+                        <label for="password" class="form-label-modern">Password</label>
+                        <div class="input-group-modern">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required>
+                            <i class="bi bi-lock input-icon"></i>
+                            <button type="button" class="btn-toggle-password" id="togglePassword">
+                                <i class="bi bi-eye" id="eyeIcon"></i>
+                            </button>
+                            <div class="invalid-feedback">Masukkan password.</div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="form-check-modern">
+                            <input type="checkbox" class="form-check-input" id="remember">
+                            <label for="remember">Ingat saya</label>
+                        </div>
+                        <a href="#" class="link-modern">Lupa password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-login-modern">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Login
+                    </button>
+                </form>
+
+                <div class="divider">
+                    <span>ATAU</span>
+                </div>
+
+                <div class="text-center">
+                    <p class="mb-0" style="color: #6b7280; font-size: 0.875rem;">
+                        Belum punya akun? <a href="register.html" class="link-modern">Daftar sekarang</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <!-- Bootstrap 5.3.8 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script>
+        // Toggle password visibility
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const password = document.getElementById('password');
+            const eyeIcon = document.getElementById('eyeIcon');
+            
+            if (password.type === 'password') {
+                password.type = 'text';
+                eyeIcon.classList.remove('bi-eye');
+                eyeIcon.classList.add('bi-eye-slash');
+            } else {
+                password.type = 'password';
+                eyeIcon.classList.remove('bi-eye-slash');
+                eyeIcon.classList.add('bi-eye');
+            }
+        });
+
+        // Form validation
+        const form = document.getElementById('loginForm');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            if (form.checkValidity()) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Login Berhasil!',
+                    text: 'Anda akan diarahkan ke dashboard...',
+                    timer: 2000,
+                    showConfirmButton: false
+                }).then(() => {
+                    window.location.href = 'pages/dashboard.html';
+                });
+            }
+            
+            form.classList.add('was-validated');
+        });
+    </script>
+</body>
+</html>
+
