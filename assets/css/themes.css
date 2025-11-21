@@ -1,0 +1,140 @@
+/* ============================================
+   THEME MANAGEMENT CSS
+   ============================================ */
+
+/* Dark Mode Variables */
+:root[data-theme="dark"] {
+    --bg-primary: #1a1d29;
+    --bg-secondary: #252936;
+    --bg-card: #2d3142;
+    --text-primary: #e4e6eb;
+    --text-secondary: #b0b3b8;
+    --border-color: #3a3f52;
+    --shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Light Mode Variables */
+:root[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-card: #ffffff;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --border-color: #dee2e6;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar Color Themes */
+:root[data-sidebar-theme="blue"] {
+    --sidebar-bg: #1e3a8a;
+    --sidebar-hover: #1e40af;
+    --sidebar-active: #3b82f6;
+}
+
+:root[data-sidebar-theme="purple"] {
+    --sidebar-bg: #6b21a8;
+    --sidebar-hover: #7c3aed;
+    --sidebar-active: #a855f7;
+}
+
+:root[data-sidebar-theme="green"] {
+    --sidebar-bg: #166534;
+    --sidebar-hover: #15803d;
+    --sidebar-active: #22c55e;
+}
+
+:root[data-sidebar-theme="orange"] {
+    --sidebar-bg: #c2410c;
+    --sidebar-hover: #ea580c;
+    --sidebar-active: #f97316;
+}
+
+:root[data-sidebar-theme="red"] {
+    --sidebar-bg: #991b1b;
+    --sidebar-hover: #dc2626;
+    --sidebar-active: #ef4444;
+}
+
+:root[data-sidebar-theme="teal"] {
+    --sidebar-bg: #0f766e;
+    --sidebar-hover: #14b8a6;
+    --sidebar-active: #2dd4bf;
+}
+
+:root[data-sidebar-theme="indigo"] {
+    --sidebar-bg: #4338ca;
+    --sidebar-hover: #4f46e5;
+    --sidebar-active: #6366f1;
+}
+
+/* Topbar Color Themes */
+:root[data-topbar-theme="blue"] {
+    --topbar-bg: #3b82f6;
+    --topbar-text: #ffffff;
+}
+
+:root[data-topbar-theme="purple"] {
+    --topbar-bg: #a855f7;
+    --topbar-text: #ffffff;
+}
+
+:root[data-topbar-theme="green"] {
+    --topbar-bg: #22c55e;
+    --topbar-text: #ffffff;
+}
+
+:root[data-topbar-theme="orange"] {
+    --topbar-bg: #f97316;
+    --topbar-text: #ffffff;
+}
+
+:root[data-topbar-theme="red"] {
+    --topbar-bg: #ef4444;
+    --topbar-text: #ffffff;
+}
+
+:root[data-topbar-theme="teal"] {
+    --topbar-bg: #2dd4bf;
+    --topbar-text: #ffffff;
+}
+
+:root[data-topbar-theme="indigo"] {
+    --topbar-bg: #6366f1;
+    --topbar-text: #ffffff;
+}
+
+/* Apply Theme to Body */
+body[data-theme="dark"] {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body[data-theme="light"] {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Sidebar Theme - Applied in custom.css with glassmorphism */
+
+/* Topbar Theme - Applied in custom.css with glassmorphism */
+
+/* Card Theme */
+.card[data-theme="dark"] {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.card[data-theme="light"] {
+    background-color: var(--bg-card);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+/* Smooth Transitions */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+

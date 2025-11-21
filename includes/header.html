@@ -1,0 +1,49 @@
+<!-- Topbar -->
+<nav class="topbar" data-topbar-theme="blue">
+    <div class="topbar-left">
+        <button class="btn btn-link text-white" id="sidebarToggle" data-bs-toggle="tooltip" title="Toggle Sidebar">
+            <i class="bi bi-list fs-4"></i>
+        </button>
+        <span class="ms-3 text-white fw-bold">Ethanol UI</span>
+    </div>
+    <div class="topbar-right">
+        <!-- Theme Toggle -->
+        <button class="btn btn-link text-white" id="themeToggle" data-bs-toggle="tooltip" title="Toggle Dark/Light Mode">
+            <i class="bi bi-moon fs-5"></i>
+        </button>
+        
+        <!-- Notifications -->
+        <div class="dropdown">
+            <button class="btn btn-link text-white position-relative" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-bell fs-5"></i>
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    3
+                </span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><h6 class="dropdown-header">Notifikasi</h6></li>
+                <li><a class="dropdown-item" href="#">Pesan baru dari user</a></li>
+                <li><a class="dropdown-item" href="#">Order baru diterima</a></li>
+                <li><a class="dropdown-item" href="#">Pembayaran berhasil</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-center" href="#">Lihat semua</a></li>
+            </ul>
+        </div>
+        
+        <!-- User Dropdown -->
+        <div class="dropdown">
+            <button class="btn btn-link text-white d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="../assets/images/logo.png" alt="User" class="rounded-circle me-2" width="32" height="32" onerror="this.src='https://via.placeholder.com/32'">
+                <span>Admin User</span>
+                <i class="bi bi-chevron-down ms-2"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="pages/profile.html"><i class="bi bi-person me-2"></i>Profile</a></li>
+                <li><a class="dropdown-item" href="pages/settings.html"><i class="bi bi-gear me-2"></i>Settings</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="login.html"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
