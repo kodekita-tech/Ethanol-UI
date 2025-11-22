@@ -159,20 +159,6 @@
               <i class="bi bi-list fs-4"></i>
             </button>
 
-            <!-- Search -->
-            <div class="d-none d-md-flex align-items-center ms-3">
-              <div class="input-group" style="max-width: 400px">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Search..."
-                />
-                <button class="btn btn-outline-light" type="button">
-                  <i class="bi bi-search"></i>
-                </button>
-              </div>
-            </div>
-
             <!-- Right Side -->
             <div class="ms-auto d-flex align-items-center gap-2">
               <!-- Dark Mode Toggle -->
@@ -181,7 +167,6 @@
                 id="darkModeToggle"
                 type="button"
                 title="Toggle Dark Mode"
-                onclick="if(typeof ThemeManager !== 'undefined') ThemeManager.toggleDarkMode();"
               >
                 <i class="bi bi-moon-stars fs-5"></i>
               </button>
@@ -196,13 +181,15 @@
                   aria-expanded="false"
                 >
                   <i class="bi bi-bell fs-5"></i>
-                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  <span
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger notification-badge"
+                  >
                     3
                   </span>
                 </button>
                 <ul
-                  class="dropdown-menu dropdown-menu-end notification-dropdown-modern"
-                  aria-labelledby="notificationDropdown"
+                  class="dropdown-menu dropdown-menu-end notification-dropdown"
+                  style="width: 360px"
                 >
                   <li>
                     <div class="notification-dropdown-header">
@@ -240,6 +227,7 @@
                           </div>
                         </div>
                       </div>
+                      <div class="notification-unread-indicator"></div>
                     </a>
                   </li>
                   <li>
@@ -262,6 +250,7 @@
                           </div>
                         </div>
                       </div>
+                      <div class="notification-unread-indicator"></div>
                     </a>
                   </li>
                   <li>
@@ -284,30 +273,41 @@
                           </div>
                         </div>
                       </div>
+                      <div class="notification-unread-indicator"></div>
+                    </a>
+                  </li>
+                  <li><div class="dropdown-divider-modern"></div></li>
+                  <li>
+                    <a class="notification-view-all" href="#">
+                      <i class="bi bi-arrow-right-circle me-2"></i>
+                      View all notifications
                     </a>
                   </li>
                 </ul>
               </div>
 
-              <!-- Theme Switcher -->
+              <!-- Color Scheme Picker -->
               <div class="dropdown">
                 <button
                   class="btn btn-link text-white topbar-action-btn"
                   type="button"
-                  id="themeDropdown"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  title="Change Theme"
+                  title="Color Scheme"
                 >
                   <i class="bi bi-palette fs-5"></i>
                 </button>
                 <ul
-                  class="dropdown-menu dropdown-menu-end theme-dropdown-modern"
-                  aria-labelledby="themeDropdown"
+                  class="dropdown-menu dropdown-menu-end color-scheme-dropdown"
                 >
                   <li>
-                    <div class="theme-dropdown-header">
-                      <h6 class="mb-0 fw-bold">Color Scheme</h6>
+                    <div class="color-scheme-header">
+                      <div class="d-flex align-items-center gap-2 mb-1">
+                        <div class="color-scheme-header-icon">
+                          <i class="bi bi-palette"></i>
+                        </div>
+                        <h6 class="mb-0 fw-bold">Color Scheme</h6>
+                      </div>
                       <p class="mb-0 text-muted small">
                         Customize your theme colors
                       </p>
@@ -315,20 +315,253 @@
                   </li>
                   <li><div class="dropdown-divider-modern"></div></li>
                   <li>
-                    <a class="theme-item-modern" href="#" data-action="reset">
-                      <div class="d-flex align-items-center">
-                        <div class="theme-reset-icon">
-                          <i class="bi bi-arrow-counterclockwise"></i>
-                        </div>
-                        <div class="flex-grow-1">
-                          <div class="reset-title">Reset to Default</div>
-                          <div class="reset-subtitle">
-                            Restore original colors
-                          </div>
-                        </div>
-                        <i class="bi bi-chevron-right reset-arrow"></i>
+                    <div class="color-scheme-section">
+                      <div class="color-scheme-label">
+                        <i class="bi bi-layout-sidebar me-2"></i>
+                        <span>Sidebar Color</span>
                       </div>
-                    </a>
+                      <div class="color-picker-grid">
+                        <button
+                          class="color-picker-btn active"
+                          data-color="blue"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #1e3a8a 0%,
+                              #1e40af 100%
+                            );
+                          "
+                          title="Blue"
+                        >
+                          <span class="color-name">Blue</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="purple"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #6b21a8 0%,
+                              #7c3aed 100%
+                            );
+                          "
+                          title="Purple"
+                        >
+                          <span class="color-name">Purple</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="green"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #166534 0%,
+                              #16a34a 100%
+                            );
+                          "
+                          title="Green"
+                        >
+                          <span class="color-name">Green</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="orange"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #c2410c 0%,
+                              #ea580c 100%
+                            );
+                          "
+                          title="Orange"
+                        >
+                          <span class="color-name">Orange</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="red"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #991b1b 0%,
+                              #dc2626 100%
+                            );
+                          "
+                          title="Red"
+                        >
+                          <span class="color-name">Red</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="teal"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #0f766e 0%,
+                              #14b8a6 100%
+                            );
+                          "
+                          title="Teal"
+                        >
+                          <span class="color-name">Teal</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="indigo"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #3730a3 0%,
+                              #6366f1 100%
+                            );
+                          "
+                          title="Indigo"
+                        >
+                          <span class="color-name">Indigo</span>
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="color-scheme-section">
+                      <div class="color-scheme-label">
+                        <i class="bi bi-layout-top me-2"></i>
+                        <span>Topbar Color</span>
+                      </div>
+                      <div class="color-picker-grid">
+                        <button
+                          class="color-picker-btn active"
+                          data-color="blue"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #1e3a8a 0%,
+                              #1e40af 100%
+                            );
+                          "
+                          title="Blue"
+                        >
+                          <span class="color-name">Blue</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="purple"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #6b21a8 0%,
+                              #7c3aed 100%
+                            );
+                          "
+                          title="Purple"
+                        >
+                          <span class="color-name">Purple</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="green"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #166534 0%,
+                              #16a34a 100%
+                            );
+                          "
+                          title="Green"
+                        >
+                          <span class="color-name">Green</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="orange"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #c2410c 0%,
+                              #ea580c 100%
+                            );
+                          "
+                          title="Orange"
+                        >
+                          <span class="color-name">Orange</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="red"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #991b1b 0%,
+                              #dc2626 100%
+                            );
+                          "
+                          title="Red"
+                        >
+                          <span class="color-name">Red</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="teal"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #0f766e 0%,
+                              #14b8a6 100%
+                            );
+                          "
+                          title="Teal"
+                        >
+                          <span class="color-name">Teal</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="indigo"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #3730a3 0%,
+                              #6366f1 100%
+                            );
+                          "
+                          title="Indigo"
+                        >
+                          <span class="color-name">Indigo</span>
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                  <li><div class="dropdown-divider-modern"></div></li>
+                  <li>
+                    <button
+                      class="color-scheme-reset-btn"
+                      type="button"
+                      id="resetThemeBtn"
+                    >
+                      <div class="reset-icon-wrapper">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                      </div>
+                      <div class="flex-grow-1">
+                        <div class="reset-title">Reset to Default</div>
+                        <div class="reset-subtitle">
+                          Restore original colors
+                        </div>
+                      </div>
+                      <i class="bi bi-chevron-right reset-arrow"></i>
+                    </button>
                   </li>
                 </ul>
               </div>
@@ -336,37 +569,63 @@
               <!-- User Dropdown -->
               <div class="dropdown">
                 <button
-                  class="btn btn-link text-white topbar-action-btn d-flex align-items-center gap-2"
+                  class="btn btn-link text-white d-flex align-items-center gap-2 topbar-user-btn"
                   type="button"
-                  id="userDropdown"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <div class="user-avatar-wrapper position-relative">
-                    <div
-                      class="user-avatar bg-light text-dark d-flex align-items-center justify-content-center"
-                      style="width: 36px; height: 36px; border-radius: 50%"
+                  <div
+                    class="user-avatar rounded-circle bg-white text-primary d-flex align-items-center justify-content-center fw-bold"
+                    style="width: 36px; height: 36px; font-size: 0.9rem"
+                  >
+                    A
+                  </div>
+                  <div
+                    class="d-none d-md-flex flex-column align-items-start"
+                    style="line-height: 1.2"
+                  >
+                    <span class="fw-semibold" style="font-size: 0.9rem"
+                      >Admin User</span
                     >
-                      A
-                    </div>
-                    <span
-                      class="user-status-badge position-absolute bottom-0 end-0"
-                    ></span>
+                    <span class="text-white-50" style="font-size: 0.75rem"
+                      >Administrator</span
+                    >
                   </div>
-                  <div class="flex-grow-1">
-                    <div class="fw-bold mb-1">Admin User</div>
-                    <div class="text-muted small mb-1">
-                      admin@example.com
-                    </div>
-                    <span class="badge badge-role">Administrator</span>
-                  </div>
+                  <i
+                    class="bi bi-chevron-down d-none d-md-inline"
+                    style="font-size: 0.8rem"
+                  ></i>
                 </button>
                 <ul
-                  class="dropdown-menu dropdown-menu-end user-dropdown-modern"
-                  aria-labelledby="userDropdown"
+                  class="dropdown-menu dropdown-menu-end user-dropdown"
+                  id="userDropdown"
                 >
                   <li>
-                    <a class="dropdown-item-modern" href="#">
+                    <div class="user-dropdown-header">
+                      <div class="d-flex align-items-center">
+                        <div class="user-avatar-wrapper position-relative me-3">
+                          <div
+                            class="user-avatar-large rounded-circle text-white d-flex align-items-center justify-content-center fw-bold"
+                          >
+                            A
+                          </div>
+                          <span
+                            class="user-status-badge position-absolute bottom-0 end-0"
+                          ></span>
+                        </div>
+                        <div class="flex-grow-1">
+                          <div class="fw-bold mb-1">Admin User</div>
+                          <div class="text-muted small mb-1">
+                            admin@example.com
+                          </div>
+                          <span class="badge badge-role">Administrator</span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li><div class="dropdown-divider-modern"></div></li>
+                  <li>
+                    <a class="dropdown-item-modern" href="profile.html">
                       <div class="dropdown-icon-wrapper">
                         <i class="bi bi-person"></i>
                       </div>
@@ -380,7 +639,7 @@
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item-modern" href="#">
+                    <a class="dropdown-item-modern" href="settings.html">
                       <div class="dropdown-icon-wrapper">
                         <i class="bi bi-gear"></i>
                       </div>
@@ -388,6 +647,20 @@
                         <div class="dropdown-item-title">Settings</div>
                         <div class="dropdown-item-subtitle">
                           Manage preferences
+                        </div>
+                      </div>
+                      <i class="bi bi-chevron-right dropdown-arrow"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item-modern" href="#">
+                      <div class="dropdown-icon-wrapper">
+                        <i class="bi bi-question-circle"></i>
+                      </div>
+                      <div class="flex-grow-1">
+                        <div class="dropdown-item-title">Help & Support</div>
+                        <div class="dropdown-item-subtitle">
+                          Get help and support
                         </div>
                       </div>
                       <i class="bi bi-chevron-right dropdown-arrow"></i>
@@ -530,8 +803,8 @@
                   <div class="flex-grow-1">
                     <h2 class="component-card-title">Modal Sizes</h2>
                     <p class="component-card-description">
-                      Modals can be sized using the size classes: small, default,
-                      large, and extra large.
+                      Modals can be sized using the size classes: small,
+                      default, large, and extra large.
                     </p>
                   </div>
                 </div>
@@ -1365,8 +1638,8 @@
           <div class="modal-body">
             <p>
               This modal has a static backdrop. It will not close when clicking
-              outside of it. You must use the close button or a footer button
-              to dismiss it.
+              outside of it. You must use the close button or a footer button to
+              dismiss it.
             </p>
           </div>
           <div class="modal-footer">
@@ -1443,8 +1716,8 @@
           </div>
           <div class="modal-body">
             <p>
-              This modal is fullscreen on screens smaller than 576px, and
-              normal size on larger screens.
+              This modal is fullscreen on screens smaller than 576px, and normal
+              size on larger screens.
             </p>
           </div>
           <div class="modal-footer">
@@ -1483,8 +1756,8 @@
           </div>
           <div class="modal-body">
             <p>
-              This modal is fullscreen on screens smaller than 768px, and
-              normal size on larger screens.
+              This modal is fullscreen on screens smaller than 768px, and normal
+              size on larger screens.
             </p>
           </div>
           <div class="modal-footer">
@@ -1523,8 +1796,8 @@
           </div>
           <div class="modal-body">
             <p>
-              This modal is fullscreen on screens smaller than 992px, and
-              normal size on larger screens.
+              This modal is fullscreen on screens smaller than 992px, and normal
+              size on larger screens.
             </p>
           </div>
           <div class="modal-footer">
@@ -1541,4 +1814,3 @@
     </div>
   </body>
 </html>
-

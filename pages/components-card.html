@@ -172,20 +172,6 @@
               <i class="bi bi-list fs-4"></i>
             </button>
 
-            <!-- Search -->
-            <div class="d-none d-md-flex align-items-center ms-3">
-              <div class="input-group" style="max-width: 400px">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Search..."
-                />
-                <button class="btn btn-outline-light" type="button">
-                  <i class="bi bi-search"></i>
-                </button>
-              </div>
-            </div>
-
             <!-- Right Side -->
             <div class="ms-auto d-flex align-items-center gap-2">
               <!-- Dark Mode Toggle -->
@@ -194,7 +180,6 @@
                 id="darkModeToggle"
                 type="button"
                 title="Toggle Dark Mode"
-                onclick="if(typeof ThemeManager !== 'undefined') ThemeManager.toggleDarkMode();"
               >
                 <i class="bi bi-moon-stars fs-5"></i>
               </button>
@@ -202,14 +187,15 @@
               <!-- Notifications -->
               <div class="dropdown">
                 <button
-                  class="btn btn-link text-white position-relative topbar-action-btn"
+                  class="btn btn-link text-white topbar-action-btn position-relative"
                   type="button"
+                  id="notificationDropdown"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
                   <i class="bi bi-bell fs-5"></i>
                   <span
-                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-rose notification-badge"
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger notification-badge"
                   >
                     3
                   </span>
@@ -686,7 +672,9 @@
                       </div>
                       <div class="flex-grow-1">
                         <div class="dropdown-item-title">Help & Support</div>
-                        <div class="dropdown-item-subtitle">Get assistance</div>
+                        <div class="dropdown-item-subtitle">
+                          Get help and support
+                        </div>
                       </div>
                       <i class="bi bi-chevron-right dropdown-arrow"></i>
                     </a>

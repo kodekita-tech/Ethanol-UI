@@ -178,6 +178,10 @@ body {
     position: relative;
 }
 
+.sidebar.collapsed .menu-item-has-children {
+    position: static;
+}
+
 .menu-item-toggle {
     cursor: pointer;
 }
@@ -246,20 +250,74 @@ body {
 }
 
 /* Collapsed Sidebar - Submenu */
-.sidebar.collapsed .submenu {
-    display: none;
+.sidebar.collapsed .menu-item-has-children {
+    position: relative;
 }
 
-.sidebar.collapsed .menu-item-has-children.active .submenu {
+.sidebar.collapsed .submenu {
     display: none;
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 0;
+    min-width: 200px;
+    background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1002;
+    padding: 0.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-10px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    max-height: none;
+    overflow: visible;
+}
+
+.sidebar.collapsed .menu-item-has-children:hover .submenu,
+.sidebar.collapsed .menu-item-has-children.active .submenu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* Keep submenu visible when hovering over it */
+.sidebar.collapsed .submenu:hover {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
 }
 
 .sidebar.collapsed .menu-arrow {
     display: none;
 }
 
-/* Tooltip for collapsed sidebar submenu items */
-.sidebar.collapsed .submenu-item:hover::after {
+/* Collapsed sidebar submenu items */
+.sidebar.collapsed .submenu-item {
+    padding: 0.6rem 1rem;
+    border-left: none;
+    border-radius: 0;
+    margin: 0;
+}
+
+.sidebar.collapsed .submenu-item:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.sidebar.collapsed .submenu-item:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.sidebar.collapsed .submenu-item:hover {
+    padding-left: 1rem;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Tooltip for collapsed sidebar menu items (only when not hovering submenu) */
+.sidebar.collapsed .menu-item:not(:hover)::after {
     content: attr(data-title);
     position: absolute;
     left: 100%;
@@ -273,7 +331,19 @@ body {
     font-size: 0.875rem;
     pointer-events: none;
     opacity: 0;
-    animation: fadeInTooltip 0.3s ease forwards;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    transform: translateX(-10px);
+}
+
+.sidebar.collapsed .menu-item:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.sidebar.collapsed .menu-item-has-children:hover .menu-item::after {
+    display: none;
 }
 
 /* Topbar */
@@ -284,8 +354,10 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 1003;
     padding: 0;
+    width: 100%;
+    flex-shrink: 0;
 }
 
 .topbar .container-fluid {
@@ -293,6 +365,14 @@ body {
     height: 100%;
     display: flex;
     align-items: center;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+/* Ensure topbar color classes work properly - override default */
+.topbar.topbar-blue,
+#topbar.topbar-blue {
+    background: linear-gradient(90deg, #1e3a8a 0%, #1e40af 100%) !important;
 }
 
 .topbar #sidebarToggle {
@@ -431,11 +511,13 @@ body {
 
 /* Notification Badge */
 .notification-badge {
-    font-size: 0.65rem;
-    padding: 0.2rem 0.4rem;
-    min-width: 18px;
-    height: 18px;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    min-width: 20px;
+    height: 20px;
     display: flex;
+    align-items: center;
+    justify-content: center;
     align-items: center;
     justify-content: center;
     animation: pulse 2s infinite;
@@ -455,6 +537,8 @@ body {
     border: none;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
     border-radius: 16px;
+    min-width: 320px !important;
+    max-width: 400px;
     margin-top: 0.75rem;
     padding: 0;
     max-height: 480px;
@@ -859,7 +943,8 @@ body {
     border-radius: 16px;
     margin-top: 0.75rem;
     padding: 0;
-    min-width: 320px;
+    min-width: 280px;
+    max-width: 320px;
     overflow: hidden;
     animation: slideDownModern 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     transform-origin: top right;
