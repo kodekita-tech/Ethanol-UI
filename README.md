@@ -55,6 +55,7 @@ ethanol-ui/
 │   ├── components-button-groups.html # Button Groups Component
 │   ├── components-card.html          # Card Component
 │   ├── components-modal.html         # Modal Component
+│   ├── components-breadcrumb.html    # Breadcrumb Component
 │   └── dashboard.html                # Dashboard
 │
 ├── RANCANGAN.md               # Dokumentasi rancangan
@@ -263,6 +264,14 @@ DataTableConfig.initProductsTable("#productsTable");
    - Static backdrop modal (tidak bisa ditutup dengan klik outside)
    - Fullscreen modal dengan berbagai breakpoint
 
+6. **Breadcrumb** (`pages/components-breadcrumb.html`) - Dokumentasi dan contoh penggunaan breadcrumb component
+
+   - Basic breadcrumb navigation
+   - Breadcrumb dengan icons untuk visual yang lebih baik
+   - Custom divider (>, |, →, ·)
+   - Breadcrumb dalam card component
+   - Custom styled breadcrumb dengan warna (Ocean, Emerald, Rose)
+
    - Custom button colors dengan gradient backgrounds
    - Button sizes (Large, Default, Small)
    - Buttons dengan icons
@@ -270,7 +279,7 @@ DataTableConfig.initProductsTable("#productsTable");
    - Disabled state
    - Loading state dengan spinner
 
-6. **Button Groups** (`pages/components-button-groups.html`) - Dokumentasi dan contoh penggunaan button groups
+7. **Button Groups** (`pages/components-button-groups.html`) - Dokumentasi dan contoh penggunaan button groups
 
    - Basic button groups
    - Mixed styles (kombinasi warna dan outline)

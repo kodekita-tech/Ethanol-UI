@@ -3665,3 +3665,440 @@ body {
     background: linear-gradient(90deg, rgba(59, 130, 246, 0.4) 0%, rgba(37, 99, 235, 0.3) 100%);
 }
 
+/* Custom Styled Breadcrumbs */
+.breadcrumb-ocean .breadcrumb-item a {
+    color: #0ea5e9;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-ocean .breadcrumb-item a:hover {
+    color: #0284c7;
+}
+
+.breadcrumb-ocean .breadcrumb-item.active {
+    color: #0369a1;
+}
+
+.breadcrumb-ocean .breadcrumb-item + .breadcrumb-item::before {
+    color: #0ea5e9;
+    opacity: 0.6;
+}
+
+.breadcrumb-emerald .breadcrumb-item a {
+    color: #10b981;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-emerald .breadcrumb-item a:hover {
+    color: #059669;
+}
+
+.breadcrumb-emerald .breadcrumb-item.active {
+    color: #047857;
+}
+
+.breadcrumb-emerald .breadcrumb-item + .breadcrumb-item::before {
+    color: #10b981;
+    opacity: 0.6;
+}
+
+.breadcrumb-rose .breadcrumb-item a {
+    color: #f43f5e;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-rose .breadcrumb-item a:hover {
+    color: #e11d48;
+}
+
+.breadcrumb-rose .breadcrumb-item.active {
+    color: #be123c;
+}
+
+.breadcrumb-rose .breadcrumb-item + .breadcrumb-item::before {
+    color: #f43f5e;
+    opacity: 0.6;
+}
+
+/* Modern Creative Breadcrumbs */
+/* Pill Style Breadcrumb */
+.breadcrumb-pill {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.breadcrumb-pill .breadcrumb-item {
+    display: inline-flex;
+    align-items: center;
+    list-style: none;
+}
+
+.breadcrumb-pill .breadcrumb-item a {
+    background: white;
+    padding: 0.375rem 0.875rem;
+    border-radius: 20px;
+    color: #495057;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    white-space: nowrap;
+}
+
+.breadcrumb-pill .breadcrumb-item a:hover {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(14, 165, 233, 0.3);
+}
+
+.breadcrumb-pill .breadcrumb-item a i {
+    font-size: 0.875rem;
+}
+
+.breadcrumb-pill .breadcrumb-item.active {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    padding: 0.375rem 0.875rem;
+    border-radius: 20px;
+    color: white;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    box-shadow: 0 2px 8px rgba(14, 165, 233, 0.4);
+    white-space: nowrap;
+}
+
+.breadcrumb-pill .breadcrumb-item.active i {
+    font-size: 0.875rem;
+}
+
+.breadcrumb-pill .breadcrumb-item + .breadcrumb-item::before {
+    display: none;
+}
+
+/* Step Indicator Breadcrumb */
+.breadcrumb-step {
+    background: transparent;
+    padding: 0;
+}
+
+.breadcrumb-step .breadcrumb-item {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-step .breadcrumb-item a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #6c757d;
+    transition: all 0.3s ease;
+    padding: 0.25rem 0;
+}
+
+.breadcrumb-step .step-label {
+    font-size: 0.875rem;
+}
+
+.breadcrumb-step .step-number {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #e9ecef;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.breadcrumb-step .breadcrumb-item a:hover .step-number {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(14, 165, 233, 0.3);
+}
+
+.breadcrumb-step .breadcrumb-item.active .step-number {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+}
+
+.breadcrumb-step .breadcrumb-item.active {
+    color: #0ea5e9;
+    font-weight: 600;
+}
+
+.breadcrumb-step .breadcrumb-item.active .step-label {
+    color: #0ea5e9;
+}
+
+.breadcrumb-step .breadcrumb-item + .breadcrumb-item::before {
+    content: '→';
+    padding: 0 0.75rem;
+    color: #dee2e6;
+    font-size: 1.2rem;
+}
+
+/* Gradient Background Breadcrumb */
+.breadcrumb-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+}
+
+.breadcrumb-gradient .breadcrumb-item {
+    display: inline-flex;
+    align-items: center;
+    list-style: none;
+}
+
+.breadcrumb-gradient .breadcrumb-item a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    white-space: nowrap;
+}
+
+.breadcrumb-gradient .breadcrumb-item a:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.breadcrumb-gradient .breadcrumb-item a i {
+    font-size: 0.875rem;
+}
+
+.breadcrumb-gradient .breadcrumb-item.active {
+    color: white;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    backdrop-filter: blur(10px);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    white-space: nowrap;
+}
+
+.breadcrumb-gradient .breadcrumb-item.active i {
+    font-size: 0.875rem;
+}
+
+.breadcrumb-gradient .breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0 0.75rem;
+    font-weight: normal;
+}
+
+/* Badge Style Breadcrumb */
+.breadcrumb-badge {
+    background: transparent;
+    padding: 0;
+}
+
+.breadcrumb-badge .badge-item {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    border-radius: 8px;
+    background: #f8f9fa;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+}
+
+.breadcrumb-badge .breadcrumb-item a {
+    text-decoration: none;
+}
+
+.breadcrumb-badge .breadcrumb-item a:hover .badge-item {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(14, 165, 233, 0.3);
+}
+
+.breadcrumb-badge .breadcrumb-item.active .badge-item {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 2px 8px rgba(14, 165, 233, 0.4);
+    font-weight: 600;
+}
+
+.breadcrumb-badge .breadcrumb-item + .breadcrumb-item::before {
+    content: '→';
+    padding: 0 0.75rem;
+    color: #dee2e6;
+    font-size: 1.1rem;
+}
+
+/* Glassmorphism Breadcrumb */
+.breadcrumb-glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    display: inline-flex;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.breadcrumb-glass .breadcrumb-item a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+}
+
+.breadcrumb-glass .breadcrumb-item a:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.breadcrumb-glass .breadcrumb-item.active {
+    color: white;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+}
+
+.breadcrumb-glass .breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0 0.75rem;
+}
+
+/* Animated Separator Breadcrumb */
+.breadcrumb-animated {
+    background: transparent;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.breadcrumb-animated .breadcrumb-item {
+    display: inline-flex;
+    align-items: center;
+    list-style: none;
+}
+
+.breadcrumb-animated .breadcrumb-item a {
+    color: #495057;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    white-space: nowrap;
+}
+
+.breadcrumb-animated .breadcrumb-item a:hover {
+    color: #0ea5e9;
+    background: rgba(14, 165, 233, 0.1);
+    transform: translateX(4px);
+}
+
+.breadcrumb-animated .breadcrumb-item a i {
+    font-size: 0.875rem;
+}
+
+.breadcrumb-animated .breadcrumb-item.active {
+    color: #0ea5e9;
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+    background: rgba(14, 165, 233, 0.1);
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    white-space: nowrap;
+}
+
+.breadcrumb-animated .breadcrumb-item.active i {
+    font-size: 0.875rem;
+}
+
+.breadcrumb-animated .breadcrumb-item + .breadcrumb-item::before {
+    content: '→';
+    padding: 0 0.5rem;
+    color: #0ea5e9;
+    font-size: 1.2rem;
+    font-weight: normal;
+    animation: pulseArrow 2s ease-in-out infinite;
+    display: inline-block;
+}
+
+@keyframes pulseArrow {
+    0%, 100% {
+        opacity: 0.6;
+        transform: translateX(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(4px);
+    }
+}
+
+/* Dark Mode Support for Creative Breadcrumbs */
+[data-bs-theme="dark"] .breadcrumb-pill {
+    background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+}
+
+[data-bs-theme="dark"] .breadcrumb-pill .breadcrumb-item a {
+    background: #374151;
+    color: #d1d5db;
+}
+
+[data-bs-theme="dark"] .breadcrumb-step .step-number {
+    background: #374151;
+    color: #d1d5db;
+}
+
+[data-bs-theme="dark"] .breadcrumb-badge .badge-item {
+    background: #374151;
+    color: #d1d5db;
+    border-color: #4b5563;
+}
+
+[data-bs-theme="dark"] .breadcrumb-animated .breadcrumb-item a {
+    color: #d1d5db;
+}
+
+[data-bs-theme="dark"] .breadcrumb-animated .breadcrumb-item a:hover {
+    background: rgba(14, 165, 233, 0.2);
+}
+
+[data-bs-theme="dark"] .breadcrumb-animated .breadcrumb-item.active {
+    background: rgba(14, 165, 233, 0.2);
+}
+
