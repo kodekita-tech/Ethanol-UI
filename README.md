@@ -38,7 +38,10 @@ ethanol-ui/
 │   │   └── crud.js             # CRUD operations
 │   │
 │   └── images/
-│       └── logo.png            # Logo aplikasi
+│       ├── logo-e.png          # Logo E
+│       ├── logo-e.webp         # Logo E (WebP)
+│       ├── logo-ethanol-ui.png  # Logo Ethanol UI
+│       └── logo-ethanol-ui.webp # Logo Ethanol UI (WebP)
 │
 ├── includes/
 │   ├── header.html             # Header/Topbar
@@ -47,32 +50,15 @@ ethanol-ui/
 │   └── scripts.html            # CDN scripts
 │
 ├── pages/
-│   ├── auth/                   # Halaman Autentikasi
-│   │   ├── login.html          # Login - Classic
-│   │   ├── login-v1.html       # Login - Split Screen
-│   │   ├── login-v2.html       # Login - Centered Card
-│   │   ├── login-v3.html       # Login - Glassmorphism
-│   │   ├── login-v4.html       # Login - Modern Animated
-│   │   ├── login-index.html    # Showcase semua variasi login
-│   │   ├── register.html       # Register - Classic
-│   │   ├── register-v1.html    # Register - Split Screen
-│   │   ├── register-v2.html    # Register - Centered Card
-│   │   ├── register-v3.html    # Register - Glassmorphism
-│   │   └── register-v4.html    # Register - Modern Animated
-│   │
-│   │
 │   ├── components-badge.html         # Badge Component
 │   ├── components-button.html        # Button Component
 │   ├── components-button-groups.html # Button Groups Component
-│   ├── components-card.html          # Card Component
-│   ├── dashboard.html          # Dashboard
-│   ├── users.html              # Manajemen Users
-│   ├── products.html           # Manajemen Products
-│   ├── crud-template.html      # Template CRUD lengkap
-│   ├── blank.html              # Halaman blank
-│   ├── settings.html           # Settings (termasuk theme)
-│   └── profile.html            # Profile user
+│   └── dashboard.html                # Dashboard
 │
+├── RANCANGAN.md               # Dokumentasi rancangan
+├── RANGKUMAN-SCRIPT.md        # Rangkuman script
+├── LICENSE                    # License file
+├── package.json               # Package configuration
 └── README.md                   # Dokumentasi
 ```
 
@@ -111,22 +97,15 @@ Karena template HTML statis, ada 2 cara untuk menggunakan includes:
 
 #### Mengubah Theme
 
-1. Buka `pages/settings.html`
-2. Pilih mode (Dark/Light)
-3. Pilih warna Sidebar & Topbar
-4. Theme akan tersimpan di localStorage
+1. Gunakan tombol dark mode toggle di topbar
+2. Gunakan color scheme picker di topbar untuk mengubah warna Sidebar & Topbar
+3. Theme akan tersimpan di localStorage
 
 #### Menambah Halaman Baru
 
-1. Copy `pages/blank.html` sebagai starter
+1. Copy salah satu halaman yang ada (misalnya `pages/dashboard.html`) sebagai starter
 2. Copy includes (header, sidebar, footer) ke halaman baru
 3. Tambahkan konten sesuai kebutuhan
-
-#### Menggunakan CRUD Template
-
-1. Buka `pages/crud-template.html`
-2. Copy kode yang diperlukan
-3. Customize sesuai kebutuhan
 
 ## 📦 CDN yang Digunakan
 
@@ -256,32 +235,6 @@ DataTableConfig.initProductsTable("#productsTable");
 
 ## 🎯 Halaman yang Tersedia
 
-### Halaman Autentikasi (`pages/auth/`)
-
-#### Login Pages
-
-1. **login.html** - Classic login dengan header gradient
-2. **login-v1.html** - Split screen dengan ilustrasi di kiri
-3. **login-v2.html** - Centered card dengan background pattern
-4. **login-v3.html** - Glassmorphism dengan floating shapes
-5. **login-v4.html** - Modern animated dengan particles
-6. **login-index.html** - Showcase semua variasi login
-
-#### Register Pages
-
-1. **register.html** - Classic register dengan password strength indicator
-2. **register-v1.html** - Split screen dengan ilustrasi di kiri
-3. **register-v2.html** - Centered card dengan background pattern
-4. **register-v3.html** - Glassmorphism dengan floating shapes
-5. **register-v4.html** - Modern animated dengan particles
-
-**Fitur Register:**
-
-- Password strength indicator (weak/medium/strong)
-- Confirm password validation
-- Terms & conditions checkbox
-- Form validation dengan Bootstrap
-
 ### Halaman Components (`pages/`)
 
 1. **Badge** (`pages/components-badge.html`) - Dokumentasi dan contoh penggunaan badge component
@@ -313,23 +266,15 @@ DataTableConfig.initProductsTable("#productsTable");
    - Radio button groups
    - Checkbox button groups
 
-4. **Card** (`pages/components-card.html`) - Dokumentasi dan contoh penggunaan card component
-
-### Halaman Dashboard & Management
+### Halaman Dashboard
 
 1. **Dashboard** (`pages/dashboard.html`) - Dashboard dengan statistik, charts, dan quick actions
-2. **Users** (`pages/users.html`) - Manajemen users dengan DataTables
-3. **Products** (`pages/products.html`) - Manajemen products dengan DataTables
-4. **CRUD Template** (`pages/crud-template.html`) - Template CRUD lengkap
-5. **Blank Page** (`pages/blank.html`) - Starter template untuk halaman baru
-6. **Settings** (`pages/settings.html`) - Settings termasuk theme management
-7. **Profile** (`pages/profile.html`) - Edit profile user
 
 ## 🔧 Customization
 
 ### Mengubah Logo
 
-1. Ganti file `assets/images/logo.png`
+1. Ganti file di `assets/images/` (logo-e.webp, logo-ethanol-ui.webp, dll)
 2. Atau update path di header/sidebar
 
 ### Mengubah Warna Default
