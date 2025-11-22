@@ -51,8 +51,10 @@ ethanol-ui/
 │
 ├── pages/
 │   ├── components-badge.html         # Badge Component
-│   ├── components-button.html        # Button Component
+│   ├── components-button.html         # Button Component
 │   ├── components-button-groups.html # Button Groups Component
+│   ├── components-card.html          # Card Component
+│   ├── components-modal.html         # Modal Component
 │   └── dashboard.html                # Dashboard
 │
 ├── RANCANGAN.md               # Dokumentasi rancangan
@@ -247,6 +249,20 @@ DataTableConfig.initProductsTable("#productsTable");
 
 2. **Button** (`pages/components-button.html`) - Dokumentasi dan contoh penggunaan button component
 
+3. **Button Groups** (`pages/components-button-groups.html`) - Dokumentasi dan contoh penggunaan button groups component
+
+4. **Card** (`pages/components-card.html`) - Dokumentasi dan contoh penggunaan card component
+
+5. **Modal** (`pages/components-modal.html`) - Dokumentasi dan contoh penggunaan modal component
+
+   - Basic modal dengan header, body, dan footer
+   - Modal sizes (Small, Default, Large, Extra Large)
+   - Modal dengan form untuk input data
+   - Scrollable modal untuk konten panjang
+   - Vertically centered modal
+   - Static backdrop modal (tidak bisa ditutup dengan klik outside)
+   - Fullscreen modal dengan berbagai breakpoint
+
    - Custom button colors dengan gradient backgrounds
    - Button sizes (Large, Default, Small)
    - Buttons dengan icons
@@ -254,7 +270,7 @@ DataTableConfig.initProductsTable("#productsTable");
    - Disabled state
    - Loading state dengan spinner
 
-3. **Button Groups** (`pages/components-button-groups.html`) - Dokumentasi dan contoh penggunaan button groups
+6. **Button Groups** (`pages/components-button-groups.html`) - Dokumentasi dan contoh penggunaan button groups
 
    - Basic button groups
    - Mixed styles (kombinasi warna dan outline)

@@ -1642,15 +1642,26 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    max-width: calc(100vw - 260px);
+    width: 100%;
+    overflow-x: hidden;
 }
 
 .sidebar.collapsed ~ .main-content {
     margin-left: 70px;
+    max-width: calc(100vw - 70px);
 }
 
 .content-area {
     flex: 1;
     padding: 2rem;
+}
+
+/* Content Wrapper - Prevent overflow */
+.content-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 /* Cards */
@@ -2093,6 +2104,8 @@ body {
 
 /* Quick Action Buttons - Base */
 .quick-action-btn {
+    display: block;
+    width: 100%;
     text-align: left;
     padding: 0.875rem 1rem;
     border-radius: 12px;
