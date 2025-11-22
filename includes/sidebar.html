@@ -1,67 +1,56 @@
 <!-- Sidebar -->
-<aside class="sidebar" data-sidebar-theme="blue">
-    <div class="p-3">
-        <div class="d-flex align-items-center mb-4">
-            <img src="../assets/images/logo.png" alt="Logo" class="me-2" width="32" height="32" onerror="this.src='https://via.placeholder.com/32'">
-            <span class="text-white fw-bold">Ethanol UI</span>
-        </div>
-        
-        <nav class="nav flex-column">
-            <a class="nav-link active" href="pages/dashboard.html">
-                <i class="bi bi-house-door"></i>
-                <span>Dashboard</span>
-            </a>
-            
-            <div class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#menuUsers" role="button">
-                    <i class="bi bi-people"></i>
-                    <span>Users</span>
-                    <i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <div class="collapse" id="menuUsers">
-                    <div class="ps-4">
-                        <a class="nav-link" href="pages/users.html">Daftar Users</a>
-                        <a class="nav-link" href="pages/users.html?action=add">Tambah User</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#menuProducts" role="button">
-                    <i class="bi bi-box-seam"></i>
-                    <span>Products</span>
-                    <i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <div class="collapse" id="menuProducts">
-                    <div class="ps-4">
-                        <a class="nav-link" href="pages/products.html">Daftar Products</a>
-                        <a class="nav-link" href="pages/products.html?action=add">Tambah Product</a>
-                    </div>
-                </div>
-            </div>
-            
-            <a class="nav-link" href="pages/crud-template.html">
-                <i class="bi bi-file-code"></i>
-                <span>CRUD Template</span>
-            </a>
-            
-            <a class="nav-link" href="pages/blank.html">
-                <i class="bi bi-file-earmark"></i>
-                <span>Blank Page</span>
-            </a>
-            
-            <hr class="text-white-50 my-2">
-            
-            <a class="nav-link" href="pages/settings.html">
-                <i class="bi bi-gear"></i>
-                <span>Settings</span>
-            </a>
-            
-            <a class="nav-link" href="pages/profile.html">
-                <i class="bi bi-person"></i>
-                <span>Profile</span>
-            </a>
-        </nav>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <a href="dashboard.html" class="d-flex align-items-center text-decoration-none text-white">
+            <img
+                src="../assets/images/logo-ethanol-ui.webp"
+                alt="Ethanol UI Logo"
+                class="sidebar-logo"
+                style="width: 40px; height: 40px; margin-right: 10px; flex-shrink: 0; object-fit: contain;"
+            />
+            <span class="fs-5 fw-bold sidebar-brand-text">Ethanol UI</span>
+        </a>
     </div>
+
+    <nav class="sidebar-menu">
+        <ul class="list-unstyled mb-0">
+            <li>
+                <a href="dashboard.html" class="menu-item active" data-title="Dashboard">
+                    <i class="bi bi-speedometer2 me-2"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="users.html" class="menu-item" data-title="Users">
+                    <i class="bi bi-people me-2"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+            <li>
+                <a href="products.html" class="menu-item" data-title="Products">
+                    <i class="bi bi-box-seam me-2"></i>
+                    <span>Products</span>
+                </a>
+            </li>
+            <li>
+                <a href="blank.html" class="menu-item" data-title="Blank Page">
+                    <i class="bi bi-file-earmark me-2"></i>
+                    <span>Blank Page</span>
+                </a>
+            </li>
+            <li>
+                <a href="settings.html" class="menu-item" data-title="Settings">
+                    <i class="bi bi-gear me-2"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="profile.html" class="menu-item" data-title="Profile">
+                    <i class="bi bi-person me-2"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </aside>
 

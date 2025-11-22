@@ -1,140 +1,291 @@
-/* ============================================
-   THEME MANAGEMENT CSS
-   ============================================ */
+/* Theme Management CSS */
 
-/* Dark Mode Variables */
-:root[data-theme="dark"] {
-    --bg-primary: #1a1d29;
-    --bg-secondary: #252936;
-    --bg-card: #2d3142;
-    --text-primary: #e4e6eb;
-    --text-secondary: #b0b3b8;
-    --border-color: #3a3f52;
-    --shadow: rgba(0, 0, 0, 0.3);
-}
-
-/* Light Mode Variables */
-:root[data-theme="light"] {
-    --bg-primary: #ffffff;
-    --bg-secondary: #f8f9fa;
-    --bg-card: #ffffff;
-    --text-primary: #212529;
-    --text-secondary: #6c757d;
-    --border-color: #dee2e6;
-    --shadow: rgba(0, 0, 0, 0.1);
+:root {
+    /* Light Mode Colors */
+    --sidebar-bg-light: #1e3a8a;
+    --topbar-bg-light: #ffffff;
+    --content-bg-light: #f8f9fa;
+    --card-bg-light: #ffffff;
+    --text-primary-light: #212529;
+    --text-secondary-light: #6c757d;
+    --border-light: #dee2e6;
+    
+    /* Dark Mode Colors */
+    --sidebar-bg-dark: #1a1a1a;
+    --topbar-bg-dark: #2d2d2d;
+    --content-bg-dark: #1a1a1a;
+    --card-bg-dark: #2d2d2d;
+    --text-primary-dark: #ffffff;
+    --text-secondary-dark: #b0b0b0;
+    --border-dark: #404040;
 }
 
 /* Sidebar Color Themes */
-:root[data-sidebar-theme="blue"] {
-    --sidebar-bg: #1e3a8a;
-    --sidebar-hover: #1e40af;
-    --sidebar-active: #3b82f6;
+aside.sidebar.sidebar-blue,
+.sidebar.sidebar-blue,
+#sidebar.sidebar-blue {
+    background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%) !important;
 }
 
-:root[data-sidebar-theme="purple"] {
-    --sidebar-bg: #6b21a8;
-    --sidebar-hover: #7c3aed;
-    --sidebar-active: #a855f7;
+aside.sidebar.sidebar-purple,
+.sidebar.sidebar-purple,
+#sidebar.sidebar-purple {
+    background: linear-gradient(180deg, #6b21a8 0%, #7c3aed 100%) !important;
 }
 
-:root[data-sidebar-theme="green"] {
-    --sidebar-bg: #166534;
-    --sidebar-hover: #15803d;
-    --sidebar-active: #22c55e;
+aside.sidebar.sidebar-green,
+.sidebar.sidebar-green,
+#sidebar.sidebar-green {
+    background: linear-gradient(180deg, #166534 0%, #16a34a 100%) !important;
 }
 
-:root[data-sidebar-theme="orange"] {
-    --sidebar-bg: #c2410c;
-    --sidebar-hover: #ea580c;
-    --sidebar-active: #f97316;
+aside.sidebar.sidebar-orange,
+.sidebar.sidebar-orange,
+#sidebar.sidebar-orange {
+    background: linear-gradient(180deg, #c2410c 0%, #ea580c 100%) !important;
 }
 
-:root[data-sidebar-theme="red"] {
-    --sidebar-bg: #991b1b;
-    --sidebar-hover: #dc2626;
-    --sidebar-active: #ef4444;
+aside.sidebar.sidebar-red,
+.sidebar.sidebar-red,
+#sidebar.sidebar-red {
+    background: linear-gradient(180deg, #991b1b 0%, #dc2626 100%) !important;
 }
 
-:root[data-sidebar-theme="teal"] {
-    --sidebar-bg: #0f766e;
-    --sidebar-hover: #14b8a6;
-    --sidebar-active: #2dd4bf;
+aside.sidebar.sidebar-teal,
+.sidebar.sidebar-teal,
+#sidebar.sidebar-teal {
+    background: linear-gradient(180deg, #0f766e 0%, #14b8a6 100%) !important;
 }
 
-:root[data-sidebar-theme="indigo"] {
-    --sidebar-bg: #4338ca;
-    --sidebar-hover: #4f46e5;
-    --sidebar-active: #6366f1;
+aside.sidebar.sidebar-indigo,
+.sidebar.sidebar-indigo,
+#sidebar.sidebar-indigo {
+    background: linear-gradient(180deg, #3730a3 0%, #6366f1 100%) !important;
 }
 
 /* Topbar Color Themes */
-:root[data-topbar-theme="blue"] {
-    --topbar-bg: #3b82f6;
-    --topbar-text: #ffffff;
+.topbar.topbar-blue,
+#topbar.topbar-blue,
+nav.topbar.topbar-blue,
+nav#topbar.topbar-blue {
+    background: linear-gradient(90deg, #1e3a8a 0%, #1e40af 100%) !important;
 }
 
-:root[data-topbar-theme="purple"] {
-    --topbar-bg: #a855f7;
-    --topbar-text: #ffffff;
+.topbar.topbar-purple,
+#topbar.topbar-purple,
+nav.topbar.topbar-purple,
+nav#topbar.topbar-purple {
+    background: linear-gradient(90deg, #6b21a8 0%, #7c3aed 100%) !important;
 }
 
-:root[data-topbar-theme="green"] {
-    --topbar-bg: #22c55e;
-    --topbar-text: #ffffff;
+.topbar.topbar-green,
+#topbar.topbar-green,
+nav.topbar.topbar-green,
+nav#topbar.topbar-green {
+    background: linear-gradient(90deg, #166534 0%, #16a34a 100%) !important;
 }
 
-:root[data-topbar-theme="orange"] {
-    --topbar-bg: #f97316;
-    --topbar-text: #ffffff;
+.topbar.topbar-orange,
+#topbar.topbar-orange,
+nav.topbar.topbar-orange,
+nav#topbar.topbar-orange {
+    background: linear-gradient(90deg, #c2410c 0%, #ea580c 100%) !important;
 }
 
-:root[data-topbar-theme="red"] {
-    --topbar-bg: #ef4444;
-    --topbar-text: #ffffff;
+.topbar.topbar-red,
+#topbar.topbar-red,
+nav.topbar.topbar-red,
+nav#topbar.topbar-red {
+    background: linear-gradient(90deg, #991b1b 0%, #dc2626 100%) !important;
 }
 
-:root[data-topbar-theme="teal"] {
-    --topbar-bg: #2dd4bf;
-    --topbar-text: #ffffff;
+.topbar.topbar-teal,
+#topbar.topbar-teal,
+nav.topbar.topbar-teal,
+nav#topbar.topbar-teal {
+    background: linear-gradient(90deg, #0f766e 0%, #14b8a6 100%) !important;
 }
 
-:root[data-topbar-theme="indigo"] {
-    --topbar-bg: #6366f1;
-    --topbar-text: #ffffff;
+.topbar.topbar-indigo,
+#topbar.topbar-indigo,
+nav.topbar.topbar-indigo,
+nav#topbar.topbar-indigo {
+    background: linear-gradient(90deg, #3730a3 0%, #6366f1 100%) !important;
 }
 
-/* Apply Theme to Body */
-body[data-theme="dark"] {
-    background-color: var(--bg-primary);
+/* Dark Mode */
+[data-bs-theme="dark"] {
+    --sidebar-bg: var(--sidebar-bg-dark);
+    --topbar-bg: var(--topbar-bg-dark);
+    --content-bg: var(--content-bg-dark);
+    --card-bg: var(--card-bg-dark);
+    --text-primary: var(--text-primary-dark);
+    --text-secondary: var(--text-secondary-dark);
+    --border: var(--border-dark);
+}
+
+/* Dark Mode - Body & Layout */
+[data-bs-theme="dark"] body {
+    background-color: var(--content-bg);
     color: var(--text-primary);
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-body[data-theme="light"] {
-    background-color: var(--bg-secondary);
-    color: var(--text-primary);
-    transition: background-color 0.3s ease, color 0.3s ease;
+[data-bs-theme="dark"] .wrapper {
+    background-color: var(--content-bg);
 }
 
-/* Sidebar Theme - Applied in custom.css with glassmorphism */
+[data-bs-theme="dark"] .main-content {
+    background-color: var(--content-bg);
+}
 
-/* Topbar Theme - Applied in custom.css with glassmorphism */
-
-/* Card Theme */
-.card[data-theme="dark"] {
-    background-color: var(--bg-card);
-    border-color: var(--border-color);
+[data-bs-theme="dark"] .content-area {
+    background-color: var(--content-bg);
     color: var(--text-primary);
 }
 
-.card[data-theme="light"] {
-    background-color: var(--bg-card);
-    border-color: var(--border-color);
+/* Dark Mode - Sidebar */
+[data-bs-theme="dark"] .sidebar:not([class*="sidebar-"]),
+[data-bs-theme="dark"] #sidebar:not([class*="sidebar-"]) {
+    background: var(--sidebar-bg) !important;
+    border-right: 1px solid var(--border);
+}
+
+[data-bs-theme="dark"] .sidebar-header {
+    border-bottom-color: var(--border);
+}
+
+[data-bs-theme="dark"] .menu-item {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+[data-bs-theme="dark"] .menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-bs-theme="dark"] .menu-item.active {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Dark Mode - Topbar */
+[data-bs-theme="dark"] .topbar:not([class*="topbar-"]),
+[data-bs-theme="dark"] #topbar:not([class*="topbar-"]) {
+    background: var(--topbar-bg) !important;
+    border-bottom: 1px solid var(--border);
+}
+
+[data-bs-theme="dark"] .topbar .input-group .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--border);
     color: var(--text-primary);
 }
 
-/* Smooth Transitions */
-* {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+[data-bs-theme="dark"] .topbar .input-group .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+[data-bs-theme="dark"] .topbar .input-group .form-control:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: var(--border);
+}
+
+/* Dark Mode - Cards */
+[data-bs-theme="dark"] .card {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+    color: var(--text-primary);
+}
+
+[data-bs-theme="dark"] .stat-card {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+}
+
+[data-bs-theme="dark"] .chart-container {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+}
+
+/* Dark Mode - Text */
+[data-bs-theme="dark"] .text-muted {
+    color: var(--text-secondary) !important;
+}
+
+[data-bs-theme="dark"] .stat-label {
+    color: var(--text-secondary);
+}
+
+[data-bs-theme="dark"] h1, 
+[data-bs-theme="dark"] h2, 
+[data-bs-theme="dark"] h3, 
+[data-bs-theme="dark"] h4, 
+[data-bs-theme="dark"] h5, 
+[data-bs-theme="dark"] h6 {
+    color: var(--text-primary);
+}
+
+/* Dark Mode - Footer */
+[data-bs-theme="dark"] .footer {
+    background-color: var(--card-bg);
+    border-top-color: var(--border);
+    color: var(--text-primary);
+}
+
+/* Dark Mode - Breadcrumb */
+[data-bs-theme="dark"] .breadcrumb {
+    background-color: transparent;
+}
+
+[data-bs-theme="dark"] .breadcrumb-item a {
+    color: var(--text-secondary);
+}
+
+[data-bs-theme="dark"] .breadcrumb-item.active {
+    color: var(--text-primary);
+}
+
+/* Dark Mode - List Items */
+[data-bs-theme="dark"] .list-group-item {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+    color: var(--text-primary);
+}
+
+[data-bs-theme="dark"] .list-group-item .text-muted {
+    color: var(--text-secondary) !important;
+}
+
+/* Dark Mode - Buttons */
+[data-bs-theme="dark"] .btn-outline-primary {
+    border-color: var(--border);
+    color: var(--text-primary);
+}
+
+[data-bs-theme="dark"] .btn-outline-primary:hover {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+}
+
+/* Dark Mode - Input Groups */
+[data-bs-theme="dark"] .input-group .form-control {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+    color: var(--text-primary);
+}
+
+[data-bs-theme="dark"] .input-group .form-control:focus {
+    background-color: var(--card-bg);
+    border-color: var(--border);
+    color: var(--text-primary);
+}
+
+/* Light Mode (default) */
+[data-bs-theme="light"] {
+    --sidebar-bg: var(--sidebar-bg-light);
+    --topbar-bg: var(--topbar-bg-light);
+    --content-bg: var(--content-bg-light);
+    --card-bg: var(--card-bg-light);
+    --text-primary: var(--text-primary-light);
+    --text-secondary: var(--text-secondary-light);
+    --border: var(--border-light);
 }
 

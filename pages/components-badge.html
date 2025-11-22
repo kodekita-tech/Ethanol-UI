@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Badge - Components - Ethanol UI</title>
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/webp"
+      href="../assets/images/logo-ethanol-ui.webp"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/webp"
+      href="../assets/images/logo-ethanol-ui.webp"
+    />
+    <link rel="apple-touch-icon" href="../assets/images/logo-ethanol-ui.webp" />
+
+    <!-- Include Scripts -->
+    <!-- Bootstrap 5.3.8 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link href="../assets/css/custom.css" rel="stylesheet" />
+    <link href="../assets/css/themes.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <aside class="sidebar sidebar-blue" id="sidebar">
+        <div class="sidebar-header">
+          <a
+            href="dashboard.html"
+            class="d-flex align-items-center text-decoration-none text-white"
+          >
+            <img
+              src="../assets/images/logo-e.webp"
+              alt="Ethanol UI Logo"
+              class="sidebar-logo"
+              style="
+                width: 40px;
+                height: 40px;
+                margin-right: 10px;
+                flex-shrink: 0;
+                object-fit: contain;
+              "
+            />
+            <span class="fs-5 fw-bold sidebar-brand-text">Ethanol UI</span>
+          </a>
+        </div>
+
+        <nav class="sidebar-menu">
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a
+                href="dashboard.html"
+                class="menu-item"
+                data-title="Dashboard"
+              >
+                <i class="bi bi-speedometer2 me-2"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li class="menu-item-has-children active">
+              <a
+                href="#"
+                class="menu-item menu-item-toggle"
+                data-title="Components"
+              >
+                <i class="bi bi-puzzle me-2"></i>
+                <span>Components</span>
+                <i class="bi bi-chevron-down menu-arrow ms-auto"></i>
+              </a>
+              <ul class="submenu">
+                <li>
+                  <a
+                    href="components-badge.html"
+                    class="submenu-item active"
+                    data-title="Badge"
+                  >
+                    <i class="bi bi-circle-fill me-2"></i>
+                    <span>Badge</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="components-button.html"
+                    class="submenu-item"
+                    data-title="Button"
+                  >
+                    <i class="bi bi-square me-2"></i>
+                    <span>Button</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="components-button-groups.html"
+                    class="submenu-item"
+                    data-title="Button Groups"
+                  >
+                    <i class="bi bi-grid-3x3-gap me-2"></i>
+                    <span>Button Groups</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="components-card.html"
+                    class="submenu-item"
+                    data-title="Card"
+                  >
+                    <i class="bi bi-card-text me-2"></i>
+                    <span>Card</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand-lg topbar topbar-blue" id="topbar">
+          <div class="container-fluid">
+            <!-- Sidebar Toggle -->
+            <button
+              class="btn btn-link text-white"
+              id="sidebarToggle"
+              type="button"
+            >
+              <i class="bi bi-list fs-4"></i>
+            </button>
+
+            <!-- Search -->
+            <div class="d-none d-md-flex align-items-center ms-3">
+              <div class="input-group" style="max-width: 400px">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search..."
+                />
+                <button class="btn btn-outline-light" type="button">
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Side -->
+            <div class="ms-auto d-flex align-items-center gap-2">
+              <!-- Dark Mode Toggle -->
+              <button
+                class="btn btn-link text-white topbar-action-btn"
+                id="darkModeToggle"
+                type="button"
+                title="Toggle Dark Mode"
+                onclick="if(typeof ThemeManager !== 'undefined') ThemeManager.toggleDarkMode();"
+              >
+                <i class="bi bi-moon-stars fs-5"></i>
+              </button>
+
+              <!-- Notifications -->
+              <div class="dropdown">
+                <button
+                  class="btn btn-link text-white position-relative topbar-action-btn"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bi bi-bell fs-5"></i>
+                  <span
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-rose notification-badge"
+                  >
+                    3
+                  </span>
+                </button>
+                <ul
+                  class="dropdown-menu dropdown-menu-end notification-dropdown"
+                  style="width: 360px"
+                >
+                  <li>
+                    <div class="notification-dropdown-header">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                          <h6 class="mb-0 fw-bold">Notifications</h6>
+                          <p class="mb-0 text-muted small">You have 3 new notifications</p>
+                        </div>
+                        <span class="badge badge-notification-count">3</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li><div class="dropdown-divider-modern"></div></li>
+                  <li>
+                    <a class="notification-item-modern" href="#">
+                      <div class="notification-icon-wrapper notification-icon-primary">
+                        <i class="bi bi-cart-check"></i>
+                      </div>
+                      <div class="flex-grow-1">
+                        <div class="notification-content">
+                          <div class="notification-title">New order received</div>
+                          <div class="notification-message">Order #1234 has been placed</div>
+                          <div class="notification-time">
+                            <i class="bi bi-clock me-1"></i>2 minutes ago
+                          </div>
+                        </div>
+                      </div>
+                      <div class="notification-unread-indicator"></div>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="notification-item-modern" href="#">
+                      <div class="notification-icon-wrapper notification-icon-success">
+                        <i class="bi bi-person-plus"></i>
+                      </div>
+                      <div class="flex-grow-1">
+                        <div class="notification-content">
+                          <div class="notification-title">New user registered</div>
+                          <div class="notification-message">John Doe just registered</div>
+                          <div class="notification-time">
+                            <i class="bi bi-clock me-1"></i>15 minutes ago
+                          </div>
+                        </div>
+                      </div>
+                      <div class="notification-unread-indicator"></div>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="notification-item-modern" href="#">
+                      <div class="notification-icon-wrapper notification-icon-info">
+                        <i class="bi bi-bell"></i>
+                      </div>
+                      <div class="flex-grow-1">
+                        <div class="notification-content">
+                          <div class="notification-title">System update available</div>
+                          <div class="notification-message">New version 2.0 is ready</div>
+                          <div class="notification-time">
+                            <i class="bi bi-clock me-1"></i>1 hour ago
+                          </div>
+                        </div>
+                      </div>
+                      <div class="notification-unread-indicator"></div>
+                    </a>
+                  </li>
+                  <li><div class="dropdown-divider-modern"></div></li>
+                  <li>
+                    <a class="notification-view-all" href="#">
+                      <i class="bi bi-arrow-right-circle me-2"></i>
+                      View all notifications
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Color Scheme Picker -->
+              <div class="dropdown">
+                <button
+                  class="btn btn-link text-white topbar-action-btn"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  title="Color Scheme"
+                >
+                  <i class="bi bi-palette fs-5"></i>
+                </button>
+                <ul
+                  class="dropdown-menu dropdown-menu-end color-scheme-dropdown"
+                >
+                  <li>
+                    <div class="color-scheme-header">
+                      <div class="d-flex align-items-center gap-2 mb-1">
+                        <div class="color-scheme-header-icon">
+                          <i class="bi bi-palette"></i>
+                        </div>
+                        <h6 class="mb-0 fw-bold">Color Scheme</h6>
+                      </div>
+                      <p class="mb-0 text-muted small">Customize your theme colors</p>
+                    </div>
+                  </li>
+                  <li><div class="dropdown-divider-modern"></div></li>
+                  <li>
+                    <div class="color-scheme-section">
+                      <div class="color-scheme-label">
+                        <i class="bi bi-layout-sidebar me-2"></i>
+                        <span>Sidebar Color</span>
+                      </div>
+                      <div class="color-picker-grid">
+                        <button
+                          class="color-picker-btn active"
+                          data-color="blue"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #1e3a8a 0%,
+                              #1e40af 100%
+                            );
+                          "
+                          title="Blue"
+                        >
+                          <span class="color-name">Blue</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="purple"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #6b21a8 0%,
+                              #7c3aed 100%
+                            );
+                          "
+                          title="Purple"
+                        >
+                          <span class="color-name">Purple</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="green"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #166534 0%,
+                              #16a34a 100%
+                            );
+                          "
+                          title="Green"
+                        >
+                          <span class="color-name">Green</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="orange"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #c2410c 0%,
+                              #ea580c 100%
+                            );
+                          "
+                          title="Orange"
+                        >
+                          <span class="color-name">Orange</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="red"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #991b1b 0%,
+                              #dc2626 100%
+                            );
+                          "
+                          title="Red"
+                        >
+                          <span class="color-name">Red</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="teal"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #0f766e 0%,
+                              #14b8a6 100%
+                            );
+                          "
+                          title="Teal"
+                        >
+                          <span class="color-name">Teal</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="indigo"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #3730a3 0%,
+                              #6366f1 100%
+                            );
+                          "
+                          title="Indigo"
+                        >
+                          <span class="color-name">Indigo</span>
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="color-scheme-section">
+                      <div class="color-scheme-label">
+                        <i class="bi bi-layout-top me-2"></i>
+                        <span>Topbar Color</span>
+                      </div>
+                      <div class="color-picker-grid">
+                        <button
+                          class="color-picker-btn active"
+                          data-color="blue"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #1e3a8a 0%,
+                              #1e40af 100%
+                            );
+                          "
+                          title="Blue"
+                        >
+                          <span class="color-name">Blue</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="purple"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #6b21a8 0%,
+                              #7c3aed 100%
+                            );
+                          "
+                          title="Purple"
+                        >
+                          <span class="color-name">Purple</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="green"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #166534 0%,
+                              #16a34a 100%
+                            );
+                          "
+                          title="Green"
+                        >
+                          <span class="color-name">Green</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="orange"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #c2410c 0%,
+                              #ea580c 100%
+                            );
+                          "
+                          title="Orange"
+                        >
+                          <span class="color-name">Orange</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="red"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #991b1b 0%,
+                              #dc2626 100%
+                            );
+                          "
+                          title="Red"
+                        >
+                          <span class="color-name">Red</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="teal"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #0f766e 0%,
+                              #14b8a6 100%
+                            );
+                          "
+                          title="Teal"
+                        >
+                          <span class="color-name">Teal</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="indigo"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #3730a3 0%,
+                              #6366f1 100%
+                            );
+                          "
+                          title="Indigo"
+                        >
+                          <span class="color-name">Indigo</span>
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                  <li><div class="dropdown-divider-modern"></div></li>
+                  <li>
+                    <button
+                      class="color-scheme-reset-btn"
+                      type="button"
+                      id="resetThemeBtn"
+                    >
+                      <div class="reset-icon-wrapper">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                      </div>
+                      <div class="flex-grow-1">
+                        <div class="reset-title">Reset to Default</div>
+                        <div class="reset-subtitle">Restore original colors</div>
+                      </div>
+                      <i class="bi bi-chevron-right reset-arrow"></i>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- User Dropdown -->
+              <div class="dropdown">
+                <button
+                  class="btn btn-link text-white d-flex align-items-center gap-2 topbar-user-btn"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <div
+                    class="user-avatar rounded-circle bg-white text-primary d-flex align-items-center justify-content-center fw-bold"
+                    style="width: 36px; height: 36px; font-size: 0.9rem"
+                  >
+                    A
+                  </div>
+                  <div
+                    class="d-none d-md-flex flex-column align-items-start"
+                    style="line-height: 1.2"
+                  >
+                    <span class="fw-semibold" style="font-size: 0.9rem"
+                      >Admin User</span
+                    >
+                    <span class="text-white-50" style="font-size: 0.75rem"
+                      >Administrator</span
+                    >
+                  </div>
+                  <i
+                    class="bi bi-chevron-down d-none d-md-inline"
+                    style="font-size: 0.8rem"
+                  ></i>
+                </button>
+                <ul
+                  class="dropdown-menu dropdown-menu-end user-dropdown"
+                  id="userDropdown"
+                >
+                  <li>
+                    <div class="user-dropdown-header">
+                      <div class="d-flex align-items-center">
+                        <div class="user-avatar-wrapper position-relative me-3">
+                          <div
+                            class="user-avatar-large rounded-circle text-white d-flex align-items-center justify-content-center fw-bold"
+                          >
+                            A
+                          </div>
+                          <span class="user-status-badge position-absolute bottom-0 end-0"></span>
+                        </div>
+                        <div class="flex-grow-1">
+                          <div class="fw-bold mb-1">Admin User</div>
+                          <div class="text-muted small mb-1">admin@example.com</div>
+                          <span class="badge badge-role">Administrator</span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li><div class="dropdown-divider-modern"></div></li>
+                  <li>
+                    <a class="dropdown-item-modern" href="profile.html">
+                      <div class="dropdown-icon-wrapper">
+                        <i class="bi bi-person"></i>
+                      </div>
+                      <div class="flex-grow-1">
+                        <div class="dropdown-item-title">My Profile</div>
+                        <div class="dropdown-item-subtitle">View your profile</div>
+                      </div>
+                      <i class="bi bi-chevron-right dropdown-arrow"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item-modern" href="settings.html">
+                      <div class="dropdown-icon-wrapper">
+                        <i class="bi bi-gear"></i>
+                      </div>
+                      <div class="flex-grow-1">
+                        <div class="dropdown-item-title">Settings</div>
+                        <div class="dropdown-item-subtitle">Manage preferences</div>
+                      </div>
+                      <i class="bi bi-chevron-right dropdown-arrow"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item-modern" href="#">
+                      <div class="dropdown-icon-wrapper">
+                        <i class="bi bi-question-circle"></i>
+                      </div>
+                      <div class="flex-grow-1">
+                        <div class="dropdown-item-title">Help & Support</div>
+                        <div class="dropdown-item-subtitle">Get assistance</div>
+                      </div>
+                      <i class="bi bi-chevron-right dropdown-arrow"></i>
+                    </a>
+                  </li>
+                  <li><div class="dropdown-divider-modern"></div></li>
+                  <li>
+                    <a
+                      class="dropdown-item-modern dropdown-item-danger"
+                      href="../pages/auth/login.html"
+                    >
+                      <div class="dropdown-icon-wrapper">
+                        <i class="bi bi-box-arrow-right"></i>
+                      </div>
+                      <div class="flex-grow-1">
+                        <div class="dropdown-item-title">Logout</div>
+                        <div class="dropdown-item-subtitle">Sign out from account</div>
+                      </div>
+                      <i class="bi bi-chevron-right dropdown-arrow"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+        <!-- Page Content -->
+        <div class="content-wrapper">
+          <div class="container-fluid py-4">
+            <!-- Page Header -->
+            <div class="page-header-modern mb-5">
+              <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3">
+                <div class="flex-grow-1">
+                  <div class="d-flex align-items-center gap-3 mb-2">
+                    <div class="page-header-icon">
+                      <i class="bi bi-circle-fill"></i>
+                    </div>
+                    <div>
+                      <h1 class="page-header-title mb-1">Badge</h1>
+                      <p class="page-header-subtitle mb-0">
+                        Documentation and examples for badges, our small count and labeling component.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <nav aria-label="breadcrumb" class="page-header-breadcrumb">
+                  <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item">
+                      <a href="dashboard.html">
+                        <i class="bi bi-house me-1"></i>Dashboard
+                      </a>
+                    </li>
+                    <li class="breadcrumb-item">
+                      <a href="#">Components</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      Badge
+                    </li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+
+            <!-- Examples Section -->
+            <div class="row g-4">
+              <div class="col-12">
+                <!-- Example -->
+                <div class="component-card">
+                  <div class="component-card-header">
+                    <div class="component-card-icon">
+                      <i class="bi bi-file-earmark-code"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <h2 class="component-card-title">Example</h2>
+                      <p class="component-card-description">
+                        Badges scale to match the size of the immediate parent element by using relative font sizing and <code>em</code> units.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="component-card-body">
+                    <div class="component-preview">
+                      <div class="d-flex flex-wrap gap-3 align-items-center">
+                        <h1>Example heading <span class="badge badge-ocean">New</span></h1>
+                        <h2>Example heading <span class="badge badge-slate">New</span></h2>
+                        <h3>Example heading <span class="badge badge-emerald">New</span></h3>
+                        <h4>Example heading <span class="badge badge-rose">New</span></h4>
+                        <h5>Example heading <span class="badge badge-amber">New</span></h5>
+                        <h6>Example heading <span class="badge badge-cyan">New</span></h6>
+                      </div>
+                    </div>
+                    <div class="component-code">
+                      <div class="component-code-header">
+                        <span class="component-code-label">HTML</span>
+                        <button class="component-code-copy" onclick="copyCode(this)" title="Copy code">
+                          <i class="bi bi-clipboard"></i>
+                        </button>
+                      </div>
+                      <pre><code>&lt;h1&gt;Example heading &lt;span class="badge badge-ocean"&gt;New&lt;/span&gt;&lt;/h1&gt;
+&lt;h2&gt;Example heading &lt;span class="badge badge-slate"&gt;New&lt;/span&gt;&lt;/h2&gt;
+&lt;h3&gt;Example heading &lt;span class="badge badge-emerald"&gt;New&lt;/span&gt;&lt;/h3&gt;
+&lt;h4&gt;Example heading &lt;span class="badge badge-rose"&gt;New&lt;/span&gt;&lt;/h4&gt;
+&lt;h5&gt;Example heading &lt;span class="badge badge-amber"&gt;New&lt;/span&gt;&lt;/h5&gt;
+&lt;h6&gt;Example heading &lt;span class="badge badge-cyan"&gt;New&lt;/span&gt;&lt;/h6&gt;</code></pre>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Custom Creative Colors -->
+                <div class="component-card">
+                  <div class="component-card-header">
+                    <div class="component-card-icon">
+                      <i class="bi bi-paint-bucket"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <h2 class="component-card-title">Custom Creative Colors</h2>
+                      <p class="component-card-description">
+                        Custom badge colors matching Quick Action buttons with gradient backgrounds.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="component-card-body">
+                    <div class="component-preview">
+                      <div class="d-flex flex-wrap gap-2">
+                        <span class="badge badge-ocean">Ocean</span>
+                        <span class="badge badge-slate">Slate</span>
+                        <span class="badge badge-emerald">Emerald</span>
+                        <span class="badge badge-rose">Rose</span>
+                        <span class="badge badge-amber">Amber</span>
+                        <span class="badge badge-cyan">Cyan</span>
+                        <span class="badge badge-stone">Stone</span>
+                        <span class="badge badge-violet">Violet</span>
+                        <span class="badge badge-gradient">Gradient</span>
+                      </div>
+                    </div>
+                    <div class="component-code">
+                      <div class="component-code-header">
+                        <span class="component-code-label">HTML</span>
+                        <button class="component-code-copy" onclick="copyCode(this)" title="Copy code">
+                          <i class="bi bi-clipboard"></i>
+                        </button>
+                      </div>
+                      <pre><code>&lt;span class="badge badge-ocean"&gt;Ocean&lt;/span&gt;
+&lt;span class="badge badge-slate"&gt;Slate&lt;/span&gt;
+&lt;span class="badge badge-emerald"&gt;Emerald&lt;/span&gt;
+&lt;span class="badge badge-rose"&gt;Rose&lt;/span&gt;
+&lt;span class="badge badge-amber"&gt;Amber&lt;/span&gt;
+&lt;span class="badge badge-cyan"&gt;Cyan&lt;/span&gt;
+&lt;span class="badge badge-stone"&gt;Stone&lt;/span&gt;
+&lt;span class="badge badge-violet"&gt;Violet&lt;/span&gt;
+&lt;span class="badge badge-gradient"&gt;Gradient&lt;/span&gt;</code></pre>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Pill badges -->
+                <div class="component-card">
+                  <div class="component-card-header">
+                    <div class="component-card-icon">
+                      <i class="bi bi-circle"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <h2 class="component-card-title">Pill badges</h2>
+                      <p class="component-card-description">
+                        Use the <code>.rounded-pill</code> utility class to make badges more rounded (with a larger <code>border-radius</code> and additional horizontal <code>padding</code>). Combine with custom badge color classes for a modern look.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="component-card-body">
+                    <div class="component-preview">
+                      <div class="d-flex flex-wrap gap-2">
+                        <span class="badge rounded-pill badge-ocean">Ocean</span>
+                        <span class="badge rounded-pill badge-slate">Slate</span>
+                        <span class="badge rounded-pill badge-emerald">Emerald</span>
+                        <span class="badge rounded-pill badge-rose">Rose</span>
+                        <span class="badge rounded-pill badge-amber">Amber</span>
+                        <span class="badge rounded-pill badge-cyan">Cyan</span>
+                        <span class="badge rounded-pill badge-stone">Stone</span>
+                        <span class="badge rounded-pill badge-violet">Violet</span>
+                        <span class="badge rounded-pill badge-gradient">Gradient</span>
+                      </div>
+                    </div>
+                    <div class="component-code">
+                      <div class="component-code-header">
+                        <span class="component-code-label">HTML</span>
+                        <button class="component-code-copy" onclick="copyCode(this)" title="Copy code">
+                          <i class="bi bi-clipboard"></i>
+                        </button>
+                      </div>
+                      <pre><code>&lt;span class="badge rounded-pill badge-ocean"&gt;Ocean&lt;/span&gt;
+&lt;span class="badge rounded-pill badge-slate"&gt;Slate&lt;/span&gt;
+&lt;span class="badge rounded-pill badge-emerald"&gt;Emerald&lt;/span&gt;
+&lt;span class="badge rounded-pill badge-rose"&gt;Rose&lt;/span&gt;
+&lt;span class="badge rounded-pill badge-amber"&gt;Amber&lt;/span&gt;
+&lt;span class="badge rounded-pill badge-cyan"&gt;Cyan&lt;/span&gt;
+&lt;span class="badge rounded-pill badge-stone"&gt;Stone&lt;/span&gt;
+&lt;span class="badge rounded-pill badge-violet"&gt;Violet&lt;/span&gt;
+&lt;span class="badge rounded-pill badge-gradient"&gt;Gradient&lt;/span&gt;</code></pre>
+                    </div>
+                    <div class="component-preview mt-4">
+                      <p class="text-muted small mb-3 fw-semibold">
+                        <i class="bi bi-palette me-1"></i>Custom Creative Colors:
+                      </p>
+                      <div class="d-flex flex-wrap gap-2">
+                        <span class="badge rounded-pill badge-ocean">Ocean</span>
+                        <span class="badge rounded-pill badge-slate">Slate</span>
+                        <span class="badge rounded-pill badge-emerald">Emerald</span>
+                        <span class="badge rounded-pill badge-rose">Rose</span>
+                        <span class="badge rounded-pill badge-amber">Amber</span>
+                        <span class="badge rounded-pill badge-cyan">Cyan</span>
+                        <span class="badge rounded-pill badge-stone">Stone</span>
+                        <span class="badge rounded-pill badge-violet">Violet</span>
+                        <span class="badge rounded-pill badge-gradient">Gradient</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Badges with Icons -->
+                <div class="component-card">
+                  <div class="component-card-header">
+                    <div class="component-card-icon">
+                      <i class="bi bi-star"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <h2 class="component-card-title">Badges with Icons</h2>
+                      <p class="component-card-description">
+                        Add icons to badges for better visual representation and context.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="component-card-body">
+                    <div class="component-preview">
+                      <div class="d-flex flex-wrap gap-2">
+                        <span class="badge badge-emerald">
+                          <i class="bi bi-check-circle me-1"></i>Success
+                        </span>
+                        <span class="badge badge-rose">
+                          <i class="bi bi-x-circle me-1"></i>Error
+                        </span>
+                        <span class="badge badge-amber">
+                          <i class="bi bi-exclamation-triangle me-1"></i>Warning
+                        </span>
+                        <span class="badge badge-cyan">
+                          <i class="bi bi-info-circle me-1"></i>Info
+                        </span>
+                        <span class="badge badge-ocean">
+                          <i class="bi bi-download me-1"></i>Download
+                        </span>
+                        <span class="badge badge-violet">
+                          <i class="bi bi-bell me-1"></i>Notification
+                        </span>
+                      </div>
+                    </div>
+                    <div class="component-code">
+                      <div class="component-code-header">
+                        <span class="component-code-label">HTML</span>
+                        <button class="component-code-copy" onclick="copyCode(this)" title="Copy code">
+                          <i class="bi bi-clipboard"></i>
+                        </button>
+                      </div>
+                      <pre><code>&lt;span class="badge badge-emerald"&gt;
+  &lt;i class="bi bi-check-circle me-1"&gt;&lt;/i&gt;Success
+&lt;/span&gt;
+&lt;span class="badge badge-rose"&gt;
+  &lt;i class="bi bi-x-circle me-1"&gt;&lt;/i&gt;Error
+&lt;/span&gt;</code></pre>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Positioning -->
+                <div class="component-card">
+                  <div class="component-card-header">
+                    <div class="component-card-icon">
+                      <i class="bi bi-layout-three-columns"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <h2 class="component-card-title">Positioned</h2>
+                      <p class="component-card-description">
+                        Use utilities to position badges within buttons or other components.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="component-card-body">
+                    <div class="component-preview">
+                      <div class="d-flex flex-wrap gap-3">
+                        <button type="button" class="btn btn-primary position-relative">
+                          Inbox
+                          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-rose">
+                            99+
+                            <span class="visually-hidden">unread messages</span>
+                          </span>
+                        </button>
+                        <button type="button" class="btn btn-primary position-relative">
+                          Profile
+                          <span class="position-absolute top-0 start-100 translate-middle p-2 badge-rose border border-light rounded-circle">
+                            <span class="visually-hidden">New alerts</span>
+                          </span>
+                        </button>
+                        <button type="button" class="btn btn-secondary position-relative">
+                          Notifications
+                          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-rose">
+                            3
+                          </span>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="component-code">
+                      <div class="component-code-header">
+                        <span class="component-code-label">HTML</span>
+                        <button class="component-code-copy" onclick="copyCode(this)" title="Copy code">
+                          <i class="bi bi-clipboard"></i>
+                        </button>
+                      </div>
+                      <pre><code>&lt;button type="button" class="btn btn-primary position-relative"&gt;
+  Inbox
+  &lt;span class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-rose"&gt;
+    99+
+    &lt;span class="visually-hidden"&gt;unread messages&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/button&gt;</code></pre>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Badge in Buttons -->
+                <div class="component-card">
+                  <div class="component-card-header">
+                    <div class="component-card-icon">
+                      <i class="bi bi-square"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <h2 class="component-card-title">Badge in Buttons</h2>
+                      <p class="component-card-description">
+                        Badges can be used as part of links or buttons to provide a counter.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="component-card-body">
+                    <div class="component-preview">
+                      <div class="d-flex flex-wrap gap-2">
+                        <button type="button" class="btn btn-primary">
+                          Notifications
+                          <span class="badge badge-slate ms-2">4</span>
+                        </button>
+                        <button type="button" class="btn btn-success">
+                          Messages
+                          <span class="badge badge-emerald ms-2">12</span>
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                          Alerts
+                          <span class="badge badge-rose ms-2">7</span>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="component-code">
+                      <div class="component-code-header">
+                        <span class="component-code-label">HTML</span>
+                        <button class="component-code-copy" onclick="copyCode(this)" title="Copy code">
+                          <i class="bi bi-clipboard"></i>
+                        </button>
+                      </div>
+                      <pre><code>&lt;button type="button" class="btn btn-primary"&gt;
+  Notifications
+  &lt;span class="badge badge-slate ms-2"&gt;4&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <p class="mb-0 text-muted">
+                  © <span id="currentYear"></span> Ethanol UI. All rights
+                  reserved.
+                </p>
+              </div>
+              <div class="col-md-6 text-end">
+                <p class="mb-0 text-muted">
+                  Made with <i class="bi bi-heart-fill text-danger"></i> by
+                  Ethanol UI Team
+                </p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/theme.js"></script>
+    
+    <!-- Copy Code Function -->
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.closest('.component-code').querySelector('code');
+        const text = codeBlock.textContent;
+        
+        navigator.clipboard.writeText(text).then(() => {
+          const icon = button.querySelector('i');
+          const originalClass = icon.className;
+          icon.className = 'bi bi-check';
+          button.style.background = 'rgba(16, 185, 129, 0.2)';
+          button.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+          button.style.color = '#10b981';
+          
+          setTimeout(() => {
+            icon.className = originalClass;
+            button.style.background = '';
+            button.style.borderColor = '';
+            button.style.color = '';
+          }, 2000);
+        }).catch(err => {
+          console.error('Failed to copy:', err);
+        });
+      }
+    </script>
+  </body>
+</html>
+

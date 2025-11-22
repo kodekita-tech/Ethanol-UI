@@ -1,162 +1,200 @@
-/**
- * Main JavaScript File
- * Core functionality and utilities
- */
+// Main JavaScript Functions
 
-(function() {
-    'use strict';
-
-    const AdminApp = {
-        // Initialize all components
-        init: function() {
-            this.initSidebar();
-            this.initTooltips();
-            this.initPopovers();
-            this.initModernUI();
-            this.loadIncludes();
-        },
-
-        // Initialize sidebar toggle
-        initSidebar: function() {
-            const toggleBtn = document.getElementById('sidebarToggle');
-            const sidebar = document.querySelector('.sidebar');
-            
-            if (toggleBtn && sidebar) {
-                toggleBtn.addEventListener('click', () => {
-                    this.toggleSidebar();
-                });
-            }
-
-            // Close sidebar on mobile when clicking outside
-            document.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768) {
-                    if (sidebar && sidebar.classList.contains('show')) {
-                        if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
-                            sidebar.classList.remove('show');
-                        }
-                    }
+// Load includes (for development - requires HTTP server)
+function loadIncludes() {
+    const includes = ['header', 'sidebar', 'footer', 'scripts'];
+    
+    includes.forEach(include => {
+        fetch(`../includes/${include}.html`)
+            .then(response => response.text())
+            .then(data => {
+                const element = document.getElementById(include);
+                if (element) {
+                    element.innerHTML = data;
+                } else if (include === 'scripts') {
+                    // Scripts should be loaded in head or before closing body
+                    const scriptContainer = document.createElement('div');
+                    scriptContainer.innerHTML = data;
+                    document.body.appendChild(scriptContainer);
                 }
-            });
-        },
+            })
+            .catch(error => console.error(`Error loading ${include}:`, error));
+    });
+}
 
-        // Toggle sidebar
-        toggleSidebar: function() {
-            const sidebar = document.querySelector('.sidebar');
-            if (sidebar) {
-                sidebar.classList.toggle('collapsed');
-                sidebar.classList.toggle('show');
-            }
-        },
+// Toggle submenu - make it globally available
+window.toggleSubmenu = function(element) {
+    const parent = element.closest('.menu-item-has-children');
+    if (parent) {
+        parent.classList.toggle('active');
+    }
+};
 
-        // Initialize Bootstrap tooltips
-        initTooltips: function() {
-            // Initialize tooltips with data-bs-toggle="tooltip"
-            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            tooltipTriggerList.map(function (tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl);
-            });
-            
-            // Initialize tooltips for elements with title attribute (like color scheme buttons)
-            const titleElements = document.querySelectorAll('[title]:not([data-bs-toggle])');
-            titleElements.forEach(function (el) {
-                if (el.title && !el._tooltip) {
-                    new bootstrap.Tooltip(el);
+// Initialize sidebar toggle
+function initSidebar() {
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
+    
+    if (sidebarToggle && sidebar) {
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+        });
+    }
+    
+    // Mobile sidebar toggle
+    const mobileToggle = document.querySelector('[data-bs-toggle="offcanvas"]');
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('show');
+        });
+    }
+}
+
+// Initialize tooltips
+function initTooltips() {
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+}
+
+// Initialize popovers
+function initPopovers() {
+    const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+    popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl);
+    });
+}
+
+// Initialize modern UI effects
+function initModernUI() {
+    try {
+        console.log('🔧 Initializing modern UI effects...');
+        
+        // Add smooth scroll - only for anchors with valid ID selectors
+        // Get all anchors and filter out those with href="#" or invalid
+        const allAnchors = document.querySelectorAll('a');
+        console.log(`📋 Total anchors found: ${allAnchors.length}`);
+        
+        const anchors = Array.from(allAnchors).filter(anchor => {
+            try {
+                const href = anchor.getAttribute('href');
+                if (!href) {
+                    return false;
                 }
-            });
-        },
-
-        // Initialize Bootstrap popovers
-        initPopovers: function() {
-            const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-            popoverTriggerList.map(function (popoverTriggerEl) {
-                return new bootstrap.Popover(popoverTriggerEl);
-            });
-        },
-
-        // Initialize modern UI effects
-        initModernUI: function() {
-            // Add fade-in animation to cards
-            const cards = document.querySelectorAll('.card');
-            cards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.classList.add('fade-in');
-                }, index * 100);
-            });
-
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                
+                const trimmedHref = href.trim();
+                
+                // Only include anchors that:
+                // 1. Start with #
+                // 2. Are not just "#"
+                // 3. Have length > 1
+                // 4. Match valid CSS selector format
+                const isValid = trimmedHref.startsWith('#') && 
+                               trimmedHref !== '#' && 
+                               trimmedHref.length > 1 &&
+                               trimmedHref.match(/^#[a-zA-Z_][\w-]*$/);
+                
+                if (isValid) {
+                    console.log(`✅ Anchor passed filter: "${trimmedHref}"`);
+                } else {
+                    console.log(`⏭️ Anchor filtered out: "${trimmedHref}"`);
+                }
+                
+                return isValid;
+            } catch (error) {
+                console.error('❌ Error filtering anchor:', error);
+                return false;
+            }
+        });
+        
+        console.log(`📋 Found ${anchors.length} valid anchor links with href starting with # (excluding #)`);
+        
+        anchors.forEach((anchor, index) => {
+            try {
+                const href = anchor.getAttribute('href');
+                if (!href) {
+                    console.warn(`⚠️ Anchor ${index + 1} has no href, skipping`);
+                    return;
+                }
+                
+                const trimmedHref = href.trim();
+                
+                // Final safety check
+                if (trimmedHref === '#' || trimmedHref.length <= 1) {
+                    console.warn(`⚠️ Anchor ${index + 1} has invalid href: "${trimmedHref}", skipping`);
+                    return;
+                }
+                
+                console.log(`✅ Processing anchor ${index + 1} with href: "${trimmedHref}"`);
+                
                 anchor.addEventListener('click', function (e) {
-                    const href = this.getAttribute('href');
-                    if (href !== '#' && href !== '') {
-                        e.preventDefault();
-                        const target = document.querySelector(href);
+                    console.log(`🖱️ Clicked anchor with href: "${trimmedHref}"`);
+                    e.preventDefault();
+                    
+                    try {
+                        console.log(`🔍 Attempting to query selector: "${trimmedHref}"`);
+                        const target = document.querySelector(trimmedHref);
+                        console.log(`🎯 Target element found:`, target);
+                        
                         if (target) {
                             target.scrollIntoView({
                                 behavior: 'smooth',
                                 block: 'start'
                             });
+                            console.log(`✅ Scrolled to target`);
+                        } else {
+                            console.warn(`⚠️ Target element not found for href: "${trimmedHref}"`);
                         }
+                    } catch (error) {
+                        console.error(`❌ Error querying selector "${trimmedHref}":`, error);
+                        console.error('Error details:', error.message, error.stack);
                     }
                 });
-            });
-        },
-
-        // Load includes (header, sidebar, footer) via fetch
-        loadIncludes: function() {
-            // Only load if we're on HTTP server (not file://)
-            if (window.location.protocol === 'file:') {
-                console.warn('Includes loading requires HTTP server. Please use copy-paste method for file:// protocol.');
-                return;
+            } catch (error) {
+                console.error(`❌ Error processing anchor ${index + 1}:`, error);
             }
-
-            const includes = [
-                { id: 'header-placeholder', file: 'includes/header.html' },
-                { id: 'sidebar-placeholder', file: 'includes/sidebar.html' },
-                { id: 'footer-placeholder', file: 'includes/footer.html' }
-            ];
-
-            includes.forEach(include => {
-                const placeholder = document.getElementById(include.id);
-                if (placeholder) {
-                    fetch(include.file)
-                        .then(response => response.text())
-                        .then(html => {
-                            placeholder.outerHTML = html;
-                            // Re-initialize after loading
-                            this.init();
-                        })
-                        .catch(error => {
-                            console.error(`Error loading ${include.file}:`, error);
-                        });
-                }
-            });
-        },
-
-        // Load page dynamically (if needed)
-        loadPage: function(url) {
-            // This can be used for SPA-like behavior if needed
-            fetch(url)
-                .then(response => response.text())
-                .then(html => {
-                    document.querySelector('.main-content').innerHTML = html;
-                    this.init();
-                })
-                .catch(error => {
-                    console.error('Error loading page:', error);
-                });
-        }
-    };
-
-    // Initialize when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-            AdminApp.init();
         });
-    } else {
-        AdminApp.init();
+        
+        console.log('✅ Modern UI effects initialized');
+    } catch (error) {
+        console.error('❌ Error in initModernUI:', error);
+        console.error('Error details:', error.message, error.stack);
     }
+}
 
-    // Export to global scope
-    window.AdminApp = AdminApp;
-})();
+// Initialize all on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+    initSidebar();
+    initTooltips();
+    initPopovers();
+    initModernUI();
+    
+    // Event delegation for submenu toggle
+    document.addEventListener('click', function(e) {
+        const menuToggle = e.target.closest('.menu-item-toggle');
+        if (menuToggle) {
+            e.preventDefault();
+            e.stopPropagation();
+            window.toggleSubmenu(menuToggle);
+        }
+    });
+    
+    // Set active menu item based on current page
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('.menu-item').forEach(item => {
+        if (item.getAttribute('href') === currentPath.split('/').pop()) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+    
+    // Set current year dynamically
+    const yearElements = document.querySelectorAll('#currentYear');
+    const currentYear = new Date().getFullYear();
+    yearElements.forEach(el => {
+        if (el) el.textContent = currentYear;
+    });
+});
 

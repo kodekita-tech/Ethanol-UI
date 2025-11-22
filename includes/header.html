@@ -1,48 +1,143 @@
 <!-- Topbar -->
-<nav class="topbar" data-topbar-theme="blue">
-    <div class="topbar-left">
-        <button class="btn btn-link text-white" id="sidebarToggle" data-bs-toggle="tooltip" title="Toggle Sidebar">
+<nav class="navbar navbar-expand-lg topbar" id="topbar">
+    <div class="container-fluid">
+        <!-- Sidebar Toggle -->
+        <button class="btn btn-link text-white" id="sidebarToggle" type="button">
             <i class="bi bi-list fs-4"></i>
         </button>
-        <span class="ms-3 text-white fw-bold">Ethanol UI</span>
-    </div>
-    <div class="topbar-right">
-        <!-- Theme Toggle -->
-        <button class="btn btn-link text-white" id="themeToggle" data-bs-toggle="tooltip" title="Toggle Dark/Light Mode">
-            <i class="bi bi-moon fs-5"></i>
-        </button>
-        
-        <!-- Notifications -->
-        <div class="dropdown">
-            <button class="btn btn-link text-white position-relative" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-bell fs-5"></i>
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    3
-                </span>
+
+                    <!-- Search -->
+                    <div class="d-none d-md-flex align-items-center ms-3">
+                        <div class="input-group" style="max-width: 400px;">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <button class="btn btn-outline-light" type="button" title="Search">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+
+        <!-- Right Side -->
+        <div class="ms-auto d-flex align-items-center gap-2">
+            <!-- Dark Mode Toggle -->
+            <button class="btn btn-link text-white topbar-action-btn" id="darkModeToggle" type="button" title="Toggle Dark Mode" onclick="if(typeof ThemeManager !== 'undefined') ThemeManager.toggleDarkMode();">
+                <i class="bi bi-moon-stars fs-5"></i>
             </button>
-            <ul class="dropdown-menu dropdown-menu-end">
-                <li><h6 class="dropdown-header">Notifikasi</h6></li>
-                <li><a class="dropdown-item" href="#">Pesan baru dari user</a></li>
-                <li><a class="dropdown-item" href="#">Order baru diterima</a></li>
-                <li><a class="dropdown-item" href="#">Pembayaran berhasil</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item text-center" href="#">Lihat semua</a></li>
-            </ul>
-        </div>
-        
-        <!-- User Dropdown -->
-        <div class="dropdown">
-            <button class="btn btn-link text-white d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="../assets/images/logo.png" alt="User" class="rounded-circle me-2" width="32" height="32" onerror="this.src='https://via.placeholder.com/32'">
-                <span>Admin User</span>
-                <i class="bi bi-chevron-down ms-2"></i>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="pages/profile.html"><i class="bi bi-person me-2"></i>Profile</a></li>
-                <li><a class="dropdown-item" href="pages/settings.html"><i class="bi bi-gear me-2"></i>Settings</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="login.html"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
-            </ul>
+
+            <!-- Notifications -->
+            <div class="dropdown">
+                <button class="btn btn-link text-white position-relative topbar-action-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-bell fs-5"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger notification-badge">
+                        3
+                    </span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end notification-dropdown" style="width: 320px;">
+                    <li>
+                        <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom">
+                            <h6 class="mb-0 fw-bold">Notifications</h6>
+                            <span class="badge bg-primary rounded-pill">3 new</span>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="dropdown-item notification-item" href="#">
+                            <div class="d-flex align-items-start">
+                                <div class="notification-icon bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; flex-shrink: 0;">
+                                    <i class="bi bi-cart-check"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="fw-semibold">New order received</div>
+                                    <div class="text-muted small">Order #1234 has been placed</div>
+                                    <div class="text-muted" style="font-size: 0.75rem;">2 minutes ago</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item notification-item" href="#">
+                            <div class="d-flex align-items-start">
+                                <div class="notification-icon bg-success bg-opacity-10 text-success rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; flex-shrink: 0;">
+                                    <i class="bi bi-person-plus"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="fw-semibold">New user registered</div>
+                                    <div class="text-muted small">John Doe just registered</div>
+                                    <div class="text-muted" style="font-size: 0.75rem;">15 minutes ago</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item notification-item" href="#">
+                            <div class="d-flex align-items-start">
+                                <div class="notification-icon bg-info bg-opacity-10 text-info rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; flex-shrink: 0;">
+                                    <i class="bi bi-bell"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="fw-semibold">System update available</div>
+                                    <div class="text-muted small">New version 2.0 is ready</div>
+                                    <div class="text-muted" style="font-size: 0.75rem;">1 hour ago</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li><hr class="dropdown-divider my-2"></li>
+                    <li>
+                        <a class="dropdown-item text-center fw-semibold text-primary" href="#">
+                            View all notifications
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- User Dropdown -->
+            <div class="dropdown">
+                <button class="btn btn-link text-white d-flex align-items-center gap-2 topbar-user-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="user-avatar rounded-circle bg-white text-primary d-flex align-items-center justify-content-center fw-bold" style="width: 36px; height: 36px; font-size: 0.9rem;">
+                        A
+                    </div>
+                    <div class="d-none d-md-flex flex-column align-items-start" style="line-height: 1.2;">
+                        <span class="fw-semibold" style="font-size: 0.9rem;">Admin User</span>
+                        <span class="text-white-50" style="font-size: 0.75rem;">Administrator</span>
+                    </div>
+                    <i class="bi bi-chevron-down d-none d-md-inline" style="font-size: 0.8rem;"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end user-dropdown">
+                    <li>
+                        <div class="px-3 py-2 border-bottom">
+                            <div class="d-flex align-items-center">
+                                <div class="user-avatar-large rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold me-3" style="width: 48px; height: 48px; font-size: 1.2rem;">
+                                    A
+                                </div>
+                                <div>
+                                    <div class="fw-semibold">Admin User</div>
+                                    <div class="text-muted small">admin@example.com</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="profile.html">
+                            <i class="bi bi-person me-2"></i>My Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="settings.html">
+                            <i class="bi bi-gear me-2"></i>Settings
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">
+                            <i class="bi bi-question-circle me-2"></i>Help & Support
+                        </a>
+                    </li>
+                    <li><hr class="dropdown-divider my-2"></li>
+                    <li>
+                        <a class="dropdown-item text-danger" href="../pages/auth/login.html">
+                            <i class="bi bi-box-arrow-right me-2"></i>Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>

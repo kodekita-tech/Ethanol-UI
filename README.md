@@ -24,8 +24,6 @@ Modern admin dashboard template dengan Bootstrap 5.3.8, ApexCharts, DataTables, 
 ethanol-ui/
 │
 ├── index.html                 # Redirect ke dashboard
-├── login.html                 # Halaman login
-├── register.html              # Halaman register
 │
 ├── assets/
 │   ├── css/
@@ -49,6 +47,24 @@ ethanol-ui/
 │   └── scripts.html            # CDN scripts
 │
 ├── pages/
+│   ├── auth/                   # Halaman Autentikasi
+│   │   ├── login.html          # Login - Classic
+│   │   ├── login-v1.html       # Login - Split Screen
+│   │   ├── login-v2.html       # Login - Centered Card
+│   │   ├── login-v3.html       # Login - Glassmorphism
+│   │   ├── login-v4.html       # Login - Modern Animated
+│   │   ├── login-index.html    # Showcase semua variasi login
+│   │   ├── register.html       # Register - Classic
+│   │   ├── register-v1.html    # Register - Split Screen
+│   │   ├── register-v2.html    # Register - Centered Card
+│   │   ├── register-v3.html    # Register - Glassmorphism
+│   │   └── register-v4.html    # Register - Modern Animated
+│   │
+│   │
+│   ├── components-badge.html         # Badge Component
+│   ├── components-button.html        # Button Component
+│   ├── components-button-groups.html # Button Groups Component
+│   ├── components-card.html          # Card Component
 │   ├── dashboard.html          # Dashboard
 │   ├── users.html              # Manajemen Users
 │   ├── products.html           # Manajemen Products
@@ -82,10 +98,12 @@ Clone atau download project ini, kemudian:
 Karena template HTML statis, ada 2 cara untuk menggunakan includes:
 
 **Opsi 1: Copy-Paste Manual** (Recommended untuk production)
+
 - Copy konten dari `includes/` ke setiap halaman yang membutuhkan
 - Lebih cepat load, tidak perlu fetch
 
 **Opsi 2: JavaScript Load** (Untuk development)
+
 - Function `loadIncludes()` di `main.js` akan load includes via fetch
 - Hanya bekerja jika diakses via HTTP server (tidak bisa file://)
 
@@ -113,26 +131,32 @@ Karena template HTML statis, ada 2 cara untuk menggunakan includes:
 ## 📦 CDN yang Digunakan
 
 ### Bootstrap 5.3.8
+
 - CSS: `https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css`
 - JS: `https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js`
 
 ### jQuery 3.7.1
+
 - JS: `https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js`
 
 ### DataTables 2.3.5
+
 - CSS: `https://cdn.datatables.net/2.3.5/css/dataTables.bootstrap5.css`
-- JS: 
+- JS:
   - `https://cdn.datatables.net/2.3.5/js/dataTables.min.js`
   - `https://cdn.datatables.net/2.3.5/js/dataTables.bootstrap5.min.js`
 
 ### SweetAlert2
+
 - JS: `https://cdn.jsdelivr.net/npm/sweetalert2@11`
 
 ### ApexCharts 3.44.0
+
 - CSS: `https://cdn.jsdelivr.net/npm/apexcharts@3.44.0/dist/apexcharts.css`
 - JS: `https://cdn.jsdelivr.net/npm/apexcharts@3.44.0/dist/apexcharts.min.js`
 
 ### Bootstrap Icons
+
 - CSS: `https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css`
 
 ## 🎨 Theme System
@@ -144,6 +168,7 @@ Toggle dark/light mode dengan tombol di topbar. Theme akan tersimpan di localSto
 ### Color Themes
 
 #### Sidebar Colors:
+
 - Blue (default)
 - Purple
 - Green
@@ -153,6 +178,7 @@ Toggle dark/light mode dengan tombol di topbar. Theme akan tersimpan di localSto
 - Indigo
 
 #### Topbar Colors:
+
 - Bisa match dengan sidebar atau independent
 - Pilihan warna sama dengan sidebar
 
@@ -165,10 +191,10 @@ Toggle dark/light mode dengan tombol di topbar. Theme akan tersimpan di localSto
 ThemeManager.toggleDarkMode();
 
 // Set sidebar color
-ThemeManager.setSidebarColor('blue');
+ThemeManager.setSidebarColor("blue");
 
 // Set topbar color
-ThemeManager.setTopbarColor('purple');
+ThemeManager.setTopbarColor("purple");
 
 // Get current theme
 const theme = ThemeManager.getTheme();
@@ -182,36 +208,36 @@ ThemeManager.resetTheme();
 ```javascript
 // Confirm delete
 SwalHelper.confirmDelete().then((result) => {
-    if (result.isConfirmed) {
-        // Delete action
-    }
+  if (result.isConfirmed) {
+    // Delete action
+  }
 });
 
 // Show success
-SwalHelper.showSuccess('Data berhasil disimpan!');
+SwalHelper.showSuccess("Data berhasil disimpan!");
 
 // Show error
-SwalHelper.showError('Terjadi kesalahan!');
+SwalHelper.showError("Terjadi kesalahan!");
 
 // Show info
-SwalHelper.showInfo('Informasi penting');
+SwalHelper.showInfo("Informasi penting");
 ```
 
 ### CRUD Helpers (`crud.js`)
 
 ```javascript
 // Show add modal
-CRUDHelper.showAddModal('addModal');
+CRUDHelper.showAddModal("addModal");
 
 // Show edit modal
-CRUDHelper.showEditModal('editModal', data);
+CRUDHelper.showEditModal("editModal", data);
 
 // Handle delete
 CRUDHelper.handleDelete(id, callback);
 
 // Validate form
-if (CRUDHelper.validateForm('myForm')) {
-    // Form is valid
+if (CRUDHelper.validateForm("myForm")) {
+  // Form is valid
 }
 ```
 
@@ -219,26 +245,85 @@ if (CRUDHelper.validateForm('myForm')) {
 
 ```javascript
 // Initialize with default config
-DataTableConfig.initDataTable('#myTable');
+DataTableConfig.initDataTable("#myTable");
 
 // Initialize users table
-DataTableConfig.initUsersTable('#usersTable');
+DataTableConfig.initUsersTable("#usersTable");
 
 // Initialize products table
-DataTableConfig.initProductsTable('#productsTable');
+DataTableConfig.initProductsTable("#productsTable");
 ```
 
 ## 🎯 Halaman yang Tersedia
 
-1. **Login** (`login.html`) - Halaman login dengan validasi
-2. **Register** (`register.html`) - Halaman register dengan validasi
-3. **Dashboard** (`pages/dashboard.html`) - Dashboard dengan statistik
-4. **Users** (`pages/users.html`) - Manajemen users dengan DataTables
-5. **Products** (`pages/products.html`) - Manajemen products dengan DataTables
-6. **CRUD Template** (`pages/crud-template.html`) - Template CRUD lengkap
-7. **Blank Page** (`pages/blank.html`) - Starter template untuk halaman baru
-8. **Settings** (`pages/settings.html`) - Settings termasuk theme management
-9. **Profile** (`pages/profile.html`) - Edit profile user
+### Halaman Autentikasi (`pages/auth/`)
+
+#### Login Pages
+
+1. **login.html** - Classic login dengan header gradient
+2. **login-v1.html** - Split screen dengan ilustrasi di kiri
+3. **login-v2.html** - Centered card dengan background pattern
+4. **login-v3.html** - Glassmorphism dengan floating shapes
+5. **login-v4.html** - Modern animated dengan particles
+6. **login-index.html** - Showcase semua variasi login
+
+#### Register Pages
+
+1. **register.html** - Classic register dengan password strength indicator
+2. **register-v1.html** - Split screen dengan ilustrasi di kiri
+3. **register-v2.html** - Centered card dengan background pattern
+4. **register-v3.html** - Glassmorphism dengan floating shapes
+5. **register-v4.html** - Modern animated dengan particles
+
+**Fitur Register:**
+
+- Password strength indicator (weak/medium/strong)
+- Confirm password validation
+- Terms & conditions checkbox
+- Form validation dengan Bootstrap
+
+### Halaman Components (`pages/`)
+
+1. **Badge** (`pages/components-badge.html`) - Dokumentasi dan contoh penggunaan badge component
+
+   - Custom creative colors (Ocean, Slate, Emerald, Rose, Amber, Cyan, Stone, Violet, Gradient)
+   - Pill badges dengan rounded corners
+   - Badges dengan icons
+   - Positioning badges
+   - Badge dalam buttons
+
+2. **Button** (`pages/components-button.html`) - Dokumentasi dan contoh penggunaan button component
+
+   - Custom button colors dengan gradient backgrounds
+   - Button sizes (Large, Default, Small)
+   - Buttons dengan icons
+   - Outline buttons
+   - Disabled state
+   - Loading state dengan spinner
+
+3. **Button Groups** (`pages/components-button-groups.html`) - Dokumentasi dan contoh penggunaan button groups
+
+   - Basic button groups
+   - Mixed styles (kombinasi warna dan outline)
+   - Button toolbar
+   - Sizing (Large, Default, Small)
+   - Vertical variation
+   - Button groups dengan icons
+   - Nesting dengan dropdown
+   - Radio button groups
+   - Checkbox button groups
+
+4. **Card** (`pages/components-card.html`) - Dokumentasi dan contoh penggunaan card component
+
+### Halaman Dashboard & Management
+
+1. **Dashboard** (`pages/dashboard.html`) - Dashboard dengan statistik, charts, dan quick actions
+2. **Users** (`pages/users.html`) - Manajemen users dengan DataTables
+3. **Products** (`pages/products.html`) - Manajemen products dengan DataTables
+4. **CRUD Template** (`pages/crud-template.html`) - Template CRUD lengkap
+5. **Blank Page** (`pages/blank.html`) - Starter template untuk halaman baru
+6. **Settings** (`pages/settings.html`) - Settings termasuk theme management
+7. **Profile** (`pages/profile.html`) - Edit profile user
 
 ## 🔧 Customization
 
@@ -283,4 +368,3 @@ Jika ada pertanyaan atau issue, silakan buat issue di repository ini.
 **Ethanol UI** - Clean & Modern Admin Dashboard
 
 Dibuat dengan ❤️ menggunakan Bootstrap 5.3.8
-

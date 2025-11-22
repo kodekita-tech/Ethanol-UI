@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en" data-bs-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard - Ethanol UI</title>
 
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/webp"
+      href="../assets/images/logo-ethanol-ui.webp"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/webp"
+      href="../assets/images/logo-ethanol-ui.webp"
+    />
+    <link rel="apple-touch-icon" href="../assets/images/logo-ethanol-ui.webp" />
+
+    <!-- Include Scripts -->
     <!-- Bootstrap 5.3.8 CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -13,980 +27,1164 @@
 
     <!-- Bootstrap Icons -->
     <link
-      rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+      rel="stylesheet"
     />
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- ApexCharts CSS -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      href="https://cdn.jsdelivr.net/npm/apexcharts@3.44.0/dist/apexcharts.css"
       rel="stylesheet"
     />
 
     <!-- Custom CSS -->
     <link href="../assets/css/custom.css" rel="stylesheet" />
     <link href="../assets/css/themes.css" rel="stylesheet" />
-
-    <!-- ApexCharts CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/apexcharts@3.44.0/dist/apexcharts.css"
-    />
   </head>
-  <body data-theme="light">
-    <!-- Topbar -->
-    <nav class="topbar" data-topbar-theme="blue">
-      <div class="topbar-left">
-        <button
-          class="btn btn-link"
-          id="sidebarToggle"
-          data-bs-toggle="tooltip"
-          title="Toggle Sidebar"
-        >
-          <i class="bi bi-list fs-4"></i>
-        </button>
-        <span class="ms-3 fw-bold">Ethanol UI</span>
-      </div>
-      <div class="topbar-right">
-        <button
-          class="btn btn-link"
-          id="colorSchemeToggle"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#colorSchemePanel"
-          aria-controls="colorSchemePanel"
-          title="Color Scheme Builder"
-        >
-          <i class="bi bi-palette fs-5"></i>
-        </button>
-        <button
-          class="btn btn-link"
-          id="themeToggle"
-          data-bs-toggle="tooltip"
-          title="Toggle Dark/Light Mode"
-        >
-          <i class="bi bi-moon fs-5"></i>
-        </button>
-        <div class="dropdown">
-          <button
-            class="btn btn-link d-flex align-items-center"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <aside class="sidebar sidebar-blue" id="sidebar">
+        <div class="sidebar-header">
+          <a
+            href="dashboard.html"
+            class="d-flex align-items-center text-decoration-none text-white"
           >
-            <div
-              class="rounded-circle d-flex align-items-center justify-content-center text-white me-2"
+            <img
+              src="../assets/images/logo-e.webp"
+              alt="Ethanol UI Logo"
+              class="sidebar-logo"
               style="
                 width: 40px;
                 height: 40px;
-                background: rgba(255, 255, 255, 0.25);
-                backdrop-filter: blur(10px);
+                margin-right: 10px;
+                flex-shrink: 0;
+                object-fit: contain;
               "
-            >
-              <i class="bi bi-person"></i>
-            </div>
-            <span class="fw-semibold">Admin User</span>
-            <i class="bi bi-chevron-down ms-2"></i>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-end">
+            />
+            <span class="fs-5 fw-bold sidebar-brand-text">Ethanol UI</span>
+          </a>
+        </div>
+
+        <nav class="sidebar-menu">
+          <ul class="list-unstyled mb-0">
             <li>
-              <a class="dropdown-item" href="#"
-                ><i class="bi bi-person me-2"></i>Profile</a
+              <a
+                href="dashboard.html"
+                class="menu-item active"
+                data-title="Dashboard"
               >
+                <i class="bi bi-speedometer2 me-2"></i>
+                <span>Dashboard</span>
+              </a>
             </li>
-            <li>
-              <a class="dropdown-item" href="#"
-                ><i class="bi bi-gear me-2"></i>Settings</a
+            <li class="menu-item-has-children">
+              <a
+                href="#"
+                class="menu-item menu-item-toggle"
+                data-title="Components"
               >
-            </li>
-            <li><hr class="dropdown-divider" /></li>
-            <li>
-              <a class="dropdown-item" href="../login.html"
-                ><i class="bi bi-box-arrow-right me-2"></i>Logout</a
-              >
+                <i class="bi bi-puzzle me-2"></i>
+                <span>Components</span>
+                <i class="bi bi-chevron-down menu-arrow ms-auto"></i>
+              </a>
+              <ul class="submenu">
+                <li>
+                  <a
+                    href="components-badge.html"
+                    class="submenu-item"
+                    data-title="Badge"
+                  >
+                    <i class="bi bi-circle-fill me-2"></i>
+                    <span>Badge</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="components-button.html"
+                    class="submenu-item"
+                    data-title="Button"
+                  >
+                    <i class="bi bi-square me-2"></i>
+                    <span>Button</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="components-button-groups.html"
+                    class="submenu-item"
+                    data-title="Button Groups"
+                  >
+                    <i class="bi bi-grid-3x3-gap me-2"></i>
+                    <span>Button Groups</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="components-card.html"
+                    class="submenu-item"
+                    data-title="Card"
+                  >
+                    <i class="bi bi-card-text me-2"></i>
+                    <span>Card</span>
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
-        </div>
-      </div>
-    </nav>
+        </nav>
+      </aside>
 
-    <!-- Sidebar -->
-    <aside class="sidebar" data-sidebar-theme="blue">
-      <!-- Sidebar Brand -->
-      <div class="sidebar-brand">
-        <div class="d-flex align-items-center">
-          <div class="sidebar-brand-logo me-3">
-            <i class="bi bi-layout-text-window-reverse"></i>
-          </div>
-          <div>
-            <div class="sidebar-brand-text">Ethanol UI</div>
-            <small
-              class="text-white-50"
-              style="font-size: 0.7rem; font-weight: 400"
-              >Admin Dashboard</small
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Sidebar Navigation -->
-      <nav class="nav flex-column">
-        <div class="sidebar-section-label">Main Menu</div>
-
-        <a class="nav-link active" href="dashboard.html">
-          <i class="bi bi-house-door"></i>
-          <span>Dashboard</span>
-        </a>
-
-        <a class="nav-link" href="#">
-          <i class="bi bi-people"></i>
-          <span>Users</span>
-          <span class="badge">12</span>
-        </a>
-
-        <a class="nav-link" href="#">
-          <i class="bi bi-box-seam"></i>
-          <span>Products</span>
-        </a>
-
-        <a class="nav-link" href="#">
-          <i class="bi bi-graph-up"></i>
-          <span>Analytics</span>
-        </a>
-
-        <a class="nav-link" href="#">
-          <i class="bi bi-envelope"></i>
-          <span>Messages</span>
-          <span class="badge">3</span>
-        </a>
-
-        <hr class="sidebar-divider" />
-
-        <div class="sidebar-section-label">Settings</div>
-
-        <a class="nav-link" href="#">
-          <i class="bi bi-gear"></i>
-          <span>Settings</span>
-        </a>
-
-        <a class="nav-link" href="#">
-          <i class="bi bi-person-circle"></i>
-          <span>Profile</span>
-        </a>
-
-        <a class="nav-link" href="#">
-          <i class="bi bi-question-circle"></i>
-          <span>Help & Support</span>
-        </a>
-      </nav>
-
-      <!-- Sidebar Footer -->
-      <div class="mt-auto p-3 border-top border-white border-opacity-10">
-        <div class="d-flex align-items-center">
-          <div class="flex-shrink-0">
-            <div
-              class="rounded-circle bg-white bg-opacity-20 d-flex align-items-center justify-content-center"
-              style="width: 36px; height: 36px"
-            >
-              <i class="bi bi-person text-white"></i>
-            </div>
-          </div>
-          <div class="flex-grow-1 ms-2">
-            <div class="text-white fw-semibold" style="font-size: 0.875rem">
-              Admin User
-            </div>
-            <small class="text-white-50" style="font-size: 0.75rem"
-              >admin@example.com</small
-            >
-          </div>
-        </div>
-      </div>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="main-content">
-      <!-- Page Header -->
-      <div class="page-header-modern fade-in-up">
-        <div class="page-header-background"></div>
-        <div class="page-header-content">
-          <div class="page-header-greeting">
-            <h2 class="greeting-text">
-              <span id="greetingMessage">Selamat Datang</span>,
-              <span class="greeting-name">Admin</span>
-            </h2>
-            <div class="datetime-display">
-              <div class="date-time-item">
-                <i class="bi bi-calendar3 me-2"></i>
-                <span id="currentDate"></span>
-              </div>
-              <div class="date-time-separator">•</div>
-              <div class="date-time-item">
-                <i class="bi bi-clock me-2"></i>
-                <span id="currentTime"></span>
-              </div>
-            </div>
-          </div>
-          <div class="page-header-actions">
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand-lg topbar topbar-blue" id="topbar">
+          <div class="container-fluid">
+            <!-- Sidebar Toggle -->
             <button
-              class="btn btn-icon-modern"
-              data-bs-toggle="tooltip"
-              title="Filter"
+              class="btn btn-link text-white"
+              id="sidebarToggle"
+              type="button"
             >
-              <i class="bi bi-funnel"></i>
+              <i class="bi bi-list fs-4"></i>
             </button>
-            <button
-              class="btn btn-icon-modern"
-              data-bs-toggle="tooltip"
-              title="Export"
-            >
-              <i class="bi bi-download"></i>
-            </button>
-            <button class="btn btn-primary-modern">
-              <i class="bi bi-plus-circle me-2"></i>New Action
-            </button>
+
+            <!-- Search -->
+            <div class="d-none d-md-flex align-items-center ms-3">
+              <div class="input-group" style="max-width: 400px">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search..."
+                />
+                <button class="btn btn-outline-light" type="button">
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Side -->
+            <div class="ms-auto d-flex align-items-center gap-2">
+              <!-- Dark Mode Toggle -->
+              <button
+                class="btn btn-link text-white topbar-action-btn"
+                id="darkModeToggle"
+                type="button"
+                title="Toggle Dark Mode"
+                onclick="if(typeof ThemeManager !== 'undefined') ThemeManager.toggleDarkMode();"
+              >
+                <i class="bi bi-moon-stars fs-5"></i>
+              </button>
+
+              <!-- Notifications -->
+              <div class="dropdown">
+                <button
+                  class="btn btn-link text-white position-relative topbar-action-btn"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bi bi-bell fs-5"></i>
+                  <span
+                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger notification-badge"
+                  >
+                    3
+                  </span>
+                </button>
+                <ul
+                  class="dropdown-menu dropdown-menu-end notification-dropdown"
+                  style="width: 360px"
+                >
+                  <li>
+                    <div class="notification-dropdown-header">
+                      <div
+                        class="d-flex justify-content-between align-items-center"
+                      >
+                        <div>
+                          <h6 class="mb-0 fw-bold">Notifications</h6>
+                          <p class="mb-0 text-muted small">
+                            You have 3 new notifications
+                          </p>
+                        </div>
+                        <span class="badge badge-notification-count">3</span>
+                      </div>
+                    </div>
+                  </li>
+                  <li><div class="dropdown-divider-modern"></div></li>
+                  <li>
+                    <a class="notification-item-modern" href="#">
+                      <div
+                        class="notification-icon-wrapper notification-icon-primary"
+                      >
+                        <i class="bi bi-cart-check"></i>
+                      </div>
+                      <div class="flex-grow-1">
+                        <div class="notification-content">
+                          <div class="notification-title">
+                            New order received
+                          </div>
+                          <div class="notification-message">
+                            Order #1234 has been placed
+                          </div>
+                          <div class="notification-time">
+                            <i class="bi bi-clock me-1"></i>2 minutes ago
+                          </div>
+                        </div>
+                      </div>
+                      <div class="notification-unread-indicator"></div>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="notification-item-modern" href="#">
+                      <div
+                        class="notification-icon-wrapper notification-icon-success"
+                      >
+                        <i class="bi bi-person-plus"></i>
+                      </div>
+                      <div class="flex-grow-1">
+                        <div class="notification-content">
+                          <div class="notification-title">
+                            New user registered
+                          </div>
+                          <div class="notification-message">
+                            John Doe just registered
+                          </div>
+                          <div class="notification-time">
+                            <i class="bi bi-clock me-1"></i>15 minutes ago
+                          </div>
+                        </div>
+                      </div>
+                      <div class="notification-unread-indicator"></div>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="notification-item-modern" href="#">
+                      <div
+                        class="notification-icon-wrapper notification-icon-info"
+                      >
+                        <i class="bi bi-bell"></i>
+                      </div>
+                      <div class="flex-grow-1">
+                        <div class="notification-content">
+                          <div class="notification-title">
+                            System update available
+                          </div>
+                          <div class="notification-message">
+                            New version 2.0 is ready
+                          </div>
+                          <div class="notification-time">
+                            <i class="bi bi-clock me-1"></i>1 hour ago
+                          </div>
+                        </div>
+                      </div>
+                      <div class="notification-unread-indicator"></div>
+                    </a>
+                  </li>
+                  <li><div class="dropdown-divider-modern"></div></li>
+                  <li>
+                    <a class="notification-view-all" href="#">
+                      <i class="bi bi-arrow-right-circle me-2"></i>
+                      View all notifications
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Color Scheme Picker -->
+              <div class="dropdown">
+                <button
+                  class="btn btn-link text-white topbar-action-btn"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  title="Color Scheme"
+                >
+                  <i class="bi bi-palette fs-5"></i>
+                </button>
+                <ul
+                  class="dropdown-menu dropdown-menu-end color-scheme-dropdown"
+                >
+                  <li>
+                    <div class="color-scheme-header">
+                      <div class="d-flex align-items-center gap-2 mb-1">
+                        <div class="color-scheme-header-icon">
+                          <i class="bi bi-palette"></i>
+                        </div>
+                        <h6 class="mb-0 fw-bold">Color Scheme</h6>
+                      </div>
+                      <p class="mb-0 text-muted small">
+                        Customize your theme colors
+                      </p>
+                    </div>
+                  </li>
+                  <li><div class="dropdown-divider-modern"></div></li>
+                  <li>
+                    <div class="color-scheme-section">
+                      <div class="color-scheme-label">
+                        <i class="bi bi-layout-sidebar me-2"></i>
+                        <span>Sidebar Color</span>
+                      </div>
+                      <div class="color-picker-grid">
+                        <button
+                          class="color-picker-btn active"
+                          data-color="blue"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #1e3a8a 0%,
+                              #1e40af 100%
+                            );
+                          "
+                          title="Blue"
+                        >
+                          <span class="color-name">Blue</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="purple"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #6b21a8 0%,
+                              #7c3aed 100%
+                            );
+                          "
+                          title="Purple"
+                        >
+                          <span class="color-name">Purple</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="green"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #166534 0%,
+                              #16a34a 100%
+                            );
+                          "
+                          title="Green"
+                        >
+                          <span class="color-name">Green</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="orange"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #c2410c 0%,
+                              #ea580c 100%
+                            );
+                          "
+                          title="Orange"
+                        >
+                          <span class="color-name">Orange</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="red"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #991b1b 0%,
+                              #dc2626 100%
+                            );
+                          "
+                          title="Red"
+                        >
+                          <span class="color-name">Red</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="teal"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #0f766e 0%,
+                              #14b8a6 100%
+                            );
+                          "
+                          title="Teal"
+                        >
+                          <span class="color-name">Teal</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="indigo"
+                          data-type="sidebar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #3730a3 0%,
+                              #6366f1 100%
+                            );
+                          "
+                          title="Indigo"
+                        >
+                          <span class="color-name">Indigo</span>
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="color-scheme-section">
+                      <div class="color-scheme-label">
+                        <i class="bi bi-layout-top me-2"></i>
+                        <span>Topbar Color</span>
+                      </div>
+                      <div class="color-picker-grid">
+                        <button
+                          class="color-picker-btn active"
+                          data-color="blue"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #1e3a8a 0%,
+                              #1e40af 100%
+                            );
+                          "
+                          title="Blue"
+                        >
+                          <span class="color-name">Blue</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="purple"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #6b21a8 0%,
+                              #7c3aed 100%
+                            );
+                          "
+                          title="Purple"
+                        >
+                          <span class="color-name">Purple</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="green"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #166534 0%,
+                              #16a34a 100%
+                            );
+                          "
+                          title="Green"
+                        >
+                          <span class="color-name">Green</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="orange"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #c2410c 0%,
+                              #ea580c 100%
+                            );
+                          "
+                          title="Orange"
+                        >
+                          <span class="color-name">Orange</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="red"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #991b1b 0%,
+                              #dc2626 100%
+                            );
+                          "
+                          title="Red"
+                        >
+                          <span class="color-name">Red</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="teal"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #0f766e 0%,
+                              #14b8a6 100%
+                            );
+                          "
+                          title="Teal"
+                        >
+                          <span class="color-name">Teal</span>
+                        </button>
+                        <button
+                          class="color-picker-btn"
+                          data-color="indigo"
+                          data-type="topbar"
+                          style="
+                            background: linear-gradient(
+                              135deg,
+                              #3730a3 0%,
+                              #6366f1 100%
+                            );
+                          "
+                          title="Indigo"
+                        >
+                          <span class="color-name">Indigo</span>
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                  <li><div class="dropdown-divider-modern"></div></li>
+                  <li>
+                    <button
+                      class="color-scheme-reset-btn"
+                      type="button"
+                      id="resetThemeBtn"
+                    >
+                      <div class="reset-icon-wrapper">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                      </div>
+                      <div class="flex-grow-1">
+                        <div class="reset-title">Reset to Default</div>
+                        <div class="reset-subtitle">
+                          Restore original colors
+                        </div>
+                      </div>
+                      <i class="bi bi-chevron-right reset-arrow"></i>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- User Dropdown -->
+              <div class="dropdown">
+                <button
+                  class="btn btn-link text-white d-flex align-items-center gap-2 topbar-user-btn"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <div
+                    class="user-avatar rounded-circle bg-white text-primary d-flex align-items-center justify-content-center fw-bold"
+                    style="width: 36px; height: 36px; font-size: 0.9rem"
+                  >
+                    A
+                  </div>
+                  <div
+                    class="d-none d-md-flex flex-column align-items-start"
+                    style="line-height: 1.2"
+                  >
+                    <span class="fw-semibold" style="font-size: 0.9rem"
+                      >Admin User</span
+                    >
+                    <span class="text-white-50" style="font-size: 0.75rem"
+                      >Administrator</span
+                    >
+                  </div>
+                  <i
+                    class="bi bi-chevron-down d-none d-md-inline"
+                    style="font-size: 0.8rem"
+                  ></i>
+                </button>
+                <ul
+                  class="dropdown-menu dropdown-menu-end user-dropdown"
+                  id="userDropdown"
+                >
+                  <li>
+                    <div class="user-dropdown-header">
+                      <div class="d-flex align-items-center">
+                        <div class="user-avatar-wrapper position-relative me-3">
+                          <div
+                            class="user-avatar-large rounded-circle text-white d-flex align-items-center justify-content-center fw-bold"
+                          >
+                            A
+                          </div>
+                          <span
+                            class="user-status-badge position-absolute bottom-0 end-0"
+                          ></span>
+                        </div>
+                        <div class="flex-grow-1">
+                          <div class="fw-bold mb-1">Admin User</div>
+                          <div class="text-muted small mb-1">
+                            admin@example.com
+                          </div>
+                          <span class="badge badge-role">Administrator</span>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li><div class="dropdown-divider-modern"></div></li>
+                  <li>
+                    <a class="dropdown-item-modern" href="profile.html">
+                      <div class="dropdown-icon-wrapper">
+                        <i class="bi bi-person"></i>
+                      </div>
+                      <div class="flex-grow-1">
+                        <div class="dropdown-item-title">My Profile</div>
+                        <div class="dropdown-item-subtitle">
+                          View your profile
+                        </div>
+                      </div>
+                      <i class="bi bi-chevron-right dropdown-arrow"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item-modern" href="settings.html">
+                      <div class="dropdown-icon-wrapper">
+                        <i class="bi bi-gear"></i>
+                      </div>
+                      <div class="flex-grow-1">
+                        <div class="dropdown-item-title">Settings</div>
+                        <div class="dropdown-item-subtitle">
+                          Manage preferences
+                        </div>
+                      </div>
+                      <i class="bi bi-chevron-right dropdown-arrow"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item-modern" href="#">
+                      <div class="dropdown-icon-wrapper">
+                        <i class="bi bi-question-circle"></i>
+                      </div>
+                      <div class="flex-grow-1">
+                        <div class="dropdown-item-title">Help & Support</div>
+                        <div class="dropdown-item-subtitle">Get assistance</div>
+                      </div>
+                      <i class="bi bi-chevron-right dropdown-arrow"></i>
+                    </a>
+                  </li>
+                  <li><div class="dropdown-divider-modern"></div></li>
+                  <li>
+                    <a
+                      class="dropdown-item-modern dropdown-item-danger"
+                      href="../pages/auth/login.html"
+                    >
+                      <div class="dropdown-icon-wrapper">
+                        <i class="bi bi-box-arrow-right"></i>
+                      </div>
+                      <div class="flex-grow-1">
+                        <div class="dropdown-item-title">Logout</div>
+                        <div class="dropdown-item-subtitle">
+                          Sign out from account
+                        </div>
+                      </div>
+                      <i class="bi bi-chevron-right dropdown-arrow"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="page-header-stats">
-          <div class="header-stat-item">
-            <i class="bi bi-clock-history text-primary"></i>
+        </nav>
+
+        <!-- Content Area -->
+        <div class="content-area">
+          <!-- Page Header -->
+          <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-              <span class="stat-label">Last Update</span>
-              <span class="stat-value">2 minutes ago</span>
+              <h2 class="mb-2 fw-bold">Welcome Back! 👋</h2>
+              <p class="text-muted mb-0">
+                Here's what's happening with your business today
+              </p>
             </div>
-          </div>
-          <div class="header-stat-item">
-            <i class="bi bi-activity text-success"></i>
-            <div>
-              <span class="stat-label">System Status</span>
-              <span class="stat-value">All Systems Operational</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Stats Cards -->
-      <div class="row g-4 mb-4">
-        <div class="col-lg-3 col-md-6">
-          <div
-            class="stat-card primary fade-in-up"
-            style="animation-delay: 0.1s"
-          >
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <div>
-                <p class="mb-1 opacity-75" style="font-size: 0.875rem">
-                  Total Users
-                </p>
-                <h2 class="mb-0 fw-bold">12,345</h2>
-                <small class="opacity-75">
-                  <i class="bi bi-arrow-up"></i> 12.5% increase
-                </small>
-              </div>
-              <div class="stat-icon">
-                <i class="bi bi-people"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6">
-          <div
-            class="stat-card success fade-in-up"
-            style="animation-delay: 0.2s"
-          >
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <div>
-                <p class="mb-1 opacity-75" style="font-size: 0.875rem">
-                  Revenue
-                </p>
-                <h2 class="mb-0 fw-bold">$125.5K</h2>
-                <small class="opacity-75">
-                  <i class="bi bi-arrow-up"></i> 8.2% increase
-                </small>
-              </div>
-              <div class="stat-icon">
-                <i class="bi bi-currency-dollar"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6">
-          <div
-            class="stat-card warning fade-in-up"
-            style="animation-delay: 0.3s"
-          >
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <div>
-                <p class="mb-1 opacity-75" style="font-size: 0.875rem">
-                  Orders
-                </p>
-                <h2 class="mb-0 fw-bold">8,932</h2>
-                <small class="opacity-75">
-                  <i class="bi bi-arrow-down"></i> 3.1% decrease
-                </small>
-              </div>
-              <div class="stat-icon">
-                <i class="bi bi-cart"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6">
-          <div class="stat-card info fade-in-up" style="animation-delay: 0.4s">
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <div>
-                <p class="mb-1 opacity-75" style="font-size: 0.875rem">
-                  Products
-                </p>
-                <h2 class="mb-0 fw-bold">1,456</h2>
-                <small class="opacity-75">
-                  <i class="bi bi-arrow-up"></i> 5.7% increase
-                </small>
-              </div>
-              <div class="stat-icon">
-                <i class="bi bi-box-seam"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Charts Row -->
-      <div class="row g-4 mb-4">
-        <div class="col-lg-8">
-          <div class="card-modern fade-in-up" style="animation-delay: 0.5s">
-            <div class="card-header-modern">
-              <div class="d-flex justify-content-between align-items-center">
-                <div>
-                  <h5 class="card-title-modern">
-                    <i class="bi bi-graph-up-arrow me-2 text-primary"></i>Sales
-                    Overview
-                  </h5>
-                  <p class="card-subtitle-modern mb-0">
-                    Revenue and sales performance
-                  </p>
+            <div class="datetime-widget">
+              <div class="datetime-card">
+                <div class="datetime-icon">
+                  <i class="bi bi-calendar3"></i>
                 </div>
-                <div class="period-selector">
-                  <div class="btn-group-modern" role="group">
-                    <input
-                      type="radio"
-                      class="btn-check"
-                      name="period"
-                      id="week"
-                      checked
-                    />
-                    <label class="btn-period" for="week">Week</label>
-                    <input
-                      type="radio"
-                      class="btn-check"
-                      name="period"
-                      id="month"
-                    />
-                    <label class="btn-period" for="month">Month</label>
-                    <input
-                      type="radio"
-                      class="btn-check"
-                      name="period"
-                      id="year"
-                    />
-                    <label class="btn-period" for="year">Year</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card-body-modern">
-              <div id="salesChart" style="min-height: 320px"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4">
-          <div class="card-modern fade-in-up" style="animation-delay: 0.6s">
-            <div class="card-header-modern">
-              <div>
-                <h5 class="card-title-modern">
-                  <i class="bi bi-clock-history me-2 text-primary"></i>Recent
-                  Activities
-                </h5>
-                <p class="card-subtitle-modern mb-0">
-                  Latest system activities
-                </p>
-              </div>
-            </div>
-            <div class="card-body-modern">
-              <div class="activity-timeline">
-                <div class="activity-item-modern">
-                  <div class="activity-timeline-line"></div>
-                  <div class="activity-icon-modern bg-primary">
-                    <i class="bi bi-person-plus"></i>
-                  </div>
-                  <div class="activity-content">
-                    <p class="activity-title">New user registered</p>
-                    <small class="activity-time">
-                      <i class="bi bi-clock me-1"></i>2 minutes ago
-                    </small>
-                  </div>
-                </div>
-
-                <div class="activity-item-modern">
-                  <div class="activity-timeline-line"></div>
-                  <div class="activity-icon-modern bg-success">
-                    <i class="bi bi-check-circle"></i>
-                  </div>
-                  <div class="activity-content">
-                    <p class="activity-title">Order completed</p>
-                    <small class="activity-time">
-                      <i class="bi bi-clock me-1"></i>15 minutes ago
-                    </small>
-                  </div>
-                </div>
-
-                <div class="activity-item-modern">
-                  <div class="activity-timeline-line"></div>
-                  <div class="activity-icon-modern bg-warning">
-                    <i class="bi bi-exclamation-triangle"></i>
-                  </div>
-                  <div class="activity-content">
-                    <p class="activity-title">Payment pending</p>
-                    <small class="activity-time">
-                      <i class="bi bi-clock me-1"></i>1 hour ago
-                    </small>
-                  </div>
-                </div>
-
-                <div class="activity-item-modern">
-                  <div class="activity-timeline-line"></div>
-                  <div class="activity-icon-modern bg-info">
-                    <i class="bi bi-info-circle"></i>
-                  </div>
-                  <div class="activity-content">
-                    <p class="activity-title">System update</p>
-                    <small class="activity-time">
-                      <i class="bi bi-clock me-1"></i>3 hours ago
-                    </small>
-                  </div>
-                </div>
-
-                <div class="activity-item-modern">
-                  <div class="activity-icon-modern bg-secondary">
-                    <i class="bi bi-download"></i>
-                  </div>
-                  <div class="activity-content">
-                    <p class="activity-title">Report generated</p>
-                    <small class="activity-time">
-                      <i class="bi bi-clock me-1"></i>5 hours ago
-                    </small>
-                  </div>
+                <div class="datetime-content">
+                  <div class="datetime-date" id="currentDate"></div>
+                  <div class="datetime-time" id="currentTime"></div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Quick Actions & Recent Orders -->
-      <div class="row g-4">
-        <div class="col-lg-6">
-          <div class="card-modern fade-in-up" style="animation-delay: 0.7s">
-            <div class="card-header-modern">
-              <div>
-                <h5 class="card-title-modern">
-                  <i class="bi bi-lightning-charge me-2 text-primary"></i>Quick
-                  Actions
-                </h5>
-                <p class="card-subtitle-modern mb-0">Frequently used actions</p>
-              </div>
-            </div>
-            <div class="card-body-modern">
-              <div class="quick-actions-grid">
-                <a href="#" class="quick-action-modern">
-                  <div class="quick-action-icon bg-primary">
+          <!-- Statistics Cards -->
+          <div class="row g-4 mb-4">
+            <div class="col-md-6 col-lg-3">
+              <div class="card stat-card stat-card-primary">
+                <div class="card-body position-relative overflow-hidden">
+                  <div class="stat-background-icon">
                     <i class="bi bi-people"></i>
                   </div>
-                  <div class="quick-action-content">
-                    <h6 class="mb-1">Manage Users</h6>
-                    <small>View all users</small>
+                  <div class="d-flex justify-content-between align-items-start">
+                    <div class="position-relative" style="z-index: 2">
+                      <p class="stat-label mb-2">Total Users</p>
+                      <h3 class="stat-value mb-2">1,234</h3>
+                      <div class="d-flex align-items-center gap-1">
+                        <span
+                          class="badge bg-success bg-opacity-10 text-success"
+                        >
+                          <i class="bi bi-arrow-up"></i> 12.5%
+                        </span>
+                        <span class="text-muted small">vs last month</span>
+                      </div>
+                    </div>
+                    <div
+                      class="stat-icon stat-icon-primary position-relative"
+                      style="z-index: 2"
+                    >
+                      <i class="bi bi-people"></i>
+                    </div>
                   </div>
-                  <i class="bi bi-arrow-right quick-action-arrow"></i>
-                </a>
+                </div>
+              </div>
+            </div>
 
-                <a href="#" class="quick-action-modern">
-                  <div class="quick-action-icon bg-success">
+            <div class="col-md-6 col-lg-3">
+              <div class="card stat-card stat-card-success">
+                <div class="card-body position-relative overflow-hidden">
+                  <div class="stat-background-icon">
                     <i class="bi bi-box-seam"></i>
                   </div>
-                  <div class="quick-action-content">
-                    <h6 class="mb-1">Products</h6>
-                    <small>Manage inventory</small>
+                  <div class="d-flex justify-content-between align-items-start">
+                    <div class="position-relative" style="z-index: 2">
+                      <p class="stat-label mb-2">Total Products</p>
+                      <h3 class="stat-value mb-2">856</h3>
+                      <div class="d-flex align-items-center gap-1">
+                        <span
+                          class="badge bg-success bg-opacity-10 text-success"
+                        >
+                          <i class="bi bi-arrow-up"></i> 8.2%
+                        </span>
+                        <span class="text-muted small">vs last month</span>
+                      </div>
+                    </div>
+                    <div
+                      class="stat-icon stat-icon-success position-relative"
+                      style="z-index: 2"
+                    >
+                      <i class="bi bi-box-seam"></i>
+                    </div>
                   </div>
-                  <i class="bi bi-arrow-right quick-action-arrow"></i>
-                </a>
-
-                <a href="#" class="quick-action-modern">
-                  <div class="quick-action-icon bg-info">
-                    <i class="bi bi-graph-up"></i>
-                  </div>
-                  <div class="quick-action-content">
-                    <h6 class="mb-1">Analytics</h6>
-                    <small>View reports</small>
-                  </div>
-                  <i class="bi bi-arrow-right quick-action-arrow"></i>
-                </a>
-
-                <a href="#" class="quick-action-modern">
-                  <div class="quick-action-icon bg-warning">
-                    <i class="bi bi-gear"></i>
-                  </div>
-                  <div class="quick-action-content">
-                    <h6 class="mb-1">Settings</h6>
-                    <small>Configure app</small>
-                  </div>
-                  <i class="bi bi-arrow-right quick-action-arrow"></i>
-                </a>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="col-lg-6">
-          <div class="card-modern fade-in-up" style="animation-delay: 0.8s">
-            <div class="card-header-modern">
-              <div
-                class="d-flex justify-content-between align-items-center w-100"
-              >
-                <div>
-                  <h5 class="card-title-modern">
-                    <i class="bi bi-receipt me-2 text-primary"></i>Recent Orders
-                  </h5>
-                  <p class="card-subtitle-modern mb-0">
-                    Latest order transactions
-                  </p>
+            <div class="col-md-6 col-lg-3">
+              <div class="card stat-card stat-card-warning">
+                <div class="card-body position-relative overflow-hidden">
+                  <div class="stat-background-icon">
+                    <i class="bi bi-cart"></i>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-start">
+                    <div class="position-relative" style="z-index: 2">
+                      <p class="stat-label mb-2">Total Orders</p>
+                      <h3 class="stat-value mb-2">3,456</h3>
+                      <div class="d-flex align-items-center gap-1">
+                        <span class="badge bg-danger bg-opacity-10 text-danger">
+                          <i class="bi bi-arrow-down"></i> 3.1%
+                        </span>
+                        <span class="text-muted small">vs last month</span>
+                      </div>
+                    </div>
+                    <div
+                      class="stat-icon stat-icon-warning position-relative"
+                      style="z-index: 2"
+                    >
+                      <i class="bi bi-cart"></i>
+                    </div>
+                  </div>
                 </div>
-                <a href="#" class="btn-view-all-modern">
-                  <span>View All</span>
-                  <i class="bi bi-arrow-right"></i>
-                </a>
               </div>
             </div>
-            <div class="card-body-modern">
-              <div class="orders-list">
-                <div class="order-item-modern">
-                  <div class="order-info">
-                    <div class="order-id">#12345</div>
-                    <div class="order-customer">John Doe</div>
-                  </div>
-                  <div class="order-details">
-                    <div class="order-amount">$245.00</div>
-                    <span class="badge-modern bg-success">
-                      <i class="bi bi-check-circle-fill"></i>
-                      Completed
-                    </span>
-                  </div>
-                </div>
 
-                <div class="order-item-modern">
-                  <div class="order-info">
-                    <div class="order-id">#12346</div>
-                    <div class="order-customer">Jane Smith</div>
+            <div class="col-md-6 col-lg-3">
+              <div class="card stat-card stat-card-info">
+                <div class="card-body position-relative overflow-hidden">
+                  <div class="stat-background-icon">
+                    <i class="bi bi-currency-dollar"></i>
                   </div>
-                  <div class="order-details">
-                    <div class="order-amount">$189.50</div>
-                    <span class="badge-modern bg-warning">
-                      <i class="bi bi-clock-fill"></i>
-                      Pending
-                    </span>
-                  </div>
-                </div>
-
-                <div class="order-item-modern">
-                  <div class="order-info">
-                    <div class="order-id">#12347</div>
-                    <div class="order-customer">Bob Johnson</div>
-                  </div>
-                  <div class="order-details">
-                    <div class="order-amount">$320.75</div>
-                    <span class="badge-modern bg-success">
-                      <i class="bi bi-check-circle-fill"></i>
-                      Completed
-                    </span>
-                  </div>
-                </div>
-
-                <div class="order-item-modern">
-                  <div class="order-info">
-                    <div class="order-id">#12348</div>
-                    <div class="order-customer">Alice Brown</div>
-                  </div>
-                  <div class="order-details">
-                    <div class="order-amount">$156.00</div>
-                    <span class="badge-modern bg-primary">
-                      <i class="bi bi-arrow-repeat"></i>
-                      Processing
-                    </span>
+                  <div class="d-flex justify-content-between align-items-start">
+                    <div class="position-relative" style="z-index: 2">
+                      <p class="stat-label mb-2">Revenue</p>
+                      <h3 class="stat-value mb-2">$45.2K</h3>
+                      <div class="d-flex align-items-center gap-1">
+                        <span
+                          class="badge bg-success bg-opacity-10 text-success"
+                        >
+                          <i class="bi bi-arrow-up"></i> 15.8%
+                        </span>
+                        <span class="text-muted small">vs last month</span>
+                      </div>
+                    </div>
+                    <div
+                      class="stat-icon stat-icon-info position-relative"
+                      style="z-index: 2"
+                    >
+                      <i class="bi bi-currency-dollar"></i>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </main>
 
-    <!-- Color Scheme Builder Panel -->
-    <div
-      class="offcanvas offcanvas-end"
-      tabindex="-1"
-      id="colorSchemePanel"
-      aria-labelledby="colorSchemePanelLabel"
-    >
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title fw-bold" id="colorSchemePanelLabel">
-          <i class="bi bi-palette me-2"></i>Color Scheme Builder
-        </h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="offcanvas-body">
-        <!-- Dark/Light Mode -->
-        <div class="mb-4">
-          <label class="form-label fw-semibold mb-3">Mode</label>
-          <div class="btn-group w-100" role="group">
-            <input
-              type="radio"
-              class="btn-check"
-              name="themeMode"
-              id="lightMode"
-              value="light"
-              checked
-            />
-            <label class="btn btn-outline-primary" for="lightMode">
-              <i class="bi bi-sun me-2"></i>Light
-            </label>
-            <input
-              type="radio"
-              class="btn-check"
-              name="themeMode"
-              id="darkMode"
-              value="dark"
-            />
-            <label class="btn btn-outline-primary" for="darkMode">
-              <i class="bi bi-moon me-2"></i>Dark
-            </label>
+          <!-- Charts Row -->
+          <div class="row g-4 mb-4">
+            <!-- Sales Chart -->
+            <div class="col-lg-8">
+              <div class="card chart-container-modern">
+                <div
+                  class="card-header bg-transparent border-0 pb-0 d-flex justify-content-between align-items-center"
+                >
+                  <div>
+                    <h5 class="mb-1 fw-bold">Sales Overview</h5>
+                    <p class="text-muted small mb-0">
+                      Last 12 months performance
+                    </p>
+                  </div>
+                  <div class="dropdown">
+                    <button
+                      class="btn btn-sm btn-outline-secondary"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                    >
+                      <i class="bi bi-three-dots-vertical"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                      <li>
+                        <a class="dropdown-item" href="#"
+                          ><i class="bi bi-download me-2"></i>Export</a
+                        >
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#"
+                          ><i class="bi bi-printer me-2"></i>Print</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div id="salesChart" style="min-height: 350px"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Revenue Chart -->
+            <div class="col-lg-4">
+              <div class="card chart-container-modern">
+                <div class="card-header bg-transparent border-0 pb-0">
+                  <h5 class="mb-1 fw-bold">Revenue Distribution</h5>
+                  <p class="text-muted small mb-0">By product category</p>
+                </div>
+                <div class="card-body">
+                  <div id="revenueChart" style="min-height: 350px"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activities & Quick Actions -->
+          <div class="row g-4">
+            <!-- Recent Activities -->
+            <div class="col-lg-8">
+              <div class="card">
+                <div
+                  class="card-header bg-transparent border-0 pb-0 d-flex justify-content-between align-items-center"
+                >
+                  <div>
+                    <h5 class="mb-1 fw-bold">Recent Activities</h5>
+                    <p class="text-muted small mb-0">
+                      Latest updates and notifications
+                    </p>
+                  </div>
+                  <a href="#" class="btn btn-sm btn-link text-primary"
+                    >View All</a
+                  >
+                </div>
+                <div class="card-body">
+                  <div class="activity-timeline">
+                    <div class="activity-item">
+                      <div
+                        class="activity-icon bg-primary bg-opacity-10 text-primary"
+                      >
+                        <i class="bi bi-person-plus"></i>
+                      </div>
+                      <div class="activity-content">
+                        <div
+                          class="d-flex justify-content-between align-items-start mb-1"
+                        >
+                          <h6 class="mb-0 fw-semibold">New user registered</h6>
+                          <span
+                            class="badge bg-primary bg-opacity-10 text-primary"
+                            >New</span
+                          >
+                        </div>
+                        <p class="text-muted small mb-1">
+                          John Doe just registered to the system
+                        </p>
+                        <small class="text-muted">
+                          <i class="bi bi-clock me-1"></i>2 minutes ago
+                        </small>
+                      </div>
+                    </div>
+
+                    <div class="activity-item">
+                      <div
+                        class="activity-icon bg-success bg-opacity-10 text-success"
+                      >
+                        <i class="bi bi-cart-check"></i>
+                      </div>
+                      <div class="activity-content">
+                        <div
+                          class="d-flex justify-content-between align-items-start mb-1"
+                        >
+                          <h6 class="mb-0 fw-semibold">New order received</h6>
+                          <span
+                            class="badge bg-success bg-opacity-10 text-success"
+                            >Order</span
+                          >
+                        </div>
+                        <p class="text-muted small mb-1">
+                          Order #1234 has been placed successfully
+                        </p>
+                        <small class="text-muted">
+                          <i class="bi bi-clock me-1"></i>15 minutes ago
+                        </small>
+                      </div>
+                    </div>
+
+                    <div class="activity-item">
+                      <div
+                        class="activity-icon bg-warning bg-opacity-10 text-warning"
+                      >
+                        <i class="bi bi-box-seam"></i>
+                      </div>
+                      <div class="activity-content">
+                        <div
+                          class="d-flex justify-content-between align-items-start mb-1"
+                        >
+                          <h6 class="mb-0 fw-semibold">Product updated</h6>
+                          <span
+                            class="badge bg-warning bg-opacity-10 text-warning"
+                            >Update</span
+                          >
+                        </div>
+                        <p class="text-muted small mb-1">
+                          Product "Laptop Pro" has been updated
+                        </p>
+                        <small class="text-muted">
+                          <i class="bi bi-clock me-1"></i>1 hour ago
+                        </small>
+                      </div>
+                    </div>
+
+                    <div class="activity-item">
+                      <div
+                        class="activity-icon bg-info bg-opacity-10 text-info"
+                      >
+                        <i class="bi bi-bell"></i>
+                      </div>
+                      <div class="activity-content">
+                        <div
+                          class="d-flex justify-content-between align-items-start mb-1"
+                        >
+                          <h6 class="mb-0 fw-semibold">System notification</h6>
+                          <span class="badge bg-info bg-opacity-10 text-info"
+                            >System</span
+                          >
+                        </div>
+                        <p class="text-muted small mb-1">
+                          System backup completed successfully
+                        </p>
+                        <small class="text-muted">
+                          <i class="bi bi-clock me-1"></i>2 hours ago
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-header bg-transparent border-0 pb-0">
+                  <h5 class="mb-1 fw-bold">Quick Actions</h5>
+                  <p class="text-muted small mb-0">Frequently used actions</p>
+                </div>
+                <div class="card-body">
+                  <div class="d-grid gap-2">
+                    <a
+                      href="users.html"
+                      class="quick-action-btn quick-action-ocean"
+                    >
+                      <div class="d-flex align-items-center">
+                        <div class="quick-action-icon me-3">
+                          <i class="bi bi-person-plus"></i>
+                        </div>
+                        <div class="text-start flex-grow-1">
+                          <div class="fw-semibold">Add New User</div>
+                          <small class="opacity-75"
+                            >Create a new user account</small
+                          >
+                        </div>
+                      </div>
+                    </a>
+                    <a
+                      href="products.html"
+                      class="quick-action-btn quick-action-slate"
+                    >
+                      <div class="d-flex align-items-center">
+                        <div class="quick-action-icon me-3">
+                          <i class="bi bi-box-seam"></i>
+                        </div>
+                        <div class="text-start flex-grow-1">
+                          <div class="fw-semibold">Add New Product</div>
+                          <small class="opacity-75"
+                            >Add product to catalog</small
+                          >
+                        </div>
+                      </div>
+                    </a>
+                    <a
+                      href="blank.html"
+                      class="quick-action-btn quick-action-emerald"
+                    >
+                      <div class="d-flex align-items-center">
+                        <div class="quick-action-icon me-3">
+                          <i class="bi bi-file-earmark-plus"></i>
+                        </div>
+                        <div class="text-start flex-grow-1">
+                          <div class="fw-semibold">Create New Page</div>
+                          <small class="opacity-75">Start a new page</small>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="#" class="quick-action-btn quick-action-rose">
+                      <div class="d-flex align-items-center">
+                        <div class="quick-action-icon me-3">
+                          <i class="bi bi-trash"></i>
+                        </div>
+                        <div class="text-start flex-grow-1">
+                          <div class="fw-semibold">Delete Item</div>
+                          <small class="opacity-75"
+                            >Remove selected items</small
+                          >
+                        </div>
+                      </div>
+                    </a>
+                    <a href="#" class="quick-action-btn quick-action-amber">
+                      <div class="d-flex align-items-center">
+                        <div class="quick-action-icon me-3">
+                          <i class="bi bi-exclamation-triangle"></i>
+                        </div>
+                        <div class="text-start flex-grow-1">
+                          <div class="fw-semibold">Warning Action</div>
+                          <small class="opacity-75">Important notice</small>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="#" class="quick-action-btn quick-action-cyan">
+                      <div class="d-flex align-items-center">
+                        <div class="quick-action-icon me-3">
+                          <i class="bi bi-info-circle"></i>
+                        </div>
+                        <div class="text-start flex-grow-1">
+                          <div class="fw-semibold">Information</div>
+                          <small class="opacity-75">View details</small>
+                        </div>
+                      </div>
+                    </a>
+                    <a
+                      href="settings.html"
+                      class="quick-action-btn quick-action-stone"
+                    >
+                      <div class="d-flex align-items-center">
+                        <div class="quick-action-icon me-3">
+                          <i class="bi bi-gear"></i>
+                        </div>
+                        <div class="text-start flex-grow-1">
+                          <div class="fw-semibold">Settings</div>
+                          <small class="opacity-75">Manage preferences</small>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="#" class="quick-action-btn quick-action-violet">
+                      <div class="d-flex align-items-center">
+                        <div class="quick-action-icon me-3">
+                          <i class="bi bi-moon-stars"></i>
+                        </div>
+                        <div class="text-start flex-grow-1">
+                          <div class="fw-semibold">Dark Mode</div>
+                          <small class="opacity-75">Toggle theme</small>
+                        </div>
+                      </div>
+                    </a>
+                    <a href="#" class="quick-action-btn quick-action-gradient">
+                      <div class="d-flex align-items-center">
+                        <div class="quick-action-icon me-3">
+                          <i class="bi bi-link-45deg"></i>
+                        </div>
+                        <div class="text-start flex-grow-1">
+                          <div class="fw-semibold">Link Action</div>
+                          <small class="opacity-75">Open external link</small>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <hr />
-
-        <!-- Sidebar Color -->
-        <div class="mb-4">
-          <label class="form-label fw-semibold mb-3">Sidebar Color</label>
-          <div class="d-flex flex-wrap gap-2">
-            <button
-              class="color-scheme-btn sidebar-color-btn"
-              data-sidebar-color="blue"
-              data-color-name="Blue"
-              style="
-                width: 60px;
-                height: 60px;
-                background: #1e3a8a;
-                border: 3px solid transparent;
-              "
-              data-bs-toggle="tooltip"
-              title="Blue"
-            ></button>
-            <button
-              class="color-scheme-btn sidebar-color-btn"
-              data-sidebar-color="purple"
-              data-color-name="Purple"
-              style="
-                width: 60px;
-                height: 60px;
-                background: #6b21a8;
-                border: 3px solid transparent;
-              "
-              data-bs-toggle="tooltip"
-              title="Purple"
-            ></button>
-            <button
-              class="color-scheme-btn sidebar-color-btn"
-              data-sidebar-color="green"
-              data-color-name="Green"
-              style="
-                width: 60px;
-                height: 60px;
-                background: #166534;
-                border: 3px solid transparent;
-              "
-              data-bs-toggle="tooltip"
-              title="Green"
-            ></button>
-            <button
-              class="color-scheme-btn sidebar-color-btn"
-              data-sidebar-color="orange"
-              data-color-name="Orange"
-              style="
-                width: 60px;
-                height: 60px;
-                background: #c2410c;
-                border: 3px solid transparent;
-              "
-              data-bs-toggle="tooltip"
-              title="Orange"
-            ></button>
-            <button
-              class="color-scheme-btn sidebar-color-btn"
-              data-sidebar-color="red"
-              data-color-name="Red"
-              style="
-                width: 60px;
-                height: 60px;
-                background: #991b1b;
-                border: 3px solid transparent;
-              "
-              data-bs-toggle="tooltip"
-              title="Red"
-            ></button>
-            <button
-              class="color-scheme-btn sidebar-color-btn"
-              data-sidebar-color="teal"
-              data-color-name="Teal"
-              style="
-                width: 60px;
-                height: 60px;
-                background: #0f766e;
-                border: 3px solid transparent;
-              "
-              data-bs-toggle="tooltip"
-              title="Teal"
-            ></button>
-            <button
-              class="color-scheme-btn sidebar-color-btn"
-              data-sidebar-color="indigo"
-              data-color-name="Indigo"
-              style="
-                width: 60px;
-                height: 60px;
-                background: #4338ca;
-                border: 3px solid transparent;
-              "
-              data-bs-toggle="tooltip"
-              title="Indigo"
-            ></button>
+        <!-- Footer -->
+        <footer class="footer mt-auto py-3">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <span class="text-muted"
+                  >© <span id="currentYear"></span> Ethanol UI. All rights
+                  reserved.</span
+                >
+              </div>
+              <div class="col-md-6 text-md-end">
+                <span class="text-muted">Clean & Modern Admin Dashboard</span>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <hr />
-
-        <!-- Topbar Color -->
-        <div class="mb-4">
-          <label class="form-label fw-semibold mb-3">Topbar Color</label>
-          <div class="d-flex flex-wrap gap-2">
-            <button
-              class="color-scheme-btn topbar-color-btn"
-              data-topbar-color="blue"
-              data-color-name="Blue"
-              style="
-                width: 60px;
-                height: 60px;
-                background: #3b82f6;
-                border: 3px solid transparent;
-              "
-              data-bs-toggle="tooltip"
-              title="Blue"
-            ></button>
-            <button
-              class="color-scheme-btn topbar-color-btn"
-              data-topbar-color="purple"
-              data-color-name="Purple"
-              style="
-                width: 60px;
-                height: 60px;
-                background: #a855f7;
-                border: 3px solid transparent;
-              "
-              data-bs-toggle="tooltip"
-              title="Purple"
-            ></button>
-            <button
-              class="color-scheme-btn topbar-color-btn"
-              data-topbar-color="green"
-              data-color-name="Green"
-              style="
-                width: 60px;
-                height: 60px;
-                background: #22c55e;
-                border: 3px solid transparent;
-              "
-              data-bs-toggle="tooltip"
-              title="Green"
-            ></button>
-            <button
-              class="color-scheme-btn topbar-color-btn"
-              data-topbar-color="orange"
-              data-color-name="Orange"
-              style="
-                width: 60px;
-                height: 60px;
-                background: #f97316;
-                border: 3px solid transparent;
-              "
-              data-bs-toggle="tooltip"
-              title="Orange"
-            ></button>
-            <button
-              class="color-scheme-btn topbar-color-btn"
-              data-topbar-color="red"
-              data-color-name="Red"
-              style="
-                width: 60px;
-                height: 60px;
-                background: #ef4444;
-                border: 3px solid transparent;
-              "
-              data-bs-toggle="tooltip"
-              title="Red"
-            ></button>
-            <button
-              class="color-scheme-btn topbar-color-btn"
-              data-topbar-color="teal"
-              data-color-name="Teal"
-              style="
-                width: 60px;
-                height: 60px;
-                background: #2dd4bf;
-                border: 3px solid transparent;
-              "
-              data-bs-toggle="tooltip"
-              title="Teal"
-            ></button>
-            <button
-              class="color-scheme-btn topbar-color-btn"
-              data-topbar-color="indigo"
-              data-color-name="Indigo"
-              style="
-                width: 60px;
-                height: 60px;
-                background: #6366f1;
-                border: 3px solid transparent;
-              "
-              data-bs-toggle="tooltip"
-              title="Indigo"
-            ></button>
-          </div>
-        </div>
-
-        <hr />
-
-        <!-- Reset Button -->
-        <div class="d-grid">
-          <button
-            class="btn btn-outline-danger"
-            id="resetThemeBtn"
-            onclick="ThemeManager.resetTheme()"
-          >
-            <i class="bi bi-arrow-counterclockwise me-2"></i>Reset to Default
-          </button>
-        </div>
+        </footer>
       </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer mt-auto py-3">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-6">
-            <span class="text-muted"
-              >© 2024 Ethanol UI. All rights reserved.</span
-            >
-          </div>
-          <div class="col-md-6 text-md-end">
-            <span class="text-muted">Ethanol UI v1.0.0</span>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <!-- jQuery -->
+    <!-- Scripts -->
+    <!-- jQuery 3.7.1 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <!-- Bootstrap 5.3.8 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- ApexCharts JS -->
+    <!-- ApexCharts 3.44.0 -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.44.0/dist/apexcharts.min.js"></script>
 
     <!-- Custom JS -->
-    <script src="../assets/js/main.js"></script>
     <script src="../assets/js/theme.js"></script>
+    <script src="../assets/js/main.js"></script>
 
+    <!-- Dashboard Charts -->
     <script>
-      // Set greeting message based on time
-      function getGreeting() {
-        const hour = new Date().getHours();
-        if (hour >= 5 && hour < 12) {
-          return "Selamat Pagi";
-        } else if (hour >= 12 && hour < 15) {
-          return "Selamat Siang";
-        } else if (hour >= 15 && hour < 19) {
-          return "Selamat Sore";
-        } else {
-          return "Selamat Malam";
-        }
-      }
-
-      // Update date and time
-      function updateDateTime() {
-        const now = new Date();
-
-        // Update greeting
-        const greetingElement = document.getElementById("greetingMessage");
-        if (greetingElement) {
-          greetingElement.textContent = getGreeting();
-        }
-
-        // Update date
-        const dateElement = document.getElementById("currentDate");
-        if (dateElement) {
-          const dateOptions = {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          };
-          dateElement.textContent = now.toLocaleDateString(
-            "id-ID",
-            dateOptions
-          );
-        }
-
-        // Update time
-        const timeElement = document.getElementById("currentTime");
-        if (timeElement) {
-          const timeOptions = {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: false,
-          };
-          timeElement.textContent = now.toLocaleTimeString(
-            "id-ID",
-            timeOptions
-          );
-        }
-      }
-
-      // Initialize on page load
+      // Sales Overview Chart
       document.addEventListener("DOMContentLoaded", function () {
-        updateDateTime();
-        // Update time every minute
-        setInterval(updateDateTime, 60000);
-
-        // Initialize ApexChart
-        // Sales Overview Chart
         const salesChartOptions = {
           series: [
             {
@@ -999,32 +1197,17 @@
             },
           ],
           chart: {
+            height: 350,
             type: "area",
-            height: 300,
             toolbar: {
-              show: false,
+              show: true,
             },
-            zoom: {
-              enabled: false,
-            },
-            fontFamily: "Inter, sans-serif",
           },
-          colors: ["#667eea", "#764ba2"],
           dataLabels: {
             enabled: false,
           },
           stroke: {
             curve: "smooth",
-            width: 3,
-          },
-          fill: {
-            type: "gradient",
-            gradient: {
-              shadeIntensity: 1,
-              opacityFrom: 0.7,
-              opacityTo: 0.3,
-              stops: [0, 90, 100],
-            },
           },
           xaxis: {
             categories: [
@@ -1041,60 +1224,21 @@
               "Nov",
               "Dec",
             ],
-            labels: {
-              style: {
-                colors: "#6b7280",
-                fontSize: "12px",
-              },
-            },
           },
-          yaxis: {
-            labels: {
-              style: {
-                colors: "#6b7280",
-                fontSize: "12px",
-              },
-              formatter: function (val) {
-                return "$" + val + "k";
-              },
-            },
-          },
-          grid: {
-            borderColor: "#e5e7eb",
-            strokeDashArray: 4,
-            xaxis: {
-              lines: {
-                show: false,
-              },
-            },
-            yaxis: {
-              lines: {
-                show: true,
-              },
-            },
-            padding: {
-              top: 0,
-              right: 0,
-              bottom: 0,
-              left: 0,
-            },
-          },
-          legend: {
-            position: "top",
-            horizontalAlign: "right",
-            fontSize: "14px",
-            fontFamily: "Inter, sans-serif",
-            markers: {
-              width: 12,
-              height: 12,
-              radius: 6,
+          colors: ["#1e3a8a", "#10b981"],
+          fill: {
+            type: "gradient",
+            gradient: {
+              shadeIntensity: 1,
+              opacityFrom: 0.7,
+              opacityTo: 0.3,
             },
           },
           tooltip: {
-            theme: "light",
-            style: {
-              fontSize: "12px",
-              fontFamily: "Inter, sans-serif",
+            y: {
+              formatter: function (val) {
+                return "$ " + val + " thousands";
+              },
             },
           },
         };
@@ -1105,113 +1249,77 @@
         );
         salesChart.render();
 
-        // Update chart on period change
-        document.querySelectorAll('input[name="period"]').forEach((radio) => {
-          radio.addEventListener("change", function () {
-            const period = this.id;
-            let categories, salesData, revenueData;
-
-            if (period === "week") {
-              categories = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-              salesData = [30, 40, 35, 50, 49, 60, 70];
-              revenueData = [20, 30, 25, 40, 39, 50, 60];
-            } else if (period === "month") {
-              categories = ["Week 1", "Week 2", "Week 3", "Week 4"];
-              salesData = [120, 150, 140, 180];
-              revenueData = [100, 130, 120, 160];
-            } else {
-              categories = [
-                "Jan",
-                "Feb",
-                "Mar",
-                "Apr",
-                "May",
-                "Jun",
-                "Jul",
-                "Aug",
-                "Sep",
-                "Oct",
-                "Nov",
-                "Dec",
-              ];
-              salesData = [30, 40, 35, 50, 49, 60, 70, 91, 125, 100, 110, 120];
-              revenueData = [20, 30, 25, 40, 39, 50, 60, 81, 105, 90, 100, 110];
-            }
-
-            salesChart.updateOptions({
-              xaxis: {
-                categories: categories,
+        // Revenue Distribution Chart
+        const revenueChartOptions = {
+          series: [44, 55, 13, 43, 22],
+          chart: {
+            height: 350,
+            type: "donut",
+          },
+          labels: [
+            "Product A",
+            "Product B",
+            "Product C",
+            "Product D",
+            "Product E",
+          ],
+          colors: ["#1e3a8a", "#10b981", "#f59e0b", "#ef4444", "#8b5cf6"],
+          legend: {
+            position: "bottom",
+          },
+          responsive: [
+            {
+              breakpoint: 480,
+              options: {
+                chart: {
+                  width: 200,
+                },
+                legend: {
+                  position: "bottom",
+                },
               },
-              series: [
-                {
-                  name: "Sales",
-                  data: salesData,
-                },
-                {
-                  name: "Revenue",
-                  data: revenueData,
-                },
-              ],
-            });
-          });
-        });
+            },
+          ],
+        };
 
-        // Update chart theme on dark/light mode change
-        const observer = new MutationObserver(function (mutations) {
-          mutations.forEach(function (mutation) {
-            if (
-              mutation.type === "attributes" &&
-              mutation.attributeName === "data-theme"
-            ) {
-              const theme = document.body.getAttribute("data-theme");
-              salesChart.updateOptions({
-                theme: {
-                  mode: theme === "dark" ? "dark" : "light",
-                },
-                grid: {
-                  borderColor: theme === "dark" ? "#374151" : "#e5e7eb",
-                },
-                xaxis: {
-                  labels: {
-                    style: {
-                      colors: theme === "dark" ? "#9ca3af" : "#6b7280",
-                    },
-                  },
-                },
-                yaxis: {
-                  labels: {
-                    style: {
-                      colors: theme === "dark" ? "#9ca3af" : "#6b7280",
-                    },
-                  },
-                },
-              });
-            }
-          });
-        });
-
-        observer.observe(document.body, {
-          attributes: true,
-          attributeFilter: ["data-theme"],
-        });
+        const revenueChart = new ApexCharts(
+          document.querySelector("#revenueChart"),
+          revenueChartOptions
+        );
+        revenueChart.render();
       });
+
+      // Set current year dynamically
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+
+      // Update date and time
+      function updateDateTime() {
+        const now = new Date();
+
+        // Format date
+        const options = {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        };
+        const dateStr = now.toLocaleDateString("en-US", options);
+        document.getElementById("currentDate").textContent = dateStr;
+
+        // Format time
+        const timeStr = now.toLocaleTimeString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: true,
+        });
+        document.getElementById("currentTime").textContent = timeStr;
+      }
+
+      // Update immediately and then every second
+      updateDateTime();
+      setInterval(updateDateTime, 1000);
     </script>
-
-    <style>
-      .bg-gradient-primary {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      }
-
-      /* ApexChart Dark Mode Support */
-      body[data-theme="dark"] .apexcharts-tooltip {
-        background: #1f2937 !important;
-        color: #f3f4f6 !important;
-        border: 1px solid #374151 !important;
-      }
-
-      body[data-theme="dark"] .apexcharts-legend-text {
-        color: #9ca3af !important;
-      }
-    </style>
   </body>
 </html>
