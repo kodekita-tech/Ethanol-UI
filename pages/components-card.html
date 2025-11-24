@@ -58,7 +58,7 @@
             class="d-flex align-items-center text-decoration-none text-white"
           >
             <img
-              src="../assets/images/logo-e.webp"
+              src="../assets/images/logo-ethanol-ui.webp"
               alt="Ethanol UI Logo"
               class="sidebar-logo"
               style="
@@ -69,10 +69,21 @@
                 object-fit: contain;
               "
             />
+            <img
+              src="../assets/images/logo-e.webp"
+              alt="Ethanol UI Logo"
+              class="sidebar-logo-collapsed"
+              style="
+                width: 40px;
+                height: 40px;
+                display: none;
+                flex-shrink: 0;
+                object-fit: contain;
+              "
+            />
             <span class="fs-5 fw-bold sidebar-brand-text">Ethanol UI</span>
           </a>
         </div>
-
         <nav class="sidebar-menu">
           <ul class="list-unstyled mb-0">
             <li>
@@ -163,14 +174,33 @@
         <!-- Topbar -->
         <nav class="navbar navbar-expand-lg topbar topbar-blue" id="topbar">
           <div class="container-fluid">
-            <!-- Sidebar Toggle -->
-            <button
-              class="btn btn-link text-white"
-              id="sidebarToggle"
-              type="button"
-            >
-              <i class="bi bi-list fs-4"></i>
-            </button>
+            <!-- Logo and Toggle -->
+            <div class="d-flex align-items-center gap-3">
+              <a
+                href="dashboard.html"
+                class="align-items-center text-decoration-none text-white topbar-logo"
+              >
+                <img
+                  src="../assets/images/logo-e.webp"
+                  alt="Ethanol UI Logo"
+                  class="topbar-logo-img"
+                  style="
+                    width: 40px;
+                    height: 40px;
+                    flex-shrink: 0;
+                    object-fit: contain;
+                  "
+                />
+              </a>
+              <button
+                class="btn btn-link text-white"
+                id="sidebarToggle"
+                type="button"
+                title="Toggle Sidebar"
+              >
+                <i class="bi bi-list fs-4"></i>
+              </button>
+            </div>
 
             <!-- Right Side -->
             <div class="ms-auto d-flex align-items-center gap-2">

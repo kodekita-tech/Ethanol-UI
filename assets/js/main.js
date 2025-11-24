@@ -18,7 +18,9 @@ function loadIncludes() {
           document.body.appendChild(scriptContainer);
         }
       })
-      .catch((error) => console.error(`Error loading ${include}:`, error));
+      .catch((error) => {
+        // Error loading include
+      });
   });
 }
 
@@ -30,51 +32,30 @@ window.toggleSubmenu = function (element) {
     parent.classList.toggle("active");
     const isNowActive = parent.classList.contains("active");
 
-    const menuLink = parent.querySelector(".menu-item");
-    const menuTitle = menuLink
-      ? menuLink.getAttribute("data-title") || menuLink.textContent.trim()
-      : "Unknown";
     const submenu = parent.querySelector(".submenu");
     const submenuItems = submenu
       ? submenu.querySelectorAll(".submenu-item")
       : [];
-
-    console.log(
-      "%c=== SUBMENU TOGGLE EVENT ===",
-      "color: #f59e0b; font-size: 14px; font-weight: bold;"
-    );
-    console.log(`Menu: "${menuTitle}"`);
-    console.log(
-      `Previous state: ${wasActive ? "Active (Open)" : "Inactive (Closed)"}`
-    );
-    console.log(
-      `Current state: ${isNowActive ? "Active (Open)" : "Inactive (Closed)"}`
-    );
-    console.log(`Submenu items count: ${submenuItems.length}`);
-
-    if (submenuItems.length > 0) {
-      console.log("Submenu items:");
-      submenuItems.forEach((subItem, index) => {
-        // subItem is already the <a> element with class "submenu-item"
-        const subTitle =
-          subItem.getAttribute("data-title") ||
-          subItem.textContent.trim() ||
-          "Unknown";
-        const subHref = subItem.getAttribute("href") || "N/A";
-        const subActive = subItem.classList.contains("active");
-        console.log(`  ${index + 1}. ${subTitle}`, {
-          href: subHref,
-          active: subActive,
-        });
-      });
-    }
-
-    console.log(
-      "%c=== SUBMENU TOGGLE COMPLETE ===",
-      "color: #f59e0b; font-size: 14px; font-weight: bold;"
-    );
   }
 };
+
+// Update topbar logo visibility based on sidebar state
+// CSS handles all transitions, this function ensures initial state is correct
+function updateTopbarLogo() {
+  const sidebar = document.getElementById("sidebar");
+  const topbarLogos = document.querySelectorAll(".topbar-logo");
+  
+  if (sidebar && topbarLogos.length > 0) {
+    // CSS selector .sidebar.hidden ~ .main-content .topbar-logo handles visibility
+    // We just need to remove any inline display styles that might interfere
+    topbarLogos.forEach(topbarLogo => {
+      // Remove inline display style to let CSS handle it
+      if (topbarLogo.style.display) {
+        topbarLogo.style.display = "";
+      }
+    });
+  }
+}
 
 // Initialize sidebar toggle
 function initSidebar() {
@@ -82,80 +63,33 @@ function initSidebar() {
   const sidebar = document.getElementById("sidebar");
 
   if (sidebarToggle && sidebar) {
+    // Load hidden state from localStorage on page load
+    if (localStorage.getItem("sidebarHidden") === "true") {
+      sidebar.classList.add("hidden");
+    }
+    
+    // Update topbar logo on page load
+    updateTopbarLogo();
+
     sidebarToggle.addEventListener("click", () => {
-      const isCollapsed = sidebar.classList.contains("collapsed");
-      sidebar.classList.toggle("collapsed");
-      const nowCollapsed = sidebar.classList.contains("collapsed");
-
-      console.log(
-        "%c=== SIDEBAR TOGGLE EVENT ===",
-        "color: #0ea5e9; font-size: 14px; font-weight: bold;"
-      );
-      console.log(`Sidebar ${nowCollapsed ? "COLLAPSED" : "EXPANDED"}`);
-      console.log(`Previous state: ${isCollapsed ? "Collapsed" : "Expanded"}`);
-      console.log(`Current state: ${nowCollapsed ? "Collapsed" : "Expanded"}`);
-
-      // Check for menu items with submenu
-      const menuItemsWithSubmenu = document.querySelectorAll(
-        ".menu-item-has-children"
-      );
-      console.log(
-        `\n📋 Menu items with submenu: ${menuItemsWithSubmenu.length}`
-      );
-
-      if (menuItemsWithSubmenu.length > 0) {
-        console.log(
-          "%c\n=== MENU ITEMS WITH SUBMENU ===",
-          "color: #10b981; font-weight: bold;"
-        );
-        menuItemsWithSubmenu.forEach((menuItem, index) => {
-          const menuLink = menuItem.querySelector(".menu-item");
-          const menuTitle = menuLink
-            ? menuLink.getAttribute("data-title") || menuLink.textContent.trim()
-            : "Unknown";
-          const submenu = menuItem.querySelector(".submenu");
-          const submenuItems = submenu
-            ? submenu.querySelectorAll(".submenu-item")
-            : [];
-          const isActive = menuItem.classList.contains("active");
-          const isSubmenuVisible =
-            submenu &&
-            submenu.style.display !== "none" &&
-            submenu.offsetHeight > 0;
-
-          console.log(`\n${index + 1}. Menu: "${menuTitle}"`, {
-            hasSubmenu: !!submenu,
-            submenuItemCount: submenuItems.length,
-            isActive: isActive,
-            isSubmenuVisible: isSubmenuVisible,
-            sidebarCollapsed: nowCollapsed,
-          });
-
-          if (submenuItems.length > 0) {
-            console.log(`   Submenu items (${submenuItems.length}):`);
-            submenuItems.forEach((subItem, subIndex) => {
-              // subItem is already the <a> element with class "submenu-item"
-              const subTitle =
-                subItem.getAttribute("data-title") ||
-                subItem.textContent.trim() ||
-                "Unknown";
-              const subHref = subItem.getAttribute("href") || "N/A";
-              const subActive = subItem.classList.contains("active");
-              console.log(`     ${subIndex + 1}. ${subTitle}`, {
-                href: subHref,
-                active: subActive,
-              });
-            });
-          }
-        });
+      const isHidden = sidebar.classList.contains("hidden");
+      
+      // Toggle hidden state (minimize/show sidebar)
+      if (isHidden) {
+        // Show sidebar (expand)
+        sidebar.classList.remove("hidden");
+        sidebar.classList.remove("collapsed");
       } else {
-        console.log("⚠️ No menu items with submenu found");
+        // Hide sidebar (minimize) - sidebar benar-benar tidak terlihat
+        sidebar.classList.add("hidden");
+        sidebar.classList.remove("collapsed");
       }
-
-      console.log(
-        "%c\n=== SIDEBAR TOGGLE COMPLETE ===",
-        "color: #0ea5e9; font-size: 14px; font-weight: bold;"
-      );
+      
+      // Save hidden state to localStorage
+      localStorage.setItem("sidebarHidden", !isHidden ? "true" : "false");
+      
+      // Update topbar logo visibility
+      updateTopbarLogo();
     });
   }
 
@@ -164,7 +98,6 @@ function initSidebar() {
   if (mobileToggle) {
     mobileToggle.addEventListener("click", () => {
       sidebar.classList.toggle("show");
-      console.log("📱 Mobile sidebar toggled");
     });
   }
 }
@@ -192,12 +125,9 @@ function initPopovers() {
 // Initialize modern UI effects
 function initModernUI() {
   try {
-    console.log("🔧 Initializing modern UI effects...");
-
     // Add smooth scroll - only for anchors with valid ID selectors
     // Get all anchors and filter out those with href="#" or invalid
     const allAnchors = document.querySelectorAll("a");
-    console.log(`📋 Total anchors found: ${allAnchors.length}`);
 
     const anchors = Array.from(allAnchors).filter((anchor) => {
       try {
@@ -219,28 +149,16 @@ function initModernUI() {
           trimmedHref.length > 1 &&
           trimmedHref.match(/^#[a-zA-Z_][\w-]*$/);
 
-        if (isValid) {
-          console.log(`✅ Anchor passed filter: "${trimmedHref}"`);
-        } else {
-          console.log(`⏭️ Anchor filtered out: "${trimmedHref}"`);
-        }
-
         return isValid;
       } catch (error) {
-        console.error("❌ Error filtering anchor:", error);
         return false;
       }
     });
 
-    console.log(
-      `📋 Found ${anchors.length} valid anchor links with href starting with # (excluding #)`
-    );
-
-    anchors.forEach((anchor, index) => {
+    anchors.forEach((anchor) => {
       try {
         const href = anchor.getAttribute("href");
         if (!href) {
-          console.warn(`⚠️ Anchor ${index + 1} has no href, skipping`);
           return;
         }
 
@@ -248,55 +166,31 @@ function initModernUI() {
 
         // Final safety check
         if (trimmedHref === "#" || trimmedHref.length <= 1) {
-          console.warn(
-            `⚠️ Anchor ${
-              index + 1
-            } has invalid href: "${trimmedHref}", skipping`
-          );
           return;
         }
 
-        console.log(
-          `✅ Processing anchor ${index + 1} with href: "${trimmedHref}"`
-        );
-
         anchor.addEventListener("click", function (e) {
-          console.log(`🖱️ Clicked anchor with href: "${trimmedHref}"`);
           e.preventDefault();
 
           try {
-            console.log(`🔍 Attempting to query selector: "${trimmedHref}"`);
             const target = document.querySelector(trimmedHref);
-            console.log(`🎯 Target element found:`, target);
 
             if (target) {
               target.scrollIntoView({
                 behavior: "smooth",
                 block: "start",
               });
-              console.log(`✅ Scrolled to target`);
-            } else {
-              console.warn(
-                `⚠️ Target element not found for href: "${trimmedHref}"`
-              );
             }
           } catch (error) {
-            console.error(
-              `❌ Error querying selector "${trimmedHref}":`,
-              error
-            );
-            console.error("Error details:", error.message, error.stack);
+            // Error querying selector
           }
         });
       } catch (error) {
-        console.error(`❌ Error processing anchor ${index + 1}:`, error);
+        // Error processing anchor
       }
     });
-
-    console.log("✅ Modern UI effects initialized");
   } catch (error) {
-    console.error("❌ Error in initModernUI:", error);
-    console.error("Error details:", error.message, error.stack);
+    // Error in initModernUI
   }
 }
 
@@ -338,12 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const isCollapsed = sidebar && sidebar.classList.contains("collapsed");
 
       // When sidebar is collapsed, don't toggle on click, let hover handle it
-      // But still log for debugging
       if (isCollapsed) {
-        console.log(
-          "%c⚠️ Sidebar is collapsed - submenu toggle handled by hover",
-          "color: #f59e0b; font-weight: bold;"
-        );
         return;
       }
 

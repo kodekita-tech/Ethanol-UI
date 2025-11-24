@@ -21,22 +21,54 @@ body {
     min-height: 100vh;
     background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
     color: white;
-    transition: all 0.3s ease;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s,
+                visibility 0s 0.5s;
     position: fixed;
     left: 0;
     top: 0;
     z-index: 1000;
     overflow-y: auto;
+    overflow-x: hidden;
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+    visibility: visible;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    will-change: transform, opacity, width;
+    transform-origin: left center;
 }
 
 .sidebar.collapsed {
     width: 70px;
 }
 
+.sidebar.hidden {
+    transform: translate3d(-100%, 0, 0);
+    opacity: 0;
+    width: 0;
+    visibility: hidden;
+    pointer-events: none;
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s,
+                visibility 0s 0.5s;
+}
+
 .sidebar-header {
     padding: 1.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    transition: padding 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 1;
+}
+
+.sidebar.hidden .sidebar-header {
+    opacity: 0;
 }
 
 .sidebar.collapsed .sidebar-header {
@@ -46,7 +78,7 @@ body {
 }
 
 .sidebar-header a {
-    transition: all 0.3s ease;
+    transition: justify-content 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sidebar.collapsed .sidebar-header a {
@@ -54,16 +86,27 @@ body {
 }
 
 .sidebar-header .sidebar-logo {
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 8px;
 }
 
+.sidebar-header .sidebar-logo-collapsed {
+    display: none !important;
+}
+
 .sidebar.collapsed .sidebar-header .sidebar-logo {
+    display: none !important;
     margin-right: 0;
 }
 
+.sidebar.collapsed .sidebar-header .sidebar-logo-collapsed {
+    display: block !important;
+}
+
 .sidebar-header .sidebar-brand-text {
-    transition: opacity 0.3s ease, width 0.3s ease;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                margin 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     white-space: nowrap;
     overflow: hidden;
 }
@@ -76,6 +119,12 @@ body {
 
 .sidebar-menu {
     padding: 1rem 0;
+    transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 1;
+}
+
+.sidebar.hidden .sidebar-menu {
+    opacity: 0;
 }
 
 .menu-item {
@@ -84,7 +133,12 @@ body {
     padding: 0.75rem 1.5rem;
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 0.3s ease,
+                color 0.3s ease,
+                border-left-color 0.3s ease,
+                border-radius 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                margin 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-left: 3px solid transparent;
     position: relative;
 }
@@ -111,7 +165,7 @@ body {
     min-width: 20px;
     text-align: center;
     font-size: 1.1rem;
-    transition: margin 0.3s ease;
+    transition: margin 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sidebar.collapsed .menu-item i {
@@ -119,7 +173,9 @@ body {
 }
 
 .menu-item span {
-    transition: opacity 0.3s ease, width 0.3s ease;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                margin 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     white-space: nowrap;
     overflow: hidden;
 }
@@ -369,6 +425,47 @@ body {
     width: 100%;
 }
 
+/* Topbar Logo - Hidden by default */
+.topbar-logo {
+    display: none;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    opacity: 0;
+    transform: translate3d(-15px, 0, 0);
+    transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s,
+                transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s,
+                display 0s 0.7s;
+    will-change: opacity, transform;
+    pointer-events: none;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Show topbar logo only when sidebar is hidden (minimized) */
+.sidebar.hidden ~ .main-content .topbar-logo {
+    display: flex;
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    pointer-events: auto;
+    transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s,
+                transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s,
+                display 0s 0s;
+}
+
+.topbar-logo:hover {
+    opacity: 0.9;
+}
+
+.topbar-logo-img {
+    border-radius: 8px;
+}
+
+.topbar-logo-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
 /* Ensure topbar color classes work properly - override default */
 .topbar.topbar-blue,
 #topbar.topbar-blue {
@@ -378,8 +475,17 @@ body {
 .topbar #sidebarToggle {
     padding: 0.5rem;
     border-radius: 8px;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     margin-right: 0.5rem;
+    margin-left: 0;
+}
+
+/* Adjust toggle margin when logo is shown (sidebar hidden) */
+.sidebar.hidden ~ .main-content .topbar #sidebarToggle {
+    margin-left: 0.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s,
+                margin-left 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
 }
 
 .topbar #sidebarToggle:hover {
@@ -1723,18 +1829,29 @@ body {
 .main-content {
     flex: 1;
     margin-left: 260px;
-    transition: margin-left 0.3s ease;
+    transition: margin-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                max-width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     max-width: calc(100vw - 260px);
     width: 100%;
     overflow-x: hidden;
+    will-change: margin-left, max-width;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .sidebar.collapsed ~ .main-content {
     margin-left: 70px;
     max-width: calc(100vw - 70px);
+}
+
+.sidebar.hidden ~ .main-content {
+    margin-left: 0;
+    max-width: 100vw;
+    transition: margin-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s,
+                max-width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s;
 }
 
 .content-area {
