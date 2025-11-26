@@ -4,6 +4,9 @@
   "description": "Clean & Modern Admin Dashboard Template - Ethanol UI",
   "main": "index.html",
   "scripts": {
+    "dev": "npx http-server -p 8080 -o --cors",
+    "serve": "npx http-server -p 8080 -o --cors",
+    "live": "npx live-server --port=8080 --open=/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

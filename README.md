@@ -1,17 +1,20 @@
 # Ethanol UI
 
-Modern admin dashboard template dengan Bootstrap 5.3.8, ApexCharts, DataTables, dan SweetAlert2. Template HTML statis murni tanpa build tools. Clean, modern, dan fully customizable.
+Modern admin dashboard template dengan Bootstrap 5.3.8, ApexCharts, dan SweetAlert2. Template HTML statis murni tanpa build tools. Clean, modern, dan fully customizable.
 
 ## ✨ Fitur
 
 - ✅ **Bootstrap 5.3.8** - Framework CSS modern dan responsif
-- ✅ **ApexCharts 3.44.0** - Chart library modern dan interaktif
-- ✅ **DataTables 2.3.5** - Tabel interaktif dengan search, sort, pagination
+- ✅ **ApexCharts** - Chart library modern dan interaktif
 - ✅ **SweetAlert2** - Alert dan konfirmasi yang cantik
 - ✅ **Dark/Light Mode** - Toggle theme dengan localStorage persistence
-- ✅ **Custom Color Themes** - Pilih warna untuk Sidebar & Topbar
-- ✅ **UI/UX Modern** - Glassmorphism, smooth transitions, modern shadows
-- ✅ **Responsive Design** - Mobile-friendly
+- ✅ **Custom Color Themes** - Pilih warna untuk Sidebar & Topbar (Dark, Light, Primary, Success, Danger, Warning, Info, Teal, Indigo)
+- ✅ **Logo Versions** - 3 versi logo (Icon + Text, Logo + Text, Full Logo)
+- ✅ **Modern Breadcrumb** - Breadcrumb dengan icon dan styling modern
+- ✅ **Custom Component Styling** - Accordion, Button, dan komponen lainnya dengan styling custom
+- ✅ **UI/UX Modern** - Smooth transitions, modern shadows, hover effects
+- ✅ **Responsive Design** - Mobile-friendly dengan sidebar collapse
+- ✅ **Development Tools** - Auto-reload dan cache-busting untuk development
 - ✅ **100% Statis** - Tidak perlu build tools, bisa langsung dibuka di browser
 
 ## 🎯 Tagline
@@ -21,48 +24,58 @@ Modern admin dashboard template dengan Bootstrap 5.3.8, ApexCharts, DataTables, 
 ## 📁 Struktur Folder
 
 ```
-ethanol-ui/
+template-admin-cursor/
 │
-├── index.html                 # Redirect ke dashboard
+├── index.html                 # Dashboard utama
 │
-├── assets/
-│   ├── css/
-│   │   ├── custom.css         # Custom CSS styling
-│   │   └── themes.css          # Theme management CSS
-│   │
-│   ├── js/
-│   │   ├── main.js             # JavaScript utama
-│   │   ├── theme.js            # Theme management
-│   │   ├── datatable.js        # DataTables config
-│   │   ├── sweetalert.js       # SweetAlert2 helpers
-│   │   └── crud.js             # CRUD operations
-│   │
-│   └── images/
-│       ├── logo-e.png          # Logo E
-│       ├── logo-e.webp         # Logo E (WebP)
-│       ├── logo-ethanol-ui.png  # Logo Ethanol UI
-│       └── logo-ethanol-ui.webp # Logo Ethanol UI (WebP)
+├── css/
+│   └── style.css             # Custom CSS styling (theme, components, layout)
 │
-├── includes/
-│   ├── header.html             # Header/Topbar
-│   ├── sidebar.html            # Sidebar menu
-│   ├── footer.html             # Footer
-│   └── scripts.html            # CDN scripts
+├── js/
+│   ├── script.js             # JavaScript utama (theme management, sidebar, charts)
+│   └── dev-tools.js          # Development tools (auto-reload, cache-busting)
 │
-├── pages/
-│   ├── components-badge.html         # Badge Component
-│   ├── components-button.html         # Button Component
-│   ├── components-button-groups.html # Button Groups Component
-│   ├── components-card.html          # Card Component
-│   ├── components-modal.html         # Modal Component
-│   ├── components-breadcrumb.html    # Breadcrumb Component
-│   └── dashboard.html                # Dashboard
+├── images/
+│   ├── logo-e.png            # Logo E (PNG)
+│   ├── logo-e.webp           # Logo E (WebP) - digunakan sebagai favicon
+│   ├── logo-ethanol-ui.png   # Logo Ethanol UI (PNG)
+│   └── logo-ethanol-ui.webp  # Logo Ethanol UI (WebP)
 │
-├── RANCANGAN.md               # Dokumentasi rancangan
-├── RANGKUMAN-SCRIPT.md        # Rangkuman script
-├── LICENSE                    # License file
-├── package.json               # Package configuration
-└── README.md                   # Dokumentasi
+├── components/
+│   ├── accordion.html        # Accordion component dengan custom styling
+│   ├── alert.html            # Alert component
+│   ├── badge.html            # Badge component
+│   ├── breadcrumb.html       # Breadcrumb component
+│   ├── button.html           # Button component dengan custom styling
+│   ├── button-group.html     # Button group component
+│   ├── card.html             # Card component
+│   ├── list-group.html       # List group component
+│   ├── modal.html            # Modal component (various sizes & types)
+│   ├── nav-tabs.html         # Nav tabs component
+│   └── pagination.html       # Pagination component
+│
+├── forms/
+│   ├── check-radio.html      # Checkbox & Radio component
+│   ├── form-control.html     # Form control component
+│   ├── input-group.html      # Input group component
+│   ├── input-validation.html # Input validation component
+│   ├── range.html            # Range input component
+│   └── select.html           # Select component
+│
+├── tables/
+│   ├── table.html            # Basic table component
+│   └── datatables.html       # DataTables component
+│
+├── extends/
+│   ├── apexcharts.html       # ApexCharts examples
+│   ├── jquery-toast.html     # jQuery Toast examples
+│   ├── select2.html          # Select2 examples
+│   └── sweetalert2.html      # SweetAlert2 examples
+│
+├── DEVELOPMENT.md            # Dokumentasi development tools
+├── LICENSE                   # License file
+├── package.json              # Package configuration
+└── README.md                 # Dokumentasi ini
 ```
 
 ## 🚀 Cara Menggunakan
@@ -78,241 +91,249 @@ Clone atau download project ini, kemudian:
 
 ### 2. Development
 
-- Buka file HTML langsung di browser (untuk testing)
-- Atau gunakan web server lokal (Laragon, XAMPP, dll)
-- Edit file HTML, CSS, JS langsung tanpa compile
+#### Opsi 1: Langsung Buka di Browser
+- Buka file HTML langsung di browser (untuk testing cepat)
+- Beberapa fitur mungkin tidak bekerja (seperti localStorage di file://)
 
-### 3. Includes
+#### Opsi 2: Menggunakan Web Server Lokal
 
-Karena template HTML statis, ada 2 cara untuk menggunakan includes:
+**Laragon/XAMPP:**
+- Copy project ke `www` atau `htdocs` folder
+- Akses via `http://localhost/template-admin-cursor`
 
-**Opsi 1: Copy-Paste Manual** (Recommended untuk production)
+**NPM Scripts:**
+```bash
+# Development server dengan auto-reload
+npm run live
 
-- Copy konten dari `includes/` ke setiap halaman yang membutuhkan
-- Lebih cepat load, tidak perlu fetch
+# Atau simple HTTP server
+npm run dev
+```
 
-**Opsi 2: JavaScript Load** (Untuk development)
+### 3. Development Tools
 
-- Function `loadIncludes()` di `main.js` akan load includes via fetch
-- Hanya bekerja jika diakses via HTTP server (tidak bisa file://)
+Project ini dilengkapi dengan development tools untuk memudahkan development:
 
-### 4. Customization
+- **Auto-reload**: Otomatis reload halaman saat file HTML/CSS berubah
+- **Cache-busting**: Menambahkan timestamp ke CSS/JS untuk mencegah cache
+- **Development Mode**: Aktifkan via URL parameter `?dev=true` atau localStorage
 
-#### Mengubah Theme
-
-1. Gunakan tombol dark mode toggle di topbar
-2. Gunakan color scheme picker di topbar untuk mengubah warna Sidebar & Topbar
-3. Theme akan tersimpan di localStorage
-
-#### Menambah Halaman Baru
-
-1. Copy salah satu halaman yang ada (misalnya `pages/dashboard.html`) sebagai starter
-2. Copy includes (header, sidebar, footer) ke halaman baru
-3. Tambahkan konten sesuai kebutuhan
-
-## 📦 CDN yang Digunakan
-
-### Bootstrap 5.3.8
-
-- CSS: `https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css`
-- JS: `https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js`
-
-### jQuery 3.7.1
-
-- JS: `https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js`
-
-### DataTables 2.3.5
-
-- CSS: `https://cdn.datatables.net/2.3.5/css/dataTables.bootstrap5.css`
-- JS:
-  - `https://cdn.datatables.net/2.3.5/js/dataTables.min.js`
-  - `https://cdn.datatables.net/2.3.5/js/dataTables.bootstrap5.min.js`
-
-### SweetAlert2
-
-- JS: `https://cdn.jsdelivr.net/npm/sweetalert2@11`
-
-### ApexCharts 3.44.0
-
-- CSS: `https://cdn.jsdelivr.net/npm/apexcharts@3.44.0/dist/apexcharts.css`
-- JS: `https://cdn.jsdelivr.net/npm/apexcharts@3.44.0/dist/apexcharts.min.js`
-
-### Bootstrap Icons
-
-- CSS: `https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css`
+Lihat `DEVELOPMENT.md` untuk detail lebih lengkap.
 
 ## 🎨 Theme System
 
 ### Dark/Light Mode
 
-Toggle dark/light mode dengan tombol di topbar. Theme akan tersimpan di localStorage.
+Toggle dark/light mode dengan tombol di topbar. Theme akan tersimpan di localStorage dan otomatis ter-load saat reload halaman.
 
-### Color Themes
+### Theme Settings Panel
 
-#### Sidebar Colors:
+Akses theme settings melalui tombol palette di topbar. Panel ini memungkinkan Anda untuk:
 
-- Blue (default)
-- Purple
-- Green
-- Orange
-- Red
-- Teal
-- Indigo
+1. **Theme Mode**: Toggle antara Dark dan Light mode
+2. **Sidebar Color**: Pilih warna sidebar (Dark, Light, Primary, Success, Danger, Warning, Info, Teal, Indigo)
+3. **Topbar Color**: Pilih warna topbar (Light, Dark, Primary, Success)
+4. **Logo Version**: Pilih versi logo (Icon + Text, Logo + Text, Full Logo)
+5. **Reset to Default**: Reset semua pengaturan ke default
 
-#### Topbar Colors:
+Semua pengaturan tersimpan di localStorage dan akan otomatis ter-apply saat reload.
 
-- Bisa match dengan sidebar atau independent
-- Pilihan warna sama dengan sidebar
+### Custom Styling
+
+#### Accordion
+- Custom border radius dan shadows
+- Gradient backgrounds pada button
+- Smooth transitions
+- Dark mode support
+
+#### Button
+- Gradient backgrounds untuk semua variant
+- Custom hover effects dengan transform dan shadow
+- Icon-only buttons dengan aspect ratio 1:1
+- Outline buttons dengan border width 2px
+- Warning button menggunakan text hitam untuk kontras optimal
+
+#### Breadcrumb
+- Modern breadcrumb dengan icon
+- Hover effects
+- Chevron separator (tanpa slash)
+- Active state styling
+
+## 📦 CDN yang Digunakan
+
+### Bootstrap 5.3.8
+- CSS: `https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css`
+- JS: `https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js`
+
+### jQuery 3.7.1
+- JS: `https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js`
+
+### Bootstrap Icons 1.11.3
+- CSS: `https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css`
+
+### ApexCharts
+- JS: `https://cdn.jsdelivr.net/npm/apexcharts`
+
+### SweetAlert2
+- JS: `https://cdn.jsdelivr.net/npm/sweetalert2@11`
 
 ## 📝 JavaScript Functions
 
-### Theme Management (`theme.js`)
+### Theme Management (`js/script.js`)
 
 ```javascript
 // Toggle dark/light mode
-ThemeManager.toggleDarkMode();
+toggleThemeMode();
 
-// Set sidebar color
-ThemeManager.setSidebarColor("blue");
+// Set sidebar theme
+setSidebarTheme('dark'); // 'dark', 'light', 'primary', 'success', etc.
 
-// Set topbar color
-ThemeManager.setTopbarColor("purple");
+// Set topbar theme
+setTopbarTheme('light'); // 'light', 'dark', 'primary', 'success'
 
-// Get current theme
-const theme = ThemeManager.getTheme();
+// Set logo version
+setLogoVersion(1); // 1 = Icon + Text, 2 = Logo + Text, 3 = Full Logo
 
-// Reset to default
-ThemeManager.resetTheme();
+// Reset all theme settings
+resetThemeSettings();
 ```
 
-### SweetAlert Helpers (`sweetalert.js`)
+### Notification Management
 
 ```javascript
-// Confirm delete
-SwalHelper.confirmDelete().then((result) => {
-  if (result.isConfirmed) {
-    // Delete action
-  }
-});
+// Mark notification as read
+markNotificationRead(notificationId);
 
-// Show success
-SwalHelper.showSuccess("Data berhasil disimpan!");
+// Mark all notifications as read
+markAllNotificationsRead();
 
-// Show error
-SwalHelper.showError("Terjadi kesalahan!");
-
-// Show info
-SwalHelper.showInfo("Informasi penting");
+// Update notification badge
+updateNotificationBadge();
 ```
 
-### CRUD Helpers (`crud.js`)
+### Chart Management
 
 ```javascript
-// Show add modal
-CRUDHelper.showAddModal("addModal");
-
-// Show edit modal
-CRUDHelper.showEditModal("editModal", data);
-
-// Handle delete
-CRUDHelper.handleDelete(id, callback);
-
-// Validate form
-if (CRUDHelper.validateForm("myForm")) {
-  // Form is valid
-}
-```
-
-### DataTables Config (`datatable.js`)
-
-```javascript
-// Initialize with default config
-DataTableConfig.initDataTable("#myTable");
-
-// Initialize users table
-DataTableConfig.initUsersTable("#usersTable");
-
-// Initialize products table
-DataTableConfig.initProductsTable("#productsTable");
+// Update chart theme
+updateChartTheme('dark'); // 'dark' or 'light'
 ```
 
 ## 🎯 Halaman yang Tersedia
 
-### Halaman Components (`pages/`)
+### Dashboard (`index.html`)
 
-1. **Badge** (`pages/components-badge.html`) - Dokumentasi dan contoh penggunaan badge component
+- Creative stats cards dengan gradient backgrounds
+- Revenue chart (ApexCharts)
+- Traffic sources chart (ApexCharts)
+- Recent orders table
+- Recent activity timeline
+- Theme settings panel
+- Notification dropdown
+- User dropdown dengan profile info
 
-   - Custom creative colors (Ocean, Slate, Emerald, Rose, Amber, Cyan, Stone, Violet, Gradient)
-   - Pill badges dengan rounded corners
-   - Badges dengan icons
-   - Positioning badges
-   - Badge dalam buttons
+### Components (`components/`)
 
-2. **Button** (`pages/components-button.html`) - Dokumentasi dan contoh penggunaan button component
+1. **Accordion** (`accordion.html`)
+   - Basic accordion
+   - Flush accordion
+   - Always open accordion
+   - Custom styling dengan gradient dan shadows
 
-3. **Button Groups** (`pages/components-button-groups.html`) - Dokumentasi dan contoh penggunaan button groups component
-
-4. **Card** (`pages/components-card.html`) - Dokumentasi dan contoh penggunaan card component
-
-5. **Modal** (`pages/components-modal.html`) - Dokumentasi dan contoh penggunaan modal component
-
-   - Basic modal dengan header, body, dan footer
-   - Modal sizes (Small, Default, Large, Extra Large)
-   - Modal dengan form untuk input data
-   - Scrollable modal untuk konten panjang
-   - Vertically centered modal
-   - Static backdrop modal (tidak bisa ditutup dengan klik outside)
-   - Fullscreen modal dengan berbagai breakpoint
-
-6. **Breadcrumb** (`pages/components-breadcrumb.html`) - Dokumentasi dan contoh penggunaan breadcrumb component
-
-   - Basic breadcrumb navigation
-   - Breadcrumb dengan icons untuk visual yang lebih baik
-   - Custom divider (>, |, →, ·)
-   - Breadcrumb dalam card component
-   - Custom styled breadcrumb dengan warna (Ocean, Emerald, Rose)
-
-   - Custom button colors dengan gradient backgrounds
-   - Button sizes (Large, Default, Small)
-   - Buttons dengan icons
+2. **Button** (`button.html`)
+   - Button variants (Primary, Secondary, Success, Danger, Warning, Info, Light, Dark, Link)
    - Outline buttons
-   - Disabled state
-   - Loading state dengan spinner
+   - Button sizes (Large, Default, Small)
+   - Buttons with icons
+   - Icon-only buttons (solid style)
+   - Disabled buttons
+   - Block buttons
 
-7. **Button Groups** (`pages/components-button-groups.html`) - Dokumentasi dan contoh penggunaan button groups
-
-   - Basic button groups
-   - Mixed styles (kombinasi warna dan outline)
+3. **Button Group** (`button-group.html`)
+   - Basic button group
+   - Mixed styles
+   - Outline button group
+   - Button group sizes
+   - Vertical button group
    - Button toolbar
-   - Sizing (Large, Default, Small)
-   - Vertical variation
-   - Button groups dengan icons
-   - Nesting dengan dropdown
-   - Radio button groups
-   - Checkbox button groups
 
-### Halaman Dashboard
+4. **Modal** (`modal.html`)
+   - Basic modal
+   - Static backdrop modal
+   - Modal sizes (Small, Default, Large, Extra Large)
+   - Scrollable modal
+   - Vertically centered modal
 
-1. **Dashboard** (`pages/dashboard.html`) - Dashboard dengan statistik, charts, dan quick actions
+5. **Alert** (`alert.html`)
+6. **Badge** (`badge.html`)
+7. **Breadcrumb** (`breadcrumb.html`)
+8. **Card** (`card.html`)
+9. **List Group** (`list-group.html`)
+10. **Nav Tabs** (`nav-tabs.html`)
+11. **Pagination** (`pagination.html`)
+
+### Forms (`forms/`)
+
+1. **Check & Radio** (`check-radio.html`)
+2. **Form Control** (`form-control.html`)
+3. **Input Group** (`input-group.html`)
+4. **Input Validation** (`input-validation.html`)
+5. **Range** (`range.html`)
+6. **Select** (`select.html`)
+
+### Tables (`tables/`)
+
+1. **Table** (`table.html`)
+2. **DataTables** (`datatables.html`)
+
+### Extends (`extends/`)
+
+1. **ApexCharts** (`apexcharts.html`)
+2. **jQuery Toast** (`jquery-toast.html`)
+3. **Select2** (`select2.html`)
+4. **SweetAlert2** (`sweetalert2.html`)
 
 ## 🔧 Customization
 
 ### Mengubah Logo
 
-1. Ganti file di `assets/images/` (logo-e.webp, logo-ethanol-ui.webp, dll)
-2. Atau update path di header/sidebar
+1. Ganti file di `images/` folder
+2. Update path di sidebar header (3 versi logo)
+3. Update favicon di `<head>` section
 
 ### Mengubah Warna Default
 
-Edit file `assets/css/themes.css` untuk mengubah warna default theme.
+Edit CSS variables di `css/style.css`:
+
+```css
+:root {
+    --primary-color: #6366f1;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --info-color: #06b6d4;
+    /* ... */
+}
+```
 
 ### Menambah Menu Sidebar
 
-Edit file `includes/sidebar.html` atau copy ke halaman yang membutuhkan.
+Edit sidebar di setiap halaman atau buat include file untuk sidebar.
+
+### Menambah Halaman Baru
+
+1. Copy salah satu halaman yang ada (misalnya `components/accordion.html`) sebagai starter
+2. Update breadcrumb
+3. Update sidebar menu untuk set active state
+4. Tambahkan konten sesuai kebutuhan
 
 ## 📱 Responsive
 
-Template sudah responsive dan mobile-friendly. Sidebar akan otomatis collapse di mobile.
+Template sudah fully responsive dan mobile-friendly:
+
+- Sidebar otomatis collapse di mobile (< 992px)
+- Topbar tetap accessible di semua ukuran
+- Cards dan components responsive
+- Tables dengan horizontal scroll di mobile
 
 ## 🌐 Browser Support
 
@@ -320,6 +341,28 @@ Template sudah responsive dan mobile-friendly. Sidebar akan otomatis collapse di
 - Firefox (latest)
 - Safari (latest)
 - Edge (latest)
+
+## 🛠️ Development
+
+### Development Tools
+
+Project ini dilengkapi dengan development tools untuk memudahkan development:
+
+- **Auto-reload**: Otomatis reload saat file berubah
+- **Cache-busting**: Mencegah cache browser
+- **Development Mode**: Aktifkan via URL parameter
+
+Lihat `DEVELOPMENT.md` untuk detail lengkap.
+
+### NPM Scripts
+
+```bash
+# Development server dengan auto-reload
+npm run live
+
+# Simple HTTP server
+npm run dev
+```
 
 ## 📄 License
 
