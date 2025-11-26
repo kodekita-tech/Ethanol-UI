@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Prevent Caching in Development -->
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>List Group - Modern Admin</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="../images/favicon.webp" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- ApexCharts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css" id="main-css" />
+  </head>
+  <body>
+    <!-- Settings Offcanvas -->
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="settingsOffcanvas"
+      aria-labelledby="settingsOffcanvasLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="settingsOffcanvasLabel">
+          Theme Settings
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <!-- Dark/Light Mode Toggle -->
+        <div class="mb-4 pb-3 border-bottom">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h6 class="mb-0">
+              <i class="bi bi-palette-fill me-2 text-primary"></i>Theme Mode
+            </h6>
+          </div>
+          <div class="d-grid">
+            <button
+              type="button"
+              class="btn btn-outline-primary d-flex align-items-center justify-content-between"
+              id="themeModeBtn"
+              onclick="toggleThemeMode()"
+            >
+              <span>
+                <i class="bi bi-moon-stars me-2" id="themeModeIcon"></i>
+                <span id="themeModeText">Dark Mode</span>
+              </span>
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Sidebar Color -->
+        <div class="mb-4 pb-3 border-bottom">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="mb-0">
+              <i class="bi bi-layout-sidebar me-2 text-primary"></i>Sidebar
+              Color
+            </h6>
+            <small class="text-muted" id="sidebarThemeIndicator">Dark</small>
+          </div>
+          <div class="theme-color-grid">
+            <button
+              class="theme-color-btn"
+              data-theme="dark"
+              data-type="sidebar"
+              onclick="setSidebarTheme('dark')"
+              style="
+                background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+              "
+              title="Dark"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="light"
+              data-type="sidebar"
+              onclick="setSidebarTheme('light')"
+              style="background: #ffffff; border: 2px solid #e5e7eb"
+              title="Light"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="primary"
+              data-type="sidebar"
+              onclick="setSidebarTheme('primary')"
+              style="
+                background: linear-gradient(180deg, #6366f1 0%, #4f46e5 100%);
+              "
+              title="Primary"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="success"
+              data-type="sidebar"
+              onclick="setSidebarTheme('success')"
+              style="
+                background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+              "
+              title="Success"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="danger"
+              data-type="sidebar"
+              onclick="setSidebarTheme('danger')"
+              style="
+                background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+              "
+              title="Danger"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="warning"
+              data-type="sidebar"
+              onclick="setSidebarTheme('warning')"
+              style="
+                background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+              "
+              title="Warning"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="info"
+              data-type="sidebar"
+              onclick="setSidebarTheme('info')"
+              style="
+                background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+              "
+              title="Info"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="teal"
+              data-type="sidebar"
+              onclick="setSidebarTheme('teal')"
+              style="
+                background: linear-gradient(180deg, #20c997 0%, #198754 100%);
+              "
+              title="Teal"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="indigo"
+              data-type="sidebar"
+              onclick="setSidebarTheme('indigo')"
+              style="
+                background: linear-gradient(180deg, #6610f2 0%, #520dc2 100%);
+              "
+              title="Indigo"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Topbar Color -->
+        <div class="mb-4 pb-3 border-bottom">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="mb-0">
+              <i class="bi bi-layout-top me-2 text-primary"></i>Topbar Color
+            </h6>
+            <small class="text-muted" id="topbarThemeIndicator">Light</small>
+          </div>
+          <div class="theme-color-grid">
+            <button
+              class="theme-color-btn"
+              data-theme="light"
+              data-type="topbar"
+              onclick="setTopbarTheme('light')"
+              style="background: #ffffff; border: 2px solid #e5e7eb"
+              title="Light"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="dark"
+              data-type="topbar"
+              onclick="setTopbarTheme('dark')"
+              style="background: #1e293b"
+              title="Dark"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="primary"
+              data-type="topbar"
+              onclick="setTopbarTheme('primary')"
+              style="background: #6366f1"
+              title="Primary"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="success"
+              data-type="topbar"
+              onclick="setTopbarTheme('success')"
+              style="background: #10b981"
+              title="Success"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Logo Version -->
+        <div class="mb-4 pb-3 border-bottom">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="mb-0">
+              <i class="bi bi-image me-2 text-primary"></i>Logo Version
+            </h6>
+            <small class="text-muted" id="logoVersionIndicator"
+              >Icon + Text</small
+            >
+          </div>
+          <div class="d-grid gap-2">
+            <button
+              type="button"
+              class="btn btn-outline-primary d-flex align-items-center justify-content-between"
+              id="logoVersion1"
+              onclick="setLogoVersion(1)"
+            >
+              <span> <i class="bi bi-droplet-fill me-2"></i>Icon + Text </span>
+              <i class="bi bi-check-lg d-none" id="logoVersion1Check"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary d-flex align-items-center justify-content-between"
+              id="logoVersion2"
+              onclick="setLogoVersion(2)"
+            >
+              <span> <i class="bi bi-image me-2"></i>Logo + Text </span>
+              <i class="bi bi-check-lg d-none" id="logoVersion2Check"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary d-flex align-items-center justify-content-between"
+              id="logoVersion3"
+              onclick="setLogoVersion(3)"
+            >
+              <span> <i class="bi bi-images me-2"></i>Full Logo </span>
+              <i class="bi bi-check-lg d-none" id="logoVersion3Check"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Reset Settings -->
+        <div class="d-grid">
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            onclick="resetThemeSettings()"
+          >
+            <i class="bi bi-arrow-counterclockwise me-2"></i>Reset to Default
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <!-- Version 1: Icon dan Nama Aplikasi -->
+        <div class="logo-version logo-version-1">
+          <h4 class="mb-0 logo-text">
+            <i class="bi bi-droplet-fill text-primary"></i>
+            <span>Ethanol<span class="text-primary">UI</span></span>
+          </h4>
+          <h4 class="mb-0 logo-icon d-none">
+            <i class="bi bi-droplet-fill text-primary"></i>
+          </h4>
+        </div>
+
+        <!-- Version 2: Logo Image dan Nama Aplikasi -->
+        <div class="logo-version logo-version-2 d-none">
+          <div class="d-flex align-items-center logo-text">
+            <img
+              src="../images/logo-EthanolUI-blue.webp"
+              alt="Logo"
+              class="logo-img me-2 logo-theme"
+              style="width: 40px; height: 40px"
+              data-light="../images/logo-EthanolUI-blue.webp"
+              data-dark="../images/logo-EthanolUI-white.webp"
+            />
+            <h4 class="mb-0">
+              <span>Ethanol<span class="text-primary">UI</span></span>
+            </h4>
+          </div>
+          <div
+            class="logo-icon d-none d-flex align-items-center justify-content-center"
+          >
+            <img
+              src="../images/logo-EthanolUI-blue.webp"
+              alt="Logo"
+              class="logo-img logo-theme"
+              style="width: 40px; height: 40px"
+              data-light="../images/logo-EthanolUI-blue.webp"
+              data-dark="../images/logo-EthanolUI-white.webp"
+            />
+          </div>
+        </div>
+
+        <!-- Version 3: Full Logo Image dengan Nama Aplikasi -->
+        <div class="logo-version logo-version-3 d-none">
+          <div class="logo-text">
+            <img
+              src="../images/logo-EthanolUI-blue.webp"
+              alt="Ethanol UI"
+              class="logo-full logo-theme"
+              style="max-width: 100%; height: auto"
+              data-light="../images/logo-EthanolUI-blue.webp"
+              data-dark="../images/logo-EthanolUI-white.webp"
+            />
+          </div>
+          <div
+            class="logo-icon d-none d-flex align-items-center justify-content-center"
+          >
+            <img
+              src="../images/logo-EthanolUI-blue.webp"
+              alt="Logo"
+              class="logo-img logo-theme"
+              style="width: 40px; height: 40px"
+              data-light="../images/logo-EthanolUI-blue.webp"
+              data-dark="../images/logo-EthanolUI-white.webp"
+            />
+          </div>
+        </div>
+      </div>
+      <ul class="sidebar-nav">
+        <li class="nav-item">
+          <a href="../index.html" class="nav-link">
+            <i class="bi bi-speedometer2"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="#componentsSubmenu"
+            class="nav-link has-dropdown"
+            data-bs-toggle="collapse"
+            role="button"
+            aria-expanded="true"
+            aria-controls="componentsSubmenu"
+          >
+            <i class="bi bi-grid"></i>
+            <span>Components</span>
+            <i class="bi bi-chevron-down ms-auto dropdown-arrow"></i>
+          </a>
+          <div class="collapse show" id="componentsSubmenu">
+            <ul class="nav flex-column ps-3">
+              <li class="nav-item">
+                <a href="accordion.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Accordion</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="alert.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Alert</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="badge.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Badge</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="breadcrumb.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Breadcrumb</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="button.html" class="nav-link active">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Button</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="button-group.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Button Group</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="card.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Card</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="list-group.html" class="nav-link active">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>List Group</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="modal.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Modal</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="nav-tabs.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Nav Tabs</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pagination.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Pagination</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a
+            href="#formsSubmenu"
+            class="nav-link has-dropdown"
+            data-bs-toggle="collapse"
+            role="button"
+            aria-expanded="false"
+            aria-controls="formsSubmenu"
+          >
+            <i class="bi bi-input-cursor-text"></i>
+            <span>Forms</span>
+            <i class="bi bi-chevron-down ms-auto dropdown-arrow"></i>
+          </a>
+          <div class="collapse" id="formsSubmenu">
+            <ul class="nav flex-column ps-3">
+              <li class="nav-item">
+                <a href="../forms/check-radio.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Check & Radio</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/form-control.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Form Control</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/input-group.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Input Group</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/input-validation.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Input Validation</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/range.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Range</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/select.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Select</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a
+            href="#tablesSubmenu"
+            class="nav-link has-dropdown"
+            data-bs-toggle="collapse"
+            role="button"
+            aria-expanded="false"
+            aria-controls="tablesSubmenu"
+          >
+            <i class="bi bi-table"></i>
+            <span>Tables</span>
+            <i class="bi bi-chevron-down ms-auto dropdown-arrow"></i>
+          </a>
+          <div class="collapse" id="tablesSubmenu">
+            <ul class="nav flex-column ps-3">
+              <li class="nav-item">
+                <a href="../tables/table.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Table</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../tables/datatables.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>DataTables</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a
+            href="#extendsSubmenu"
+            class="nav-link has-dropdown"
+            data-bs-toggle="collapse"
+            role="button"
+            aria-expanded="false"
+            aria-controls="extendsSubmenu"
+          >
+            <i class="bi bi-bar-chart"></i>
+            <span>Extends</span>
+            <i class="bi bi-chevron-down ms-auto dropdown-arrow"></i>
+          </a>
+          <div class="collapse" id="extendsSubmenu">
+            <ul class="nav flex-column ps-3">
+              <li class="nav-item">
+                <a href="../extends/apexcharts.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>ApexCharts</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../extends/jquery-toast.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>jQuery Toast</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../extends/select2.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Select2</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../extends/sweetalert2.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>SweetAlert2</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="bi bi-gear"></i>
+            <span>Settings</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+      <!-- Topbar -->
+      <nav class="topbar">
+        <div class="d-flex align-items-center">
+          <button class="btn btn-link text-dark me-3" id="sidebarToggle">
+            <i class="bi bi-list fs-4"></i>
+          </button>
+          <h5 class="mb-0">List Group</h5>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <!-- Theme Toggle -->
+          <button class="btn btn-link text-dark" id="themeToggle">
+            <i class="bi bi-moon-stars fs-5"></i>
+          </button>
+
+          <!-- Settings Toggle -->
+          <button
+            class="btn btn-link text-dark"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#settingsOffcanvas"
+          >
+            <i class="bi bi-palette fs-5"></i>
+          </button>
+
+          <!-- Notifications -->
+          <div class="dropdown">
+            <button
+              class="btn btn-link text-dark position-relative notification-btn"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-bell fs-5"></i>
+              <span class="notification-badge" id="notificationBadge">3</span>
+            </button>
+            <div
+              class="dropdown-menu dropdown-menu-end notification-dropdown p-0"
+            >
+              <div
+                class="dropdown-header p-3 border-bottom d-flex justify-content-between align-items-center bg-light-subtle"
+              >
+                <div>
+                  <h6 class="mb-0 fw-bold">Notifications</h6>
+                  <small class="text-muted" id="notificationCount">3 new</small>
+                </div>
+                <button
+                  class="btn btn-sm btn-link text-primary p-0 text-decoration-none"
+                  onclick="markAllNotificationsRead()"
+                  id="markAllReadBtn"
+                >
+                  <i class="bi bi-check-all me-1"></i>Mark all read
+                </button>
+              </div>
+              <div
+                class="notification-list"
+                style="max-height: 400px; overflow-y: auto"
+                id="notificationList"
+              >
+                <a
+                  href="#"
+                  class="dropdown-item notification-item p-3 border-bottom unread"
+                  data-notification-id="1"
+                  onclick="markNotificationRead(1)"
+                >
+                  <div class="d-flex align-items-start">
+                    <div
+                      class="notification-icon bg-primary-subtle rounded-circle p-2 me-3 flex-shrink-0"
+                    >
+                      <i class="bi bi-cart text-primary"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <div
+                        class="d-flex justify-content-between align-items-start mb-1"
+                      >
+                        <p class="mb-0 small fw-bold">New Order Received</p>
+                        <span class="notification-dot"></span>
+                      </div>
+                      <p class="mb-1 small text-muted">
+                        Order #1234 has been placed
+                      </p>
+                      <small class="text-muted d-flex align-items-center">
+                        <i class="bi bi-clock me-1" style="font-size: 10px"></i>
+                        <span style="font-size: 10px">2 mins ago</span>
+                      </small>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  class="dropdown-item notification-item p-3 border-bottom unread"
+                  data-notification-id="2"
+                  onclick="markNotificationRead(2)"
+                >
+                  <div class="d-flex align-items-start">
+                    <div
+                      class="notification-icon bg-success-subtle rounded-circle p-2 me-3 flex-shrink-0"
+                    >
+                      <i class="bi bi-person-plus text-success"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <div
+                        class="d-flex justify-content-between align-items-start mb-1"
+                      >
+                        <p class="mb-0 small fw-bold">New User Registered</p>
+                        <span class="notification-dot"></span>
+                      </div>
+                      <p class="mb-1 small text-muted">
+                        John Doe joined the team
+                      </p>
+                      <small class="text-muted d-flex align-items-center">
+                        <i class="bi bi-clock me-1" style="font-size: 10px"></i>
+                        <span style="font-size: 10px">1 hour ago</span>
+                      </small>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  class="dropdown-item notification-item p-3 border-bottom"
+                  data-notification-id="3"
+                >
+                  <div class="d-flex align-items-start">
+                    <div
+                      class="notification-icon bg-warning-subtle rounded-circle p-2 me-3 flex-shrink-0"
+                    >
+                      <i class="bi bi-exclamation-triangle text-warning"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <div
+                        class="d-flex justify-content-between align-items-start mb-1"
+                      >
+                        <p class="mb-0 small fw-bold">System Alert</p>
+                      </div>
+                      <p class="mb-1 small text-muted">Server load is high</p>
+                      <small class="text-muted d-flex align-items-center">
+                        <i class="bi bi-clock me-1" style="font-size: 10px"></i>
+                        <span style="font-size: 10px">3 hours ago</span>
+                      </small>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="dropdown-footer p-3 text-center border-top bg-light-subtle"
+              >
+                <a
+                  href="#"
+                  class="text-decoration-none small fw-semibold text-primary"
+                  >View All Notifications <i class="bi bi-arrow-right ms-1"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Dropdown -->
+          <div class="dropdown">
+            <button
+              class="btn btn-link text-dark dropdown-toggle d-flex align-items-center user-dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <div class="position-relative">
+                <img
+                  src="https://ui-avatars.com/api/?name=Admin+User&background=6366f1&color=fff"
+                  alt="User"
+                  class="rounded-circle me-2 user-avatar"
+                  width="35"
+                  height="35"
+                />
+                <span class="user-status-badge"></span>
+              </div>
+              <div class="d-none d-md-block text-start">
+                <span class="d-block fw-bold small user-name-text"
+                  >Admin User</span
+                >
+                <span
+                  class="d-block text-muted user-role-text"
+                  style="font-size: 10px"
+                  >Administrator</span
+                >
+              </div>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end user-dropdown-menu p-0">
+              <li class="user-dropdown-header p-4 border-bottom">
+                <div class="d-flex align-items-center">
+                  <div class="position-relative me-3">
+                    <img
+                      src="https://ui-avatars.com/api/?name=Admin+User&background=6366f1&color=fff"
+                      alt="User"
+                      class="rounded-circle user-avatar-lg"
+                      width="56"
+                      height="56"
+                    />
+                    <span class="user-status-badge-lg"></span>
+                  </div>
+                  <div class="flex-grow-1">
+                    <h6 class="mb-1 fw-bold">Admin User</h6>
+                    <small class="text-muted d-block mb-2"
+                      >admin@ethanol.ui</small
+                    >
+                    <span class="badge bg-primary-subtle text-primary px-2 py-1"
+                      ><i class="bi bi-shield-check me-1"></i
+                      >Administrator</span
+                    >
+                  </div>
+                  <button
+                    class="btn btn-sm btn-link text-muted p-0 ms-2"
+                    onclick="event.stopPropagation()"
+                    title="Edit Profile"
+                  >
+                    <i class="bi bi-pencil"></i>
+                  </button>
+                </div>
+              </li>
+              <li class="p-3">
+                <a
+                  class="dropdown-item user-menu-item rounded-3 mb-2 d-flex align-items-center"
+                  href="#"
+                >
+                  <div
+                    class="user-menu-icon bg-primary-subtle rounded-circle p-2 me-3"
+                  >
+                    <i class="bi bi-person text-primary"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="fw-semibold small mb-1">My Profile</div>
+                    <small class="text-muted d-block">View your profile</small>
+                  </div>
+                  <i class="bi bi-chevron-right text-muted"></i>
+                </a>
+                <a
+                  class="dropdown-item user-menu-item rounded-3 mb-2 d-flex align-items-center"
+                  href="#"
+                >
+                  <div
+                    class="user-menu-icon bg-success-subtle rounded-circle p-2 me-3"
+                  >
+                    <i class="bi bi-gear text-success"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="fw-semibold small mb-1">Account Settings</div>
+                    <small class="text-muted d-block"
+                      >Manage your account</small
+                    >
+                  </div>
+                  <i class="bi bi-chevron-right text-muted"></i>
+                </a>
+                <a
+                  class="dropdown-item user-menu-item rounded-3 mb-2 d-flex align-items-center"
+                  href="#"
+                >
+                  <div
+                    class="user-menu-icon bg-info-subtle rounded-circle p-2 me-3"
+                  >
+                    <i class="bi bi-credit-card text-info"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="fw-semibold small mb-1">Billing</div>
+                    <small class="text-muted d-block"
+                      >Payment & subscription</small
+                    >
+                  </div>
+                  <i class="bi bi-chevron-right text-muted"></i>
+                </a>
+              </li>
+              <li><hr class="dropdown-divider m-0" /></li>
+              <li class="p-3">
+                <a
+                  class="dropdown-item user-menu-item rounded-3 text-danger d-flex align-items-center"
+                  href="#"
+                >
+                  <div
+                    class="user-menu-icon bg-danger-subtle rounded-circle p-2 me-3"
+                  >
+                    <i class="bi bi-box-arrow-right text-danger"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="fw-semibold small mb-1">Logout</div>
+                    <small class="text-muted d-block"
+                      >Sign out from account</small
+                    >
+                  </div>
+                  <i class="bi bi-chevron-right text-danger"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Page Content -->
+      <div class="content-wrapper">
+        <!-- Page Header -->
+        <div class="mb-4">
+          <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb-modern">
+              <li class="breadcrumb-item">
+                <a href="../index.html">
+                  <i class="bi bi-house-door"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="#">
+                  <i class="bi bi-grid"></i>
+                  <span>Components</span>
+                </a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                <i class="bi bi-list-ul"></i>
+                <span>List Group</span>
+              </li>
+            </ol>
+          </nav>
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div>
+              <h4 class="mb-1 fw-bold">List Group</h4>
+              <p class="text-muted mb-0">
+                List groups are a flexible and powerful component for displaying
+                a series of content. List group items can be modified to support
+                just about any content within.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Basic List Group -->
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <div class="modern-card">
+              <div class="card-header">
+                <h5 class="mb-0">Basic List Group</h5>
+              </div>
+              <div class="card-body">
+                <ul class="list-group" style="max-width: 25rem;">
+                  <li class="list-group-item">An item</li>
+                  <li class="list-group-item">A second item</li>
+                  <li class="list-group-item">A third item</li>
+                  <li class="list-group-item">A fourth item</li>
+                  <li class="list-group-item">And a fifth one</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active and Disabled Items -->
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <div class="modern-card">
+              <div class="card-header">
+                <h5 class="mb-0">Active and Disabled Items</h5>
+              </div>
+              <div class="card-body">
+                <ul class="list-group" style="max-width: 25rem;">
+                  <li class="list-group-item active" aria-current="true">An active item</li>
+                  <li class="list-group-item">A second item</li>
+                  <li class="list-group-item">A third item</li>
+                  <li class="list-group-item">A fourth item</li>
+                  <li class="list-group-item disabled" aria-disabled="true">A disabled item</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- List Group with Links -->
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <div class="modern-card">
+              <div class="card-header">
+                <h5 class="mb-0">List Group with Links</h5>
+              </div>
+              <div class="card-body">
+                <div class="list-group" style="max-width: 25rem;">
+                  <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                    The current link item
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action">A second link item</a>
+                  <a href="#" class="list-group-item list-group-item-action">A third link item</a>
+                  <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+                  <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">A disabled link item</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- List Group with Colors -->
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <div class="modern-card">
+              <div class="card-header">
+                <h5 class="mb-0">List Group with Colors</h5>
+              </div>
+              <div class="card-body">
+                <ul class="list-group" style="max-width: 25rem;">
+                  <li class="list-group-item">A simple default list group item</li>
+                  <li class="list-group-item list-group-item-primary">A simple primary list group item</li>
+                  <li class="list-group-item list-group-item-secondary">A simple secondary list group item</li>
+                  <li class="list-group-item list-group-item-success">A simple success list group item</li>
+                  <li class="list-group-item list-group-item-danger">A simple danger list group item</li>
+                  <li class="list-group-item list-group-item-warning">A simple warning list group item</li>
+                  <li class="list-group-item list-group-item-info">A simple info list group item</li>
+                  <li class="list-group-item list-group-item-light">A simple light list group item</li>
+                  <li class="list-group-item list-group-item-dark">A simple dark list group item</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- List Group with Badges -->
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <div class="modern-card">
+              <div class="card-header">
+                <h5 class="mb-0">List Group with Badges</h5>
+              </div>
+              <div class="card-body">
+                <ul class="list-group" style="max-width: 25rem;">
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    A list item
+                    <span class="badge bg-primary rounded-pill">14</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    A second list item
+                    <span class="badge bg-success rounded-pill">2</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    A third list item
+                    <span class="badge bg-danger rounded-pill">1</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- List Group with Icons -->
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <div class="modern-card">
+              <div class="card-header">
+                <h5 class="mb-0">List Group with Icons</h5>
+              </div>
+              <div class="card-body">
+                <ul class="list-group" style="max-width: 25rem;">
+                  <li class="list-group-item d-flex align-items-center">
+                    <i class="bi bi-house-door text-primary me-3"></i>
+                    Dashboard
+                  </li>
+                  <li class="list-group-item d-flex align-items-center">
+                    <i class="bi bi-grid text-success me-3"></i>
+                    Components
+                  </li>
+                  <li class="list-group-item d-flex align-items-center">
+                    <i class="bi bi-table text-info me-3"></i>
+                    Tables
+                  </li>
+                  <li class="list-group-item d-flex align-items-center">
+                    <i class="bi bi-gear text-warning me-3"></i>
+                    Settings
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Custom Content List Group -->
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <div class="modern-card">
+              <div class="card-header">
+                <h5 class="mb-0">Custom Content</h5>
+              </div>
+              <div class="card-body">
+                <div class="list-group" style="max-width: 30rem;">
+                  <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">List group item heading</h5>
+                      <small>3 days ago</small>
+                    </div>
+                    <p class="mb-1">Some placeholder content in a paragraph.</p>
+                    <small>And some small print.</small>
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">List group item heading</h5>
+                      <small class="text-muted">3 days ago</small>
+                    </div>
+                    <p class="mb-1">Some placeholder content in a paragraph.</p>
+                    <small class="text-muted">And some muted small print.</small>
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">List group item heading</h5>
+                      <small class="text-muted">3 days ago</small>
+                    </div>
+                    <p class="mb-1">Some placeholder content in a paragraph.</p>
+                    <small class="text-muted">And some muted small print.</small>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Horizontal List Group -->
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <div class="modern-card">
+              <div class="card-header">
+                <h5 class="mb-0">Horizontal List Group</h5>
+              </div>
+              <div class="card-body">
+                <ul class="list-group list-group-horizontal mb-3">
+                  <li class="list-group-item">An item</li>
+                  <li class="list-group-item">A second item</li>
+                  <li class="list-group-item">A third item</li>
+                </ul>
+                <ul class="list-group list-group-horizontal-sm mb-3">
+                  <li class="list-group-item">An item</li>
+                  <li class="list-group-item">A second item</li>
+                  <li class="list-group-item">A third item</li>
+                </ul>
+                <ul class="list-group list-group-horizontal-md mb-3">
+                  <li class="list-group-item">An item</li>
+                  <li class="list-group-item">A second item</li>
+                  <li class="list-group-item">A third item</li>
+                </ul>
+                <ul class="list-group list-group-horizontal-lg mb-0">
+                  <li class="list-group-item">An item</li>
+                  <li class="list-group-item">A second item</li>
+                  <li class="list-group-item">A third item</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flush List Group -->
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <div class="modern-card">
+              <div class="card-header">
+                <h5 class="mb-0">Flush List Group</h5>
+                <small class="text-muted">Remove borders and rounded corners</small>
+              </div>
+              <div class="card-body">
+                <ul class="list-group list-group-flush" style="max-width: 25rem;">
+                  <li class="list-group-item">An item</li>
+                  <li class="list-group-item">A second item</li>
+                  <li class="list-group-item">A third item</li>
+                  <li class="list-group-item">A fourth item</li>
+                  <li class="list-group-item">And a fifth one</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Creative Footer -->
+      <footer class="footer mt-auto py-3 bg-white border-top">
+        <div class="container-fluid px-4">
+          <div
+            class="d-flex flex-column flex-md-row justify-content-between align-items-center"
+          >
+            <div class="text-muted small mb-2 mb-md-0">
+              &copy; 2023 <strong>Ethanol UI</strong>. All rights reserved.
+            </div>
+            <div class="d-flex align-items-center gap-3">
+              <a href="#" class="text-muted small text-decoration-none"
+                >Privacy Policy</a
+              >
+              <a href="#" class="text-muted small text-decoration-none"
+                >Terms of Service</a
+              >
+              <div class="d-flex gap-2">
+                <a href="#" class="text-muted"><i class="bi bi-github"></i></a>
+                <a href="#" class="text-muted"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="text-muted"
+                  ><i class="bi bi-linkedin"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../js/script.js"></script>
+    <!-- Development Tools: Auto-reload & Cache-busting -->
+    <script
+      src="../js/dev-tools.js"
+      onerror="console.log('Dev tools not loaded')"
+    ></script>
+  </body>
+</html>
+

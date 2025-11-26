@@ -983,6 +983,7 @@ body {
     transition: all 0.3s ease;
     padding: 0.5rem;
     border-radius: 12px;
+    text-decoration: none !important;
 }
 
 /* Default text color for user dropdown toggle (when no topbar theme is set) */
@@ -994,6 +995,7 @@ body {
 .user-dropdown-toggle:hover {
     transform: scale(1.05);
     background: rgba(99, 102, 241, 0.05);
+    text-decoration: none !important;
 }
 
 .user-avatar {
@@ -1226,6 +1228,323 @@ body {
 .modern-card .card-body {
     padding: 25px;
     color: var(--text-main);
+}
+
+/* DataTables Styling in Cards */
+.modern-card .card-body .dataTables_wrapper {
+    padding: 0;
+}
+
+.modern-card .card-body .dataTables_wrapper .dataTables_length,
+.modern-card .card-body .dataTables_wrapper .dataTables_filter {
+    margin-bottom: 1rem;
+}
+
+.modern-card .card-body .dataTables_wrapper .dataTables_length {
+    text-align: left;
+}
+
+.modern-card .card-body .dataTables_wrapper .dataTables_filter {
+    text-align: right;
+}
+
+.modern-card .card-body .dataTables_wrapper .dataTables_length label,
+.modern-card .card-body .dataTables_wrapper .dataTables_filter label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.modern-card .card-body .dataTables_wrapper .dataTables_length label {
+    justify-content: flex-start;
+}
+
+.modern-card .card-body .dataTables_wrapper .dataTables_filter label {
+    justify-content: flex-end;
+}
+
+.modern-card .card-body .dataTables_wrapper .dataTables_length select {
+    padding: 0.375rem 2rem 0.375rem 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    margin: 0 0.5rem;
+}
+
+.modern-card .card-body .dataTables_wrapper .dataTables_filter input {
+    padding: 0.375rem 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.375rem;
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    margin-left: 0.5rem;
+}
+
+.modern-card .card-body .dataTables_wrapper .dataTables_filter input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(var(--primary-rgb), 0.25);
+}
+
+.modern-card .card-body .dataTables_wrapper .dataTables_info {
+    padding-top: 0.85rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Modern Pagination Container */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate > span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* Modern Pagination Container - Compact and Creative */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate > span {
+    gap: 0.375rem;
+    display: flex;
+    align-items: center;
+}
+
+/* Remove all custom margins - use uniform gap instead */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button.previous,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate a.previous,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button.next,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate a.next,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button:first-child,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button:last-child {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Modern Pagination Button Design - Creative & Compact */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate a,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .page-link {
+    min-width: 36px;
+    height: 36px;
+    padding: 0.5rem 0.625rem !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 6px !important;
+    background-color: var(--bg-card) !important;
+    color: var(--text-main) !important;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Modern hover effect with subtle scale */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(99, 102, 241, 0.08);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    border-radius: 6px;
+}
+
+/* Previous and Next buttons - Modern Compact Design */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button.previous,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate a.previous,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button.next,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate a.next {
+    min-width: auto;
+    padding: 0.5rem 0.875rem !important;
+    white-space: nowrap;
+    font-size: 0.8125rem;
+}
+
+/* Ensure ellipsis doesn't break spacing - removed duplicate */
+
+/* Remove ellipsis border - Modern Design */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .ellipsis {
+    border: none !important;
+    background: transparent !important;
+    min-width: auto;
+    height: auto;
+    padding: 0 0.25rem !important;
+    cursor: default;
+    box-shadow: none !important;
+    color: var(--text-muted) !important;
+}
+
+/* Hover State - Modern Creative Effect */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button:hover:not(.current):not(.disabled),
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate a:hover:not(.current):not(.disabled):not(.ellipsis),
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .page-link:hover:not(.current):not(.disabled) {
+    background-color: rgba(99, 102, 241, 0.08) !important;
+    border-color: #6366f1 !important;
+    color: #6366f1 !important;
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 3px 8px rgba(99, 102, 241, 0.12) !important;
+}
+
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button:hover:not(.current):not(.disabled)::before {
+    opacity: 1;
+}
+
+/* Active/Current State - Modern Creative Design */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate a.paginate_button.current,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate a.current:not(.ellipsis),
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .page-link.current,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate li.active .page-link,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate li.active a {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+    background-color: #6366f1 !important;
+    border-color: #6366f1 !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(99, 102, 241, 0.25), 0 0 0 1px rgba(99, 102, 241, 0.1) inset !important;
+    transform: scale(1.03);
+    position: relative;
+    z-index: 1;
+}
+
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button.current::before {
+    display: none;
+}
+
+/* Active Button Hover - Modern Creative */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate a.current:hover:not(.ellipsis),
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate li.active .page-link:hover,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate li.active a:hover {
+    background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%) !important;
+    background-color: #4f46e5 !important;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3), 0 0 0 1px rgba(99, 102, 241, 0.1) inset !important;
+    transform: scale(1.03) translateY(-1px);
+    color: #ffffff !important;
+}
+
+/* Ensure text remains white on active button hover */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover *,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate a.current:hover *:not(.ellipsis),
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate li.active:hover * {
+    color: #ffffff !important;
+}
+
+/* Disabled State */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate a.paginate_button.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: var(--bg-card) !important;
+    box-shadow: none !important;
+}
+
+/* Focus State */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button:focus,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate a:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+}
+
+/* Active State Animation */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button:active:not(.disabled) {
+    transform: scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Remove all inner element backgrounds */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button *,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate a *,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .page-link * {
+    color: inherit !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Ensure current state text is white */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button.current *,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate a.current *,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate li.active * {
+    color: #ffffff !important;
+}
+
+/* Force white text on active button hover - highest priority */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate a.current:hover,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate li.active:hover *,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover *,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate a.current:hover * {
+    color: #ffffff !important;
+}
+
+/* Universal override for any pagination structure */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate [class*="current"]:not(.ellipsis),
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate [class*="active"]:not(.ellipsis) {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+    background-color: #6366f1 !important;
+    border-color: #6366f1 !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
+}
+
+/* Force white text on hover for active buttons - universal override */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate [class*="current"]:not(.ellipsis):hover,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate [class*="active"]:not(.ellipsis):hover,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate [class*="current"]:not(.ellipsis):hover *,
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate [class*="active"]:not(.ellipsis):hover * {
+    color: #ffffff !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .modern-card .card-body .dataTables_wrapper .dataTables_paginate {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button,
+    .modern-card .card-body .dataTables_wrapper .dataTables_paginate a {
+        min-width: 36px;
+        height: 36px;
+        font-size: 0.8125rem;
+    }
+}
+
+/* Ensure active and hover background fills entire button */
+.modern-card .card-body .dataTables_wrapper .dataTables_paginate .paginate_button:hover:not(.disabled):not(.current) a {
+    background: transparent !important;
+    background-color: transparent !important;
+    color: inherit !important;
 }
 
 /* Chart Placeholder */
@@ -2123,6 +2442,12 @@ body {
     text-decoration: underline;
     color: var(--primary-color);
     transform: none;
+}
+
+/* Prevent underline on user dropdown toggle */
+.btn-link.user-dropdown-toggle:hover,
+.btn-link.user-dropdown-toggle:focus {
+    text-decoration: none !important;
 }
 
 .btn-link:focus {

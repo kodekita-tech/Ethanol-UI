@@ -119,8 +119,8 @@ $(document).ready(function() {
         return new bootstrap.Tooltip(tooltipTriggerEl);
     });
 
-    // Dropdown hover effect
-    $('.dropdown').hover(
+    // Dropdown hover effect (exclude user dropdown which uses click toggle)
+    $('.dropdown').not('.dropdown:has(.user-dropdown-toggle)').hover(
         function() {
             if ($(window).width() > 992) {
                 $(this).addClass('show');
@@ -134,6 +134,23 @@ $(document).ready(function() {
             }
         }
     );
+
+    // Prevent user dropdown from closing when clicking inside the dropdown menu
+    // Stop event propagation to prevent Bootstrap from closing the dropdown
+    $(document).on('click', '.user-dropdown-menu, .user-dropdown-header', function(e) {
+        e.stopPropagation();
+    });
+
+    // Handle clicks on user dropdown items
+    $(document).on('click', '.user-dropdown-menu .dropdown-item', function(e) {
+        const href = $(this).attr('href');
+        // Prevent default behavior for placeholder links
+        if (!href || href === '#') {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        // For real links, allow normal navigation and dropdown will close naturally
+    });
 
     // Initialize Charts if on Dashboard
     if ($('#revenueChart').length) {
