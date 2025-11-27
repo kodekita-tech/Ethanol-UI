@@ -1,0 +1,2331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Prevent Caching in Development -->
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Nav Tabs - Modern Admin</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="../images/favicon.webp" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- ApexCharts -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- DataTables CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css" id="main-css" />
+  </head>
+  <body>
+    <!-- Settings Offcanvas -->
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="settingsOffcanvas"
+      aria-labelledby="settingsOffcanvasLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="settingsOffcanvasLabel">
+          Theme Settings
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <!-- Dark/Light Mode Toggle -->
+        <div class="mb-4 pb-3 border-bottom">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h6 class="mb-0">
+              <i class="bi bi-palette-fill me-2 text-primary"></i>Theme Mode
+            </h6>
+          </div>
+          <div class="d-grid">
+            <button
+              type="button"
+              class="btn btn-outline-primary d-flex align-items-center justify-content-between"
+              id="themeModeBtn"
+              onclick="toggleThemeMode()"
+            >
+              <span>
+                <i class="bi bi-moon-stars me-2" id="themeModeIcon"></i>
+                <span id="themeModeText">Dark Mode</span>
+              </span>
+              <i class="bi bi-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Sidebar Color -->
+        <div class="mb-4 pb-3 border-bottom">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="mb-0">
+              <i class="bi bi-layout-sidebar me-2 text-primary"></i>Sidebar
+              Color
+            </h6>
+            <small class="text-muted" id="sidebarThemeIndicator">Dark</small>
+          </div>
+          <div class="theme-color-grid">
+            <button
+              class="theme-color-btn"
+              data-theme="dark"
+              data-type="sidebar"
+              onclick="setSidebarTheme('dark')"
+              style="
+                background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+              "
+              title="Dark"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="light"
+              data-type="sidebar"
+              onclick="setSidebarTheme('light')"
+              style="background: #ffffff; border: 2px solid #e5e7eb"
+              title="Light"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="primary"
+              data-type="sidebar"
+              onclick="setSidebarTheme('primary')"
+              style="
+                background: linear-gradient(180deg, #6366f1 0%, #4f46e5 100%);
+              "
+              title="Primary"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="success"
+              data-type="sidebar"
+              onclick="setSidebarTheme('success')"
+              style="
+                background: linear-gradient(180deg, #10b981 0%, #059669 100%);
+              "
+              title="Success"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="danger"
+              data-type="sidebar"
+              onclick="setSidebarTheme('danger')"
+              style="
+                background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+              "
+              title="Danger"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="warning"
+              data-type="sidebar"
+              onclick="setSidebarTheme('warning')"
+              style="
+                background: linear-gradient(180deg, #f59e0b 0%, #d97706 100%);
+              "
+              title="Warning"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="info"
+              data-type="sidebar"
+              onclick="setSidebarTheme('info')"
+              style="
+                background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+              "
+              title="Info"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="teal"
+              data-type="sidebar"
+              onclick="setSidebarTheme('teal')"
+              style="
+                background: linear-gradient(180deg, #20c997 0%, #198754 100%);
+              "
+              title="Teal"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="indigo"
+              data-type="sidebar"
+              onclick="setSidebarTheme('indigo')"
+              style="
+                background: linear-gradient(180deg, #6610f2 0%, #520dc2 100%);
+              "
+              title="Indigo"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Topbar Color -->
+        <div class="mb-4 pb-3 border-bottom">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="mb-0">
+              <i class="bi bi-layout-top me-2 text-primary"></i>Topbar Color
+            </h6>
+            <small class="text-muted" id="topbarThemeIndicator">Light</small>
+          </div>
+          <div class="theme-color-grid">
+            <button
+              class="theme-color-btn"
+              data-theme="light"
+              data-type="topbar"
+              onclick="setTopbarTheme('light')"
+              style="background: #ffffff; border: 2px solid #e5e7eb"
+              title="Light"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="dark"
+              data-type="topbar"
+              onclick="setTopbarTheme('dark')"
+              style="background: #1e293b"
+              title="Dark"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="primary"
+              data-type="topbar"
+              onclick="setTopbarTheme('primary')"
+              style="background: #6366f1"
+              title="Primary"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+            <button
+              class="theme-color-btn"
+              data-theme="success"
+              data-type="topbar"
+              onclick="setTopbarTheme('success')"
+              style="background: #10b981"
+              title="Success"
+            >
+              <i class="bi bi-check-lg"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Logo Version -->
+        <div class="mb-4 pb-3 border-bottom">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6 class="mb-0">
+              <i class="bi bi-image me-2 text-primary"></i>Logo Version
+            </h6>
+            <small class="text-muted" id="logoVersionIndicator"
+              >Icon + Text</small
+            >
+          </div>
+          <div class="d-grid gap-2">
+            <button
+              type="button"
+              class="btn btn-outline-primary d-flex align-items-center justify-content-between"
+              id="logoVersion1"
+              onclick="setLogoVersion(1)"
+            >
+              <span> <i class="bi bi-droplet-fill me-2"></i>Icon + Text </span>
+              <i class="bi bi-check-lg d-none" id="logoVersion1Check"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary d-flex align-items-center justify-content-between"
+              id="logoVersion2"
+              onclick="setLogoVersion(2)"
+            >
+              <span> <i class="bi bi-image me-2"></i>Logo + Text </span>
+              <i class="bi bi-check-lg d-none" id="logoVersion2Check"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary d-flex align-items-center justify-content-between"
+              id="logoVersion3"
+              onclick="setLogoVersion(3)"
+            >
+              <span> <i class="bi bi-images me-2"></i>Full Logo </span>
+              <i class="bi bi-check-lg d-none" id="logoVersion3Check"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Reset Settings -->
+        <div class="d-grid">
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            onclick="resetThemeSettings()"
+          >
+            <i class="bi bi-arrow-counterclockwise me-2"></i>Reset to Default
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <!-- Version 1: Icon dan Nama Aplikasi -->
+        <div class="logo-version logo-version-1">
+          <h4 class="mb-0 logo-text">
+            <i class="bi bi-droplet-fill text-primary"></i>
+            <span>Ethanol<span class="text-primary">UI</span></span>
+          </h4>
+          <h4 class="mb-0 logo-icon d-none">
+            <i class="bi bi-droplet-fill text-primary"></i>
+          </h4>
+        </div>
+
+        <!-- Version 2: Logo Image dan Nama Aplikasi -->
+        <div class="logo-version logo-version-2 d-none">
+          <div class="d-flex align-items-center logo-text">
+            <img
+              src="../images/logo-EthanolUI-blue.webp"
+              alt="Logo"
+              class="logo-img me-2 logo-theme"
+              style="width: 40px; height: 40px"
+              data-light="../images/logo-EthanolUI-blue.webp"
+              data-dark="../images/logo-EthanolUI-white.webp"
+            />
+            <h4 class="mb-0">
+              <span>Ethanol<span class="text-primary">UI</span></span>
+            </h4>
+          </div>
+          <div
+            class="logo-icon d-none d-flex align-items-center justify-content-center"
+          >
+            <img
+              src="../images/logo-EthanolUI-blue.webp"
+              alt="Logo"
+              class="logo-img logo-theme"
+              style="width: 40px; height: 40px"
+              data-light="../images/logo-EthanolUI-blue.webp"
+              data-dark="../images/logo-EthanolUI-white.webp"
+            />
+          </div>
+        </div>
+
+        <!-- Version 3: Full Logo Image dengan Nama Aplikasi -->
+        <div class="logo-version logo-version-3 d-none">
+          <div class="logo-text">
+            <img
+              src="../images/logo-EthanolUI-blue.webp"
+              alt="Ethanol UI"
+              class="logo-full logo-theme"
+              style="max-width: 100%; height: auto"
+              data-light="../images/logo-EthanolUI-blue.webp"
+              data-dark="../images/logo-EthanolUI-white.webp"
+            />
+          </div>
+          <div
+            class="logo-icon d-none d-flex align-items-center justify-content-center"
+          >
+            <img
+              src="../images/logo-EthanolUI-blue.webp"
+              alt="Logo"
+              class="logo-img logo-theme"
+              style="width: 40px; height: 40px"
+              data-light="../images/logo-EthanolUI-blue.webp"
+              data-dark="../images/logo-EthanolUI-white.webp"
+            />
+          </div>
+        </div>
+      </div>
+      <ul class="sidebar-nav">
+        <li class="nav-item">
+          <a href="../index.html" class="nav-link">
+            <i class="bi bi-speedometer2"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="#componentsSubmenu"
+            class="nav-link has-dropdown"
+            data-bs-toggle="collapse"
+            role="button"
+            aria-expanded="true"
+            aria-controls="componentsSubmenu"
+          >
+            <i class="bi bi-grid"></i>
+            <span>Components</span>
+            <i class="bi bi-chevron-down ms-auto dropdown-arrow"></i>
+          </a>
+          <div class="collapse show" id="componentsSubmenu">
+            <ul class="nav flex-column ps-3">
+              <li class="nav-item">
+                <a href="accordion.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Accordion</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="alert.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Alert</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="badge.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Badge</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="breadcrumb.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Breadcrumb</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="button.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Button</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="button-group.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Button Group</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="card.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Card</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="list-group.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>List Group</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="modal.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Modal</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="nav-tabs.html" class="nav-link active">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Nav Tabs</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pagination.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Pagination</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a
+            href="#formsSubmenu"
+            class="nav-link has-dropdown"
+            data-bs-toggle="collapse"
+            role="button"
+            aria-expanded="false"
+            aria-controls="formsSubmenu"
+          >
+            <i class="bi bi-input-cursor-text"></i>
+            <span>Forms</span>
+            <i class="bi bi-chevron-down ms-auto dropdown-arrow"></i>
+          </a>
+          <div class="collapse" id="formsSubmenu">
+            <ul class="nav flex-column ps-3">
+              <li class="nav-item">
+                <a href="../forms/check-radio.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Check & Radio</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/form-control.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Form Control</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/input-group.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Input Group</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/input-validation.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Input Validation</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/range.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Range</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../forms/select.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Select</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a
+            href="#tablesSubmenu"
+            class="nav-link has-dropdown"
+            data-bs-toggle="collapse"
+            role="button"
+            aria-expanded="false"
+            aria-controls="tablesSubmenu"
+          >
+            <i class="bi bi-table"></i>
+            <span>Tables</span>
+            <i class="bi bi-chevron-down ms-auto dropdown-arrow"></i>
+          </a>
+          <div class="collapse" id="tablesSubmenu">
+            <ul class="nav flex-column ps-3">
+              <li class="nav-item">
+                <a href="../tables/table.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Table</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../tables/datatables.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>DataTables</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a
+            href="#extendsSubmenu"
+            class="nav-link has-dropdown"
+            data-bs-toggle="collapse"
+            role="button"
+            aria-expanded="false"
+            aria-controls="extendsSubmenu"
+          >
+            <i class="bi bi-bar-chart"></i>
+            <span>Extends</span>
+            <i class="bi bi-chevron-down ms-auto dropdown-arrow"></i>
+          </a>
+          <div class="collapse" id="extendsSubmenu">
+            <ul class="nav flex-column ps-3">
+              <li class="nav-item">
+                <a href="../extends/apexcharts.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>ApexCharts</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../extends/jquery-toast.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>jQuery Toast</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../extends/select2.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>Select2</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../extends/sweetalert2.html" class="nav-link">
+                  <i
+                    class="bi bi-circle-fill"
+                    style="font-size: 6px; margin-right: 10px"
+                  ></i>
+                  <span>SweetAlert2</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="bi bi-gear"></i>
+            <span>Settings</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+      <!-- Topbar -->
+      <nav class="topbar">
+        <div class="d-flex align-items-center">
+          <button class="btn btn-link text-dark me-3" id="sidebarToggle">
+            <i class="bi bi-list fs-4"></i>
+          </button>
+          <h5 class="mb-0">Nav Tabs</h5>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+          <!-- Theme Toggle -->
+          <button class="btn btn-link text-dark" id="themeToggle">
+            <i class="bi bi-moon-stars fs-5"></i>
+          </button>
+
+          <!-- Settings Toggle -->
+          <button
+            class="btn btn-link text-dark"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#settingsOffcanvas"
+          >
+            <i class="bi bi-palette fs-5"></i>
+          </button>
+
+          <!-- Notifications -->
+          <div class="dropdown">
+            <button
+              class="btn btn-link text-dark position-relative notification-btn"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i class="bi bi-bell fs-5"></i>
+              <span class="notification-badge" id="notificationBadge">3</span>
+            </button>
+            <div
+              class="dropdown-menu dropdown-menu-end notification-dropdown p-0"
+            >
+              <div
+                class="dropdown-header p-3 border-bottom d-flex justify-content-between align-items-center bg-light-subtle"
+              >
+                <div>
+                  <h6 class="mb-0 fw-bold">Notifications</h6>
+                  <small class="text-muted" id="notificationCount">3 new</small>
+                </div>
+                <button
+                  class="btn btn-sm btn-link text-primary p-0 text-decoration-none"
+                  onclick="markAllNotificationsRead()"
+                  id="markAllReadBtn"
+                >
+                  <i class="bi bi-check-all me-1"></i>Mark all read
+                </button>
+              </div>
+              <div
+                class="notification-list"
+                style="max-height: 400px; overflow-y: auto"
+                id="notificationList"
+              >
+                <a
+                  href="#"
+                  class="dropdown-item notification-item p-3 border-bottom unread"
+                  data-notification-id="1"
+                  onclick="markNotificationRead(1)"
+                >
+                  <div class="d-flex align-items-start">
+                    <div
+                      class="notification-icon bg-primary-subtle rounded-circle p-2 me-3 flex-shrink-0"
+                    >
+                      <i class="bi bi-cart text-primary"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <div
+                        class="d-flex justify-content-between align-items-start mb-1"
+                      >
+                        <p class="mb-0 small fw-bold">New Order Received</p>
+                        <span class="notification-dot"></span>
+                      </div>
+                      <p class="mb-1 small text-muted">
+                        Order #1234 has been placed
+                      </p>
+                      <small class="text-muted d-flex align-items-center">
+                        <i class="bi bi-clock me-1" style="font-size: 10px"></i>
+                        <span style="font-size: 10px">2 mins ago</span>
+                      </small>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  class="dropdown-item notification-item p-3 border-bottom unread"
+                  data-notification-id="2"
+                  onclick="markNotificationRead(2)"
+                >
+                  <div class="d-flex align-items-start">
+                    <div
+                      class="notification-icon bg-success-subtle rounded-circle p-2 me-3 flex-shrink-0"
+                    >
+                      <i class="bi bi-person-plus text-success"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <div
+                        class="d-flex justify-content-between align-items-start mb-1"
+                      >
+                        <p class="mb-0 small fw-bold">New User Registered</p>
+                        <span class="notification-dot"></span>
+                      </div>
+                      <p class="mb-1 small text-muted">
+                        John Doe joined the team
+                      </p>
+                      <small class="text-muted d-flex align-items-center">
+                        <i class="bi bi-clock me-1" style="font-size: 10px"></i>
+                        <span style="font-size: 10px">1 hour ago</span>
+                      </small>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  href="#"
+                  class="dropdown-item notification-item p-3 border-bottom"
+                  data-notification-id="3"
+                >
+                  <div class="d-flex align-items-start">
+                    <div
+                      class="notification-icon bg-warning-subtle rounded-circle p-2 me-3 flex-shrink-0"
+                    >
+                      <i class="bi bi-exclamation-triangle text-warning"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <div
+                        class="d-flex justify-content-between align-items-start mb-1"
+                      >
+                        <p class="mb-0 small fw-bold">System Alert</p>
+                      </div>
+                      <p class="mb-1 small text-muted">Server load is high</p>
+                      <small class="text-muted d-flex align-items-center">
+                        <i class="bi bi-clock me-1" style="font-size: 10px"></i>
+                        <span style="font-size: 10px">3 hours ago</span>
+                      </small>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div
+                class="dropdown-footer p-3 text-center border-top bg-light-subtle"
+              >
+                <a
+                  href="#"
+                  class="text-decoration-none small fw-semibold text-primary"
+                  >View All Notifications <i class="bi bi-arrow-right ms-1"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Dropdown -->
+          <div class="dropdown">
+            <button
+              class="btn btn-link text-dark dropdown-toggle d-flex align-items-center user-dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <div class="position-relative">
+                <img
+                  src="https://ui-avatars.com/api/?name=Admin+User&background=6366f1&color=fff"
+                  alt="User"
+                  class="rounded-circle me-2 user-avatar"
+                  width="35"
+                  height="35"
+                />
+                <span class="user-status-badge"></span>
+              </div>
+              <div class="d-none d-md-block text-start">
+                <span class="d-block fw-bold small user-name-text"
+                  >Admin User</span
+                >
+                <span
+                  class="d-block text-muted user-role-text"
+                  style="font-size: 10px"
+                  >Administrator</span
+                >
+              </div>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end user-dropdown-menu p-0">
+              <li class="user-dropdown-header p-4 border-bottom">
+                <div class="d-flex align-items-center">
+                  <div class="position-relative me-3">
+                    <img
+                      src="https://ui-avatars.com/api/?name=Admin+User&background=6366f1&color=fff"
+                      alt="User"
+                      class="rounded-circle user-avatar-lg"
+                      width="56"
+                      height="56"
+                    />
+                    <span class="user-status-badge-lg"></span>
+                  </div>
+                  <div class="flex-grow-1">
+                    <h6 class="mb-1 fw-bold">Admin User</h6>
+                    <small class="text-muted d-block mb-2"
+                      >admin@ethanol.ui</small
+                    >
+                    <span class="badge bg-primary-subtle text-primary px-2 py-1"
+                      ><i class="bi bi-shield-check me-1"></i
+                      >Administrator</span
+                    >
+                  </div>
+                  <button
+                    class="btn btn-sm btn-link text-muted p-0 ms-2"
+                    onclick="event.stopPropagation()"
+                    title="Edit Profile"
+                  >
+                    <i class="bi bi-pencil"></i>
+                  </button>
+                </div>
+              </li>
+              <li class="p-3">
+                <a
+                  class="dropdown-item user-menu-item rounded-3 mb-2 d-flex align-items-center"
+                  href="#"
+                >
+                  <div
+                    class="user-menu-icon bg-primary-subtle rounded-circle p-2 me-3"
+                  >
+                    <i class="bi bi-person text-primary"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="fw-semibold small mb-1">My Profile</div>
+                    <small class="text-muted d-block">View your profile</small>
+                  </div>
+                  <i class="bi bi-chevron-right text-muted"></i>
+                </a>
+                <a
+                  class="dropdown-item user-menu-item rounded-3 mb-2 d-flex align-items-center"
+                  href="#"
+                >
+                  <div
+                    class="user-menu-icon bg-success-subtle rounded-circle p-2 me-3"
+                  >
+                    <i class="bi bi-gear text-success"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="fw-semibold small mb-1">Account Settings</div>
+                    <small class="text-muted d-block"
+                      >Manage your account</small
+                    >
+                  </div>
+                  <i class="bi bi-chevron-right text-muted"></i>
+                </a>
+                <a
+                  class="dropdown-item user-menu-item rounded-3 mb-2 d-flex align-items-center"
+                  href="#"
+                >
+                  <div
+                    class="user-menu-icon bg-info-subtle rounded-circle p-2 me-3"
+                  >
+                    <i class="bi bi-credit-card text-info"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="fw-semibold small mb-1">Billing</div>
+                    <small class="text-muted d-block"
+                      >Payment & subscription</small
+                    >
+                  </div>
+                  <i class="bi bi-chevron-right text-muted"></i>
+                </a>
+              </li>
+              <li><hr class="dropdown-divider m-0" /></li>
+              <li class="p-3">
+                <a
+                  class="dropdown-item user-menu-item rounded-3 text-danger d-flex align-items-center"
+                  href="#"
+                >
+                  <div
+                    class="user-menu-icon bg-danger-subtle rounded-circle p-2 me-3"
+                  >
+                    <i class="bi bi-box-arrow-right text-danger"></i>
+                  </div>
+                  <div class="flex-grow-1">
+                    <div class="fw-semibold small mb-1">Logout</div>
+                    <small class="text-muted d-block"
+                      >Sign out from account</small
+                    >
+                  </div>
+                  <i class="bi bi-chevron-right text-danger"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Page Content -->
+      <div class="content-wrapper">
+        <!-- Page Header -->
+        <div class="mb-4">
+          <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb-modern">
+              <li class="breadcrumb-item">
+                <a href="../index.html">
+                  <i class="bi bi-house-door"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="#">
+                  <i class="bi bi-grid"></i>
+                  <span>Components</span>
+                </a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                <i class="bi bi-tabs"></i>
+                <span>Nav Tabs</span>
+              </li>
+            </ol>
+          </nav>
+          <div
+            class="d-flex align-items-center justify-content-between flex-wrap gap-3"
+          >
+            <div>
+              <h4 class="mb-1 fw-bold">Nav Tabs</h4>
+              <p class="text-muted mb-0">
+                Bootstrap's navigation tabs provide a flexible and extensible
+                navigation component with multiple variants and options.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Basic Tabs -->
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <div class="modern-card">
+              <div class="card-header">
+                <h5 class="mb-0">Basic Tabs</h5>
+              </div>
+              <div class="card-body">
+                <ul class="nav nav-tabs" id="basicTabs" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link active"
+                      id="home-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#home"
+                      type="button"
+                      role="tab"
+                      aria-controls="home"
+                      aria-selected="true"
+                    >
+                      Home
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="profile-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#profile"
+                      type="button"
+                      role="tab"
+                      aria-controls="profile"
+                      aria-selected="false"
+                    >
+                      Profile
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="contact-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#contact"
+                      type="button"
+                      role="tab"
+                      aria-controls="contact"
+                      aria-selected="false"
+                    >
+                      Contact
+                    </button>
+                  </li>
+                </ul>
+                <div class="tab-content" id="basicTabsContent">
+                  <div
+                    class="tab-pane fade show active"
+                    id="home"
+                    role="tabpanel"
+                    aria-labelledby="home-tab"
+                  >
+                    <div class="p-3">
+                      <h5>Home Tab Content</h5>
+                      <p>
+                        This is some placeholder content for the Home tab's
+                        associated content. Clicking another tab will toggle the
+                        visibility of this one for the next.
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="profile"
+                    role="tabpanel"
+                    aria-labelledby="profile-tab"
+                  >
+                    <div class="p-3">
+                      <h5>Profile Tab Content</h5>
+                      <p>
+                        This is some placeholder content for the Profile tab's
+                        associated content. Clicking another tab will toggle the
+                        visibility of this one for the next.
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="contact"
+                    role="tabpanel"
+                    aria-labelledby="contact-tab"
+                  >
+                    <div class="p-3">
+                      <h5>Contact Tab Content</h5>
+                      <p>
+                        This is some placeholder content for the Contact tab's
+                        associated content. Clicking another tab will toggle the
+                        visibility of this one for the next.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabs with Icons -->
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <div class="modern-card">
+              <div class="card-header">
+                <h5 class="mb-0">Tabs with Icons</h5>
+              </div>
+              <div class="card-body">
+                <ul class="nav nav-tabs" id="iconTabs" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link active"
+                      id="dashboard-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#dashboard"
+                      type="button"
+                      role="tab"
+                      aria-controls="dashboard"
+                      aria-selected="true"
+                    >
+                      <i class="bi bi-speedometer2 me-2"></i>Dashboard
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="settings-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#settings"
+                      type="button"
+                      role="tab"
+                      aria-controls="settings"
+                      aria-selected="false"
+                    >
+                      <i class="bi bi-gear me-2"></i>Settings
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="messages-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#messages"
+                      type="button"
+                      role="tab"
+                      aria-controls="messages"
+                      aria-selected="false"
+                    >
+                      <i class="bi bi-envelope me-2"></i>Messages
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="notifications-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#notifications"
+                      type="button"
+                      role="tab"
+                      aria-controls="notifications"
+                      aria-selected="false"
+                    >
+                      <i class="bi bi-bell me-2"></i>Notifications
+                    </button>
+                  </li>
+                </ul>
+                <div class="tab-content" id="iconTabsContent">
+                  <div
+                    class="tab-pane fade show active"
+                    id="dashboard"
+                    role="tabpanel"
+                    aria-labelledby="dashboard-tab"
+                  >
+                    <div class="p-3">
+                      <h5>Dashboard Tab Content</h5>
+                      <p>
+                        This is the dashboard tab content with icon. You can add
+                        any content here including charts, statistics, and more.
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="settings"
+                    role="tabpanel"
+                    aria-labelledby="settings-tab"
+                  >
+                    <div class="p-3">
+                      <h5>Settings Tab Content</h5>
+                      <p>
+                        This is the settings tab content with icon. Manage your
+                        preferences and configuration options here.
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="messages"
+                    role="tabpanel"
+                    aria-labelledby="messages-tab"
+                  >
+                    <div class="p-3">
+                      <h5>Messages Tab Content</h5>
+                      <p>
+                        This is the messages tab content with icon. View and
+                        manage your messages here.
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="notifications"
+                    role="tabpanel"
+                    aria-labelledby="notifications-tab"
+                  >
+                    <div class="p-3">
+                      <h5>Notifications Tab Content</h5>
+                      <p>
+                        This is the notifications tab content with icon. Check
+                        your latest notifications here.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pills Tabs -->
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <div class="modern-card">
+              <div class="card-header">
+                <h5 class="mb-0">Pills Tabs</h5>
+              </div>
+              <div class="card-body">
+                <ul class="nav nav-pills" id="pillsTabs" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link active"
+                      id="pills-home-tab"
+                      data-bs-toggle="pill"
+                      data-bs-target="#pills-home"
+                      type="button"
+                      role="tab"
+                      aria-controls="pills-home"
+                      aria-selected="true"
+                    >
+                      Home
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="pills-profile-tab"
+                      data-bs-toggle="pill"
+                      data-bs-target="#pills-profile"
+                      type="button"
+                      role="tab"
+                      aria-controls="pills-profile"
+                      aria-selected="false"
+                    >
+                      Profile
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="pills-contact-tab"
+                      data-bs-toggle="pill"
+                      data-bs-target="#pills-contact"
+                      type="button"
+                      role="tab"
+                      aria-controls="pills-contact"
+                      aria-selected="false"
+                    >
+                      Contact
+                    </button>
+                  </li>
+                </ul>
+                <div class="tab-content mt-3" id="pillsTabsContent">
+                  <div
+                    class="tab-pane fade show active"
+                    id="pills-home"
+                    role="tabpanel"
+                    aria-labelledby="pills-home-tab"
+                  >
+                    <p>
+                      This is some placeholder content for the Home pill tab's
+                      associated content. Clicking another pill will toggle the
+                      visibility of this one for the next.
+                    </p>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="pills-profile"
+                    role="tabpanel"
+                    aria-labelledby="pills-profile-tab"
+                  >
+                    <p>
+                      This is some placeholder content for the Profile pill
+                      tab's associated content. Clicking another pill will
+                      toggle the visibility of this one for the next.
+                    </p>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="pills-contact"
+                    role="tabpanel"
+                    aria-labelledby="pills-contact-tab"
+                  >
+                    <p>
+                      This is some placeholder content for the Contact pill
+                      tab's associated content. Clicking another pill will
+                      toggle the visibility of this one for the next.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vertical Pills -->
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <div class="modern-card">
+              <div class="card-header">
+                <h5 class="mb-0">Vertical Pills</h5>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-3">
+                    <div
+                      class="nav flex-column nav-pills"
+                      id="v-pills-tab"
+                      role="tablist"
+                      aria-orientation="vertical"
+                    >
+                      <button
+                        class="nav-link active"
+                        id="v-pills-home-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#v-pills-home"
+                        type="button"
+                        role="tab"
+                        aria-controls="v-pills-home"
+                        aria-selected="true"
+                      >
+                        Home
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="v-pills-profile-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#v-pills-profile"
+                        type="button"
+                        role="tab"
+                        aria-controls="v-pills-profile"
+                        aria-selected="false"
+                      >
+                        Profile
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="v-pills-messages-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#v-pills-messages"
+                        type="button"
+                        role="tab"
+                        aria-controls="v-pills-messages"
+                        aria-selected="false"
+                      >
+                        Messages
+                      </button>
+                      <button
+                        class="nav-link"
+                        id="v-pills-settings-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#v-pills-settings"
+                        type="button"
+                        role="tab"
+                        aria-controls="v-pills-settings"
+                        aria-selected="false"
+                      >
+                        Settings
+                      </button>
+                    </div>
+                  </div>
+                  <div class="col-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+                      <div
+                        class="tab-pane fade show active"
+                        id="v-pills-home"
+                        role="tabpanel"
+                        aria-labelledby="v-pills-home-tab"
+                      >
+                        <p>
+                          This is some placeholder content for the Home vertical
+                          pill tab's associated content.
+                        </p>
+                      </div>
+                      <div
+                        class="tab-pane fade"
+                        id="v-pills-profile"
+                        role="tabpanel"
+                        aria-labelledby="v-pills-profile-tab"
+                      >
+                        <p>
+                          This is some placeholder content for the Profile
+                          vertical pill tab's associated content.
+                        </p>
+                      </div>
+                      <div
+                        class="tab-pane fade"
+                        id="v-pills-messages"
+                        role="tabpanel"
+                        aria-labelledby="v-pills-messages-tab"
+                      >
+                        <p>
+                          This is some placeholder content for the Messages
+                          vertical pill tab's associated content.
+                        </p>
+                      </div>
+                      <div
+                        class="tab-pane fade"
+                        id="v-pills-settings"
+                        role="tabpanel"
+                        aria-labelledby="v-pills-settings-tab"
+                      >
+                        <p>
+                          This is some placeholder content for the Settings
+                          vertical pill tab's associated content.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabs with Badges -->
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <div class="modern-card">
+              <div class="card-header">
+                <h5 class="mb-0">Tabs with Badges</h5>
+              </div>
+              <div class="card-body">
+                <ul class="nav nav-tabs" id="badgeTabs" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link active"
+                      id="inbox-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#inbox"
+                      type="button"
+                      role="tab"
+                      aria-controls="inbox"
+                      aria-selected="true"
+                    >
+                      Inbox
+                      <span class="badge bg-primary ms-2">12</span>
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="sent-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#sent"
+                      type="button"
+                      role="tab"
+                      aria-controls="sent"
+                      aria-selected="false"
+                    >
+                      Sent
+                      <span class="badge bg-success ms-2">5</span>
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="drafts-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#drafts"
+                      type="button"
+                      role="tab"
+                      aria-controls="drafts"
+                      aria-selected="false"
+                    >
+                      Drafts
+                      <span class="badge bg-warning ms-2">3</span>
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="spam-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#spam"
+                      type="button"
+                      role="tab"
+                      aria-controls="spam"
+                      aria-selected="false"
+                    >
+                      Spam
+                      <span class="badge bg-danger ms-2">99+</span>
+                    </button>
+                  </li>
+                </ul>
+                <div class="tab-content" id="badgeTabsContent">
+                  <div
+                    class="tab-pane fade show active"
+                    id="inbox"
+                    role="tabpanel"
+                    aria-labelledby="inbox-tab"
+                  >
+                    <div class="p-3">
+                      <h5>Inbox</h5>
+                      <p>You have 12 new messages in your inbox.</p>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="sent"
+                    role="tabpanel"
+                    aria-labelledby="sent-tab"
+                  >
+                    <div class="p-3">
+                      <h5>Sent</h5>
+                      <p>You have sent 5 messages.</p>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="drafts"
+                    role="tabpanel"
+                    aria-labelledby="drafts-tab"
+                  >
+                    <div class="p-3">
+                      <h5>Drafts</h5>
+                      <p>You have 3 draft messages saved.</p>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="spam"
+                    role="tabpanel"
+                    aria-labelledby="spam-tab"
+                  >
+                    <div class="p-3">
+                      <h5>Spam</h5>
+                      <p>You have 99+ spam messages.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Justified Tabs -->
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <div class="modern-card">
+              <div class="card-header">
+                <h5 class="mb-0">Justified Tabs</h5>
+              </div>
+              <div class="card-body">
+                <ul
+                  class="nav nav-tabs nav-justified"
+                  id="justifiedTabs"
+                  role="tablist"
+                >
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link active"
+                      id="justified-home-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#justified-home"
+                      type="button"
+                      role="tab"
+                      aria-controls="justified-home"
+                      aria-selected="true"
+                    >
+                      Home
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="justified-profile-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#justified-profile"
+                      type="button"
+                      role="tab"
+                      aria-controls="justified-profile"
+                      aria-selected="false"
+                    >
+                      Profile
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="justified-contact-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#justified-contact"
+                      type="button"
+                      role="tab"
+                      aria-controls="justified-contact"
+                      aria-selected="false"
+                    >
+                      Contact
+                    </button>
+                  </li>
+                </ul>
+                <div class="tab-content" id="justifiedTabsContent">
+                  <div
+                    class="tab-pane fade show active"
+                    id="justified-home"
+                    role="tabpanel"
+                    aria-labelledby="justified-home-tab"
+                  >
+                    <div class="p-3">
+                      <p>
+                        This is the home tab content with justified tabs. All
+                        tabs have equal width.
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="justified-profile"
+                    role="tabpanel"
+                    aria-labelledby="justified-profile-tab"
+                  >
+                    <div class="p-3">
+                      <p>
+                        This is the profile tab content with justified tabs. All
+                        tabs have equal width.
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="justified-contact"
+                    role="tabpanel"
+                    aria-labelledby="justified-contact-tab"
+                  >
+                    <div class="p-3">
+                      <p>
+                        This is the contact tab content with justified tabs. All
+                        tabs have equal width.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filled Tabs -->
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <div class="modern-card">
+              <div class="card-header">
+                <h5 class="mb-0">Filled Tabs</h5>
+              </div>
+              <div class="card-body">
+                <ul
+                  class="nav nav-pills nav-fill"
+                  id="filledTabs"
+                  role="tablist"
+                >
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link active"
+                      id="filled-home-tab"
+                      data-bs-toggle="pill"
+                      data-bs-target="#filled-home"
+                      type="button"
+                      role="tab"
+                      aria-controls="filled-home"
+                      aria-selected="true"
+                    >
+                      Home
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="filled-profile-tab"
+                      data-bs-toggle="pill"
+                      data-bs-target="#filled-profile"
+                      type="button"
+                      role="tab"
+                      aria-controls="filled-profile"
+                      aria-selected="false"
+                    >
+                      Profile
+                    </button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button
+                      class="nav-link"
+                      id="filled-messages-tab"
+                      data-bs-toggle="pill"
+                      data-bs-target="#filled-messages"
+                      type="button"
+                      role="tab"
+                      aria-controls="filled-messages"
+                      aria-selected="false"
+                    >
+                      Messages
+                    </button>
+                  </li>
+                </ul>
+                <div class="tab-content mt-3" id="filledTabsContent">
+                  <div
+                    class="tab-pane fade show active"
+                    id="filled-home"
+                    role="tabpanel"
+                    aria-labelledby="filled-home-tab"
+                  >
+                    <p>
+                      This is the home tab content with filled pills. All pills
+                      have equal width and fill the available space.
+                    </p>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="filled-profile"
+                    role="tabpanel"
+                    aria-labelledby="filled-profile-tab"
+                  >
+                    <p>
+                      This is the profile tab content with filled pills. All
+                      pills have equal width and fill the available space.
+                    </p>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="filled-messages"
+                    role="tabpanel"
+                    aria-labelledby="filled-messages-tab"
+                  >
+                    <p>
+                      This is the messages tab content with filled pills. All
+                      pills have equal width and fill the available space.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modern Nav Tabs -->
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <div class="modern-card">
+              <div
+                class="card-header d-flex justify-content-between align-items-center"
+              >
+                <div>
+                  <h5 class="mb-0 d-flex align-items-center">
+                    <i
+                      class="bi bi-layout-sidebar-reverse me-2 text-primary"
+                    ></i>
+                    Modern Nav Tabs
+                  </h5>
+                  <small class="text-muted"
+                    >Elegant tabs with modern design and smooth
+                    transitions</small
+                  >
+                </div>
+              </div>
+              <div class="card-body">
+                <!-- Modern Tabs Example 1 -->
+                <div class="mb-4">
+                  <h6 class="mb-3 fw-semibold">Modern Tabs with Icons</h6>
+                  <ul
+                    class="nav nav-tabs modern-nav-tabs"
+                    id="modernTabs1"
+                    role="tablist"
+                  >
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link active"
+                        id="modern-dashboard-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#modern-dashboard"
+                        type="button"
+                        role="tab"
+                        aria-controls="modern-dashboard"
+                        aria-selected="true"
+                      >
+                        <i class="bi bi-speedometer2 me-2"></i>
+                        Dashboard
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link"
+                        id="modern-analytics-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#modern-analytics"
+                        type="button"
+                        role="tab"
+                        aria-controls="modern-analytics"
+                        aria-selected="false"
+                      >
+                        <i class="bi bi-graph-up me-2"></i>
+                        Analytics
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link"
+                        id="modern-settings-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#modern-settings"
+                        type="button"
+                        role="tab"
+                        aria-controls="modern-settings"
+                        aria-selected="false"
+                      >
+                        <i class="bi bi-gear me-2"></i>
+                        Settings
+                      </button>
+                    </li>
+                  </ul>
+                  <div
+                    class="tab-content modern-tab-content mt-4"
+                    id="modernTabs1Content"
+                  >
+                    <div
+                      class="tab-pane fade show active"
+                      id="modern-dashboard"
+                      role="tabpanel"
+                      aria-labelledby="modern-dashboard-tab"
+                    >
+                      <div class="p-4 bg-light rounded">
+                        <h5 class="mb-3">Dashboard Overview</h5>
+                        <p class="mb-0 text-muted">
+                          Welcome to your modern dashboard. Here you can view
+                          all your key metrics and statistics at a glance. The
+                          interface is designed for efficiency and ease of use.
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="modern-analytics"
+                      role="tabpanel"
+                      aria-labelledby="modern-analytics-tab"
+                    >
+                      <div class="p-4 bg-light rounded">
+                        <h5 class="mb-3">Analytics & Reports</h5>
+                        <p class="mb-0 text-muted">
+                          View detailed analytics and generate comprehensive
+                          reports. Track your performance metrics and gain
+                          insights into your data.
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="modern-settings"
+                      role="tabpanel"
+                      aria-labelledby="modern-settings-tab"
+                    >
+                      <div class="p-4 bg-light rounded">
+                        <h5 class="mb-3">Settings & Preferences</h5>
+                        <p class="mb-0 text-muted">
+                          Customize your preferences and configure system
+                          settings. Manage your account, notifications, and
+                          security options.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modern Pills Example -->
+                <div class="mb-4">
+                  <h6 class="mb-3 fw-semibold">Modern Pills Style</h6>
+                  <ul
+                    class="nav nav-pills modern-nav-pills"
+                    id="modernPills1"
+                    role="tablist"
+                  >
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link active"
+                        id="modern-projects-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#modern-projects"
+                        type="button"
+                        role="tab"
+                        aria-controls="modern-projects"
+                        aria-selected="true"
+                      >
+                        <i class="bi bi-folder me-2"></i>
+                        Projects
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link"
+                        id="modern-tasks-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#modern-tasks"
+                        type="button"
+                        role="tab"
+                        aria-controls="modern-tasks"
+                        aria-selected="false"
+                      >
+                        <i class="bi bi-check2-square me-2"></i>
+                        Tasks
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link"
+                        id="modern-team-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#modern-team"
+                        type="button"
+                        role="tab"
+                        aria-controls="modern-team"
+                        aria-selected="false"
+                      >
+                        <i class="bi bi-people me-2"></i>
+                        Team
+                      </button>
+                    </li>
+                  </ul>
+                  <div
+                    class="tab-content modern-tab-content mt-4"
+                    id="modernPills1Content"
+                  >
+                    <div
+                      class="tab-pane fade show active"
+                      id="modern-projects"
+                      role="tabpanel"
+                      aria-labelledby="modern-projects-tab"
+                    >
+                      <div class="p-4 bg-light rounded">
+                        <h5 class="mb-3">Project Management</h5>
+                        <p class="mb-0 text-muted">
+                          Manage all your projects from a single dashboard.
+                          Track progress, assign tasks, and collaborate with
+                          your team.
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="modern-tasks"
+                      role="tabpanel"
+                      aria-labelledby="modern-tasks-tab"
+                    >
+                      <div class="p-4 bg-light rounded">
+                        <h5 class="mb-3">Task List</h5>
+                        <p class="mb-0 text-muted">
+                          Organize and prioritize your tasks. Set deadlines, add
+                          notes, and track completion status.
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="modern-team"
+                      role="tabpanel"
+                      aria-labelledby="modern-team-tab"
+                    >
+                      <div class="p-4 bg-light rounded">
+                        <h5 class="mb-3">Team Collaboration</h5>
+                        <p class="mb-0 text-muted">
+                          Connect with your team members, share updates, and
+                          collaborate on projects in real-time.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Creative Nav Tabs -->
+        <div class="row g-4 mb-4">
+          <div class="col-12">
+            <div class="modern-card">
+              <div
+                class="card-header d-flex justify-content-between align-items-center"
+              >
+                <div>
+                  <h5 class="mb-0 d-flex align-items-center">
+                    <i class="bi bi-palette-fill me-2 text-primary"></i>
+                    Creative Nav Tabs
+                  </h5>
+                  <small class="text-muted"
+                    >Gradient tabs with creative design and animations</small
+                  >
+                </div>
+              </div>
+              <div class="card-body">
+                <!-- Creative Tabs Example 1 -->
+                <div class="mb-4">
+                  <h6 class="mb-3 fw-semibold">Gradient Creative Tabs</h6>
+                  <ul
+                    class="nav nav-tabs creative-nav-tabs"
+                    id="creativeTabs1"
+                    role="tablist"
+                  >
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link active creative-tab-primary"
+                        id="creative-home-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#creative-home"
+                        type="button"
+                        role="tab"
+                        aria-controls="creative-home"
+                        aria-selected="true"
+                      >
+                        <i class="bi bi-house-door-fill me-2"></i>
+                        Home
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link creative-tab-success"
+                        id="creative-profile-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#creative-profile"
+                        type="button"
+                        role="tab"
+                        aria-controls="creative-profile"
+                        aria-selected="false"
+                      >
+                        <i class="bi bi-person-fill me-2"></i>
+                        Profile
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link creative-tab-warning"
+                        id="creative-contact-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#creative-contact"
+                        type="button"
+                        role="tab"
+                        aria-controls="creative-contact"
+                        aria-selected="false"
+                      >
+                        <i class="bi bi-envelope-fill me-2"></i>
+                        Contact
+                      </button>
+                    </li>
+                  </ul>
+                  <div
+                    class="tab-content creative-tab-content mt-4"
+                    id="creativeTabs1Content"
+                  >
+                    <div
+                      class="tab-pane fade show active"
+                      id="creative-home"
+                      role="tabpanel"
+                      aria-labelledby="creative-home-tab"
+                    >
+                      <div
+                        class="p-4 bg-gradient-primary text-white rounded position-relative overflow-hidden"
+                      >
+                        <div class="creative-tab-shape"></div>
+                        <h5 class="mb-3 position-relative">Welcome Home</h5>
+                        <p class="mb-0 position-relative">
+                          Experience the beauty of creative design with gradient
+                          backgrounds and smooth animations. This is a modern
+                          approach to navigation tabs.
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="creative-profile"
+                      role="tabpanel"
+                      aria-labelledby="creative-profile-tab"
+                    >
+                      <div
+                        class="p-4 bg-gradient-success text-white rounded position-relative overflow-hidden"
+                      >
+                        <div class="creative-tab-shape"></div>
+                        <h5 class="mb-3 position-relative">User Profile</h5>
+                        <p class="mb-0 position-relative">
+                          View and edit your profile information. Manage your
+                          personal details and account settings with ease.
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="creative-contact"
+                      role="tabpanel"
+                      aria-labelledby="creative-contact-tab"
+                    >
+                      <div
+                        class="p-4 bg-gradient-warning text-white rounded position-relative overflow-hidden"
+                      >
+                        <div class="creative-tab-shape"></div>
+                        <h5 class="mb-3 position-relative">Get in Touch</h5>
+                        <p class="mb-0 position-relative">
+                          Reach out to us through various channels. We're here
+                          to help and answer any questions you may have.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Creative Pills Example -->
+                <div class="mb-4">
+                  <h6 class="mb-3 fw-semibold">Creative Pills with Badges</h6>
+                  <ul
+                    class="nav nav-pills creative-nav-pills"
+                    id="creativePills1"
+                    role="tablist"
+                  >
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link active creative-pill-primary"
+                        id="creative-messages-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#creative-messages"
+                        type="button"
+                        role="tab"
+                        aria-controls="creative-messages"
+                        aria-selected="true"
+                      >
+                        <i class="bi bi-chat-dots-fill me-2"></i>
+                        Messages
+                        <span class="badge bg-white bg-opacity-25 ms-2"
+                          >12</span
+                        >
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link creative-pill-danger"
+                        id="creative-notifications-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#creative-notifications"
+                        type="button"
+                        role="tab"
+                        aria-controls="creative-notifications"
+                        aria-selected="false"
+                      >
+                        <i class="bi bi-bell-fill me-2"></i>
+                        Notifications
+                        <span class="badge bg-white bg-opacity-25 ms-2">5</span>
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link creative-pill-info"
+                        id="creative-activities-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#creative-activities"
+                        type="button"
+                        role="tab"
+                        aria-controls="creative-activities"
+                        aria-selected="false"
+                      >
+                        <i class="bi bi-activity me-2"></i>
+                        Activities
+                        <span class="badge bg-white bg-opacity-25 ms-2">8</span>
+                      </button>
+                    </li>
+                  </ul>
+                  <div
+                    class="tab-content creative-tab-content mt-4"
+                    id="creativePills1Content"
+                  >
+                    <div
+                      class="tab-pane fade show active"
+                      id="creative-messages"
+                      role="tabpanel"
+                      aria-labelledby="creative-messages-tab"
+                    >
+                      <div
+                        class="p-4 bg-gradient-primary text-white rounded position-relative overflow-hidden"
+                      >
+                        <div class="creative-tab-shape"></div>
+                        <h5 class="mb-3 position-relative">Messages Center</h5>
+                        <p class="mb-0 position-relative">
+                          You have 12 unread messages. Check your inbox and stay
+                          connected with your team and clients.
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="creative-notifications"
+                      role="tabpanel"
+                      aria-labelledby="creative-notifications-tab"
+                    >
+                      <div
+                        class="p-4 bg-gradient-danger text-white rounded position-relative overflow-hidden"
+                      >
+                        <div class="creative-tab-shape"></div>
+                        <h5 class="mb-3 position-relative">Notifications</h5>
+                        <p class="mb-0 position-relative">
+                          Stay updated with 5 new notifications. Review
+                          important updates and system alerts.
+                        </p>
+                      </div>
+                    </div>
+                    <div
+                      class="tab-pane fade"
+                      id="creative-activities"
+                      role="tabpanel"
+                      aria-labelledby="creative-activities-tab"
+                    >
+                      <div
+                        class="p-4 bg-gradient-info text-white rounded position-relative overflow-hidden"
+                      >
+                        <div class="creative-tab-shape"></div>
+                        <h5 class="mb-3 position-relative">
+                          Recent Activities
+                        </h5>
+                        <p class="mb-0 position-relative">
+                          View 8 recent activities across your projects and
+                          tasks. Track your progress and productivity.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Creative Footer -->
+      <footer class="footer mt-auto py-3 bg-white border-top">
+        <div class="container-fluid px-4">
+          <div
+            class="d-flex flex-column flex-md-row justify-content-between align-items-center"
+          >
+            <div class="text-muted small mb-2 mb-md-0">
+              &copy; 2023 <strong>Ethanol UI</strong>. All rights reserved.
+            </div>
+            <div class="d-flex align-items-center gap-3">
+              <a href="#" class="text-muted small text-decoration-none"
+                >Privacy Policy</a
+              >
+              <a href="#" class="text-muted small text-decoration-none"
+                >Terms of Service</a
+              >
+              <div class="d-flex gap-2">
+                <a href="#" class="text-muted"><i class="bi bi-github"></i></a>
+                <a href="#" class="text-muted"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="text-muted"
+                  ><i class="bi bi-linkedin"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../js/script.js"></script>
+    <!-- DataTables Initialization -->
+    <script>
+      $(document).ready(function () {
+        $("#exampleTable").DataTable({
+          responsive: true,
+          pageLength: 10,
+          lengthMenu: [
+            [5, 10, 25, 50, -1],
+            [5, 10, 25, 50, "All"],
+          ],
+          order: [[0, "asc"]],
+          dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>rt<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>',
+          language: {
+            search: "Search:",
+            lengthMenu: "Show _MENU_ entries",
+            info: "Showing _START_ to _END_ of _TOTAL_ entries",
+            infoEmpty: "Showing 0 to 0 of 0 entries",
+            infoFiltered: "(filtered from _MAX_ total entries)",
+            paginate: {
+              first: "First",
+              last: "Last",
+              next: "Next",
+              previous: "Previous",
+            },
+            emptyTable: "No data available in table",
+            zeroRecords: "No matching records found",
+          },
+        });
+      });
+    </script>
+    <!-- Development Tools: Auto-reload & Cache-busting -->
+    <script
+      src="../js/dev-tools.js"
+      onerror="console.log('Dev tools not loaded')"
+    ></script>
+  </body>
+</html>
